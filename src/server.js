@@ -1,10 +1,18 @@
 const express = require("express");
-const serveIndex = require('serve-index');
+const better_sqlite = require("better-sqlite3");
+const serveIndex = require("serve-index");
 const path = require("path");
 const fs = require("fs");
+const shell = require("shelljs");
 
-var VPK_DIR = "F:\\dota_vpk";
-var LISTEN_PORT = 3000;
+shell.config.silent = true;
+
+var VPK_DIR = process.env.VPK_DIR || path.join(__dirname);
+var LISTEN_PORT = process.env.PORT || 3000;
+
+var BASE_PATH = path.join(__dirname, "..");
+var DOTABASE_DIRNAME = "_dotabase";
+var DOTABASE_PATH = path.join(BASE_PATH, DOTABASE_DIRNAME);
 // https://github.com/WiseLibs/better-sqlite3/blob/master/docs/api.md
 
 const options = {
@@ -12,90 +20,95 @@ const options = {
 	timeout: 2000
 };
 
-const db = require("better-sqlite3")("dotabase.db", options);
+var DOTABASE_VERSION = null;
+var DOTABASE_DB = null;
+var DOTA_VERSION = null;
 
-var query = "select localized_name from heroes";
-var query2 = "SELECT r.name, r.mp3, r.text, r.text_simple, r.criteria, r.pretty_criteria, v.icon as voice_icon FROM responses r JOIN voices v ON r.voice_id = v.id WHERE text != '' AND text_simple like '% slam %' AND voice_id == 7 ORDER BY LENGTH(text) LIMIT 50"
-var result = db.prepare(query2).all();
+// syncs the dotabase repository and sets up the sql database connection
+function syncDotabase() {
+	console.log("] syncing dotabase");
+	if (!fs.existsSync(DOTABASE_PATH)) {
+		shell.cd(BASE_PATH);
+		shell.exec(`git clone https://github.com/mdiller/dotabase.git ${DOTABASE_DIRNAME}`);
+	}
+	shell.cd(DOTABASE_PATH);
+	shell.exec(`git pull`);
 
-console.log("result:");
-console.dir(result);
+	// select number from patches order by timestamp desc limit 1
+	// get git hash
+	shell.cd(DOTABASE_PATH);
+	const result = shell.exec("git rev-parse --short HEAD");
+	var new_version = result.stdout.trim();
+	if (new_version == DOTABASE_VERSION) {
+		return; // no rebuild needed
+	}
 
+	// rebuild
+	DOTABASE_VERSION = new_version;
+	var sql_path = path.join(DOTABASE_PATH, "dotabase", "dotabase.db.sql");
+	var db_path = path.join(DOTABASE_PATH, "dotabase", "dotabase.db");
+	if (fs.existsSync(db_path)) {
+		fs.unlinkSync(db_path);
+	}
+	console.log("] rebuilding dotabase");
+	var sql_create_text = fs.readFileSync(sql_path, "utf8");
+	var temp_db = better_sqlite(db_path, {
+		fileMustExist: false
+	});
+	temp_db.exec(sql_create_text);
+	temp_db.close();
 
+	DOTABASE_DB = better_sqlite(db_path, options);
+	DOTA_VERSION = DOTABASE_DB.prepare("select number from patches order by timestamp desc limit 1").all()[0].number;
+	console.log("] done!");
+}
+
+syncDotabase();
 
 const app = express();
-app.listen(LISTEN_PORT); // port
-
-var PORT = process.env.PORT || process.argv[2] || 8080;
-var PUBLIC_HTML = path.resolve(__dirname, 'public');
- 
-// use serve index to nav public folder
-app.use("/", serveIndex( path.resolve(PUBLIC_HTML), {
-	icons: true,
-	view: "tiles",
-	template: path.resolve(__dirname, "template.html")
-} ));
- 
-// use express static to serve public folder assets
-app.use("/", express.static( path.join(PUBLIC_HTML) ));
+app.listen(LISTEN_PORT);
  
 // Favicon
 app.use("/favicon.ico", express.static(path.join(__dirname, "assets", "favicon.ico")));
+ 
+// Serving vpk stuff
+app.use("/(:?dota-)?vpk/", express.static( path.join(VPK_DIR) ));
+app.use("/(:?dota-)?vpk/", serveIndex( path.resolve(VPK_DIR), {
+	icons: true,
+	view: "tiles",
+	template: path.resolve(__dirname, "vpk_browser_template.html")
+}));
 
+// The version of dotabase
+app.use("/api/version", (req, res) => {
+	res.status(200).send(DOTABASE_VERSION);
+});
 
-// app.get("/dota-vpk/*", (req, res) => {
-// 	res.sendFile('public/index.html');
-// });
+// The version of dota
+app.use("/api/dotaversion", (req, res) => {
+	res.status(200).send(DOTA_VERSION);
+});
 
-// app.get("/sqlite", (req, res) => {
-// 	res.sendFile('public/index.html');
-// });
-
-// app.use(express.json());
-// app.post("/githook", asyncHandler(async (req, res) => {
-// 	console.log(`> ${req.originalUrl}`);
-// 	var project = req.body.repository.name;
-// 	await updateProject(project);
-
-// 	res.status(200);
-// 	res.setHeader("Content-Type", "text/html");
-// 	res.send("Done!");
-// }));
-
-
-// app.get("/dota-vpk/*", asyncHandler(async (req, res) => {
-// 	// probably move this to be handled at top of script in future
-// 	var html = fs.readFileSync(__dirname + "/index.html", "utf8");
-// 	var pattern = /\/\/ PROJECTS_LIST_START\s+.*\s+\/\/ PROJECTS_LIST_END/m
-// 	if (html.search(pattern)) {
-// 		var projects = PROJECTS.map(project => {
-// 			var proj_info = PROJECT_INFOS[project];
-// 			return {
-// 				name: project,
-// 				link: proj_info.homepage || `https://tools.dillerm.io/${project}`,
-// 				github_link: proj_info.html_url,
-// 				description: proj_info.description,
-// 				created_at: localizeDate(proj_info.created_at),
-// 				updated_at: localizeDate(proj_info.updated_at),
-// 				language: proj_info.language
-// 			}
-// 		});
-// 		var project_info_text = JSON.stringify(projects);
-// 		html = html.replace(pattern, `var projects = ${project_info_text}`)
-// 	}
-
-
-// 	res.status(200);
-// 	res.setHeader("Content-Type", "text/html");
-// 	res.send(html);
-// }));
-
-
-// // error handler
-// app.use((err, req, res, next) => {
-// 	console.error(`Error on req: ${req.originalUrl}`);
-// 	console.error(err);
-// 	res.status(500).send("<pre>Oops, something broke. Check the logs.</pre>");
-// });
+// SQL query interface
+app.use("/api/(:?sql(:?ite)?)", (req, res) => {
+	var query = req.query.q || req.query.query || req.body;
+	
+	if (query) {
+		try {
+			var result = DOTABASE_DB.prepare(query).all();
+			res.json(result);
+		}
+		catch (error) {
+			res.status(400);
+			res.setHeader("Content-Type", "text/html");
+			res.send(`Error: ${error.message}`);
+		}
+	}
+	else {
+		res.status(400);
+		res.setHeader("Content-Type", "text/html");
+		res.send("Put an SQL query in a url arg named 'q' or 'query', or give it in the request body");
+	}
+});
 
 // could use express serve-index

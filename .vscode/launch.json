@@ -9,7 +9,11 @@
 			"runtimeExecutable": "npm",
 			"runtimeArgs": [
 				"run-script", "dev"
-			]
+			],
+			"env": {
+				"PORT": "3000",
+				"VPK_DIR": "F:\\dota_vpk"
+			}
 		}
 	]
 }
