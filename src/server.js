@@ -72,8 +72,8 @@ app.listen(LISTEN_PORT);
 app.use("/favicon.ico", express.static(path.join(__dirname, "assets", "favicon.ico")));
  
 // Serving vpk stuff
-app.use("/(:?dota-)?vpk/", express.static( path.join(VPK_DIR) ));
-app.use("/(:?dota-)?vpk/", serveIndex( path.resolve(VPK_DIR), {
+app.use("/(:?dota-)?vpk/", express.static(path.join(VPK_DIR)));
+app.use("/(:?dota-)?vpk/", serveIndex(path.resolve(VPK_DIR), {
 	icons: true,
 	view: "tiles",
 	template: path.resolve(__dirname, "vpk_browser_template.html")
@@ -82,6 +82,17 @@ app.use("/(:?dota-)?vpk/", serveIndex( path.resolve(VPK_DIR), {
 // The version of dotabase
 app.use("/api/version", (req, res) => {
 	res.status(200).send(DOTABASE_VERSION);
+});
+
+// The version of dotabase
+app.use("/githook", (req, res) => {
+	try {
+		syncDotabase();
+	}
+	catch (error) {
+		res.status(400).send(`Error: ${error}`);
+	}
+	res.status(200).send(`Updated to ${DOTABASE_VERSION}: ${DOTA_VERSION}`);
 });
 
 // The version of dota
@@ -99,16 +110,10 @@ app.use("/api/(:?sql(:?ite)?)", (req, res) => {
 			res.json(result);
 		}
 		catch (error) {
-			res.status(400);
-			res.setHeader("Content-Type", "text/html");
-			res.send(`Error: ${error.message}`);
+			res.status(400).send(`Error: ${error.message}`);
 		}
 	}
 	else {
-		res.status(400);
-		res.setHeader("Content-Type", "text/html");
-		res.send("Put an SQL query in a url arg named 'q' or 'query', or give it in the request body");
+		res.status(400).send("Put an SQL query in a url arg named 'q' or 'query', or give it in the request body");
 	}
 });
-
-// could use express serve-index
