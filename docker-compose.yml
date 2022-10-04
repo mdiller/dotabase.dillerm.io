@@ -1,0 +1,18 @@
+networks:
+  default:
+    external:
+      name: traefik
+
+services:
+  vuedotabase:
+    restart: unless-stopped
+    container_name: vue.dotabase.dillerm.io
+    build: .
+    volumes:
+    expose:
+      - 80
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.vuedotabase.rule=Host(`dotabase.skrattpotatis.dillerm.io`)
+      - traefik.http.routers.vuedotabase.tls.certresolver=le
+      - traefik.http.routers.vuedotabase.entrypoints=websecure
