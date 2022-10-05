@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Dotabase</title>
+	<link href="https://tools.dillerm.io/lib/dillerm.css?version=dev" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div id="navbar"></div>
+	<div id="vueapp"></div>
+</body>
+
+</html>
+<script src="https://tools.dillerm.io/lib/dillerm.umd.js?version=dev"></script>
+<script type="module">
+import { createApp } from "vue"
+import App from "./App.vue"
+
+import "prismjs/themes/prism-tomorrow.css";
+import "vue-prism-editor/dist/prismeditor.min.css";
+
+DillermWebUtils.init("#navbar", {
+	github_url: "https://github.com/mdiller/vue.dotabase.dillerm.io"
+});
+
+const app = createApp(App)
+
+app.mount("#vueapp");
+
+</script>

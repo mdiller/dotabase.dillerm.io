@@ -2,13 +2,27 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Run Dev Server",
+			"name": "Run Dev",
 			"type": "node",
 			"request": "launch",
 			"cwd": "${workspaceRoot}",
 			"runtimeExecutable": "npm",
 			"runtimeArgs": [
 				"run-script", "dev"
+			],
+			"env": {
+				"PORT": "3000",
+				"VPK_DIR": "F:\\dota_vpk"
+			}
+		},
+		{
+			"name": "Run Production",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceRoot}",
+			"runtimeExecutable": "npm",
+			"runtimeArgs": [
+				"run-script", "prod"
 			],
 			"env": {
 				"PORT": "3000",

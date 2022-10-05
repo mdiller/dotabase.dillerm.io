@@ -7,7 +7,7 @@ const shell = require("shelljs");
 
 shell.config.silent = true;
 
-var VPK_DIR = process.env.VPK_DIR || path.join(__dirname);
+var VPK_DIR = process.env.VPK_DIR || path.join(__dirname, "components");
 var LISTEN_PORT = process.env.PORT || 3000;
 
 var BASE_PATH = path.join(__dirname, "..");
@@ -117,3 +117,7 @@ app.use("/api/(:?sql(:?ite)?)", (req, res) => {
 		res.status(400).send("Put an SQL query in a url arg named 'q' or 'query', or give it in the request body");
 	}
 });
+
+
+// Serve built client files
+app.use("/", express.static(path.join(__dirname, "..", "build")));
