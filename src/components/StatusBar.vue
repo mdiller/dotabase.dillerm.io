@@ -23,7 +23,7 @@ const STATUS_INFOS = {
 		color: "#389688"
 	},
 	error: {
-		label: "",
+		label: "Error",
 		color: "#f04337"
 	}
 }
@@ -55,6 +55,11 @@ export default {
 	padding: 8px;
 
 	transition: background-color 0.25s;
+
+	span {
+		color: darkgrey;
+		float: right;
+	}
 }
 
 </style>

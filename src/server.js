@@ -32,31 +32,34 @@ function syncDotabase() {
 		shell.exec(`git clone https://github.com/mdiller/dotabase.git ${DOTABASE_DIRNAME}`);
 	}
 	shell.cd(DOTABASE_PATH);
+
+	// get git hash
+	var version_result = shell.exec("git rev-parse --short HEAD");
+	DOTABASE_VERSION = version_result.stdout.trim();
+
 	shell.exec(`git pull`);
 
-	// select number from patches order by timestamp desc limit 1
-	// get git hash
-	shell.cd(DOTABASE_PATH);
-	const result = shell.exec("git rev-parse --short HEAD");
-	var new_version = result.stdout.trim();
-	if (new_version == DOTABASE_VERSION) {
-		return; // no rebuild needed
-	}
-
-	// rebuild
-	DOTABASE_VERSION = new_version;
+	// prep paths
 	var sql_path = path.join(DOTABASE_PATH, "dotabase", "dotabase.db.sql");
 	var db_path = path.join(DOTABASE_PATH, "dotabase", "dotabase.db");
-	if (fs.existsSync(db_path)) {
-		fs.unlinkSync(db_path);
+
+	// get new git hash
+	version_result = shell.exec("git rev-parse --short HEAD");
+	var new_version = version_result.stdout.trim();
+	if (new_version != DOTABASE_VERSION || !fs.existsSync(db_path)) {
+		// rebuild
+		DOTABASE_VERSION = new_version;
+		if (fs.existsSync(db_path)) {
+			fs.unlinkSync(db_path);
+		}
+		console.log("] rebuilding dotabase");
+		var sql_create_text = fs.readFileSync(sql_path, "utf8");
+		var temp_db = better_sqlite(db_path, {
+			fileMustExist: false
+		});
+		temp_db.exec(sql_create_text);
+		temp_db.close();
 	}
-	console.log("] rebuilding dotabase");
-	var sql_create_text = fs.readFileSync(sql_path, "utf8");
-	var temp_db = better_sqlite(db_path, {
-		fileMustExist: false
-	});
-	temp_db.exec(sql_create_text);
-	temp_db.close();
 
 	DOTABASE_DB = better_sqlite(db_path, options);
 	DOTA_VERSION = DOTABASE_DB.prepare("select number from patches order by timestamp desc limit 1").all()[0].number;

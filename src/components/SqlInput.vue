@@ -36,15 +36,15 @@ export default {
 
 <style>
 .my-editor {
-	background: var(--background-color2);
+	background: var(--background-color3);
 	color: var(--input-color);
 
 	font-family: var(--input-numerical-font-family);
 	font-size: 14px;
 	line-height: 1.5;
-	padding: 15px;
+	padding: 10px;
 	
-	border-radius: 5px 5px 0px 0px;
+	border-radius: 5px;
 }
 
 /* optional class for removing the outline */

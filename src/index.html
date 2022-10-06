@@ -19,6 +19,7 @@
 import { createApp } from "vue"
 import App from "./App.vue"
 
+// import "https://tools.dillerm.io/lib/dillerm.es.js?version=dev";
 import "prismjs/themes/prism-tomorrow.css";
 import "vue-prism-editor/dist/prismeditor.min.css";
 
@@ -28,6 +29,12 @@ DillermWebUtils.init("#navbar", {
 
 const app = createApp(App)
 
+app.use(DillermWebUtils);
+
 app.mount("#vueapp");
+
+// Object.keys(DillermWebUtils.components).forEach(c =>{
+// 	app.component(c, DillermWebUtils.components[c]);
+// });
 
 </script>
