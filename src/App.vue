@@ -6,19 +6,37 @@
 				<div class="query-box-header">
 					<dillerm-select 
 						v-model:value="selected_query"
-						:options="this.PREDEFINED_QUERIES"
+						:options="PREDEFINED_QUERIES"
 						:searchable="false" />
+					<div :class="{ 'dillerm-button': true, 'toggled': show_sql }" @click="show_sql = !show_sql">
+						<img src="/assets/sqlite.svg" />
+					</div>
 				</div>
-				<div class="query-box-contents">
+				<div :class="{ 'query-box-contents': true, 'hidden': !show_sql }">
 					<SqlInput v-model:value="sql_query" />
 				</div>
 				<div class="query-args" v-if="query_args.length > 0">
 					<div v-for="query_arg in query_args">
 						<dillerm-select 
-							v-if="query_arg.type == 'query'"
+							v-if="query_arg.type == 'select'"
+							v-model:value="query_arg.value"
+							:emitvalue="true"
+							:options="query_arg.options"
+							:searchable="query_arg.searchable == 'true'"
+							:nullable="query_arg.nullable == 'true'"
+							:placeholder="`Select a ${query_arg.key}...`" />
+						<dillerm-text 
+							v-if="query_arg.type == 'text'"
+							v-model:value="query_arg.value"
+							:clearable="query_arg.clearable == 'true'"
+							:placeholder="`Search...`"
+							:debounce_delay="500"
+							@typing="setPending" />
+						<order-selector
+							v-if="query_arg.type == 'order'"
 							v-model:value="query_arg.value"
 							:options="query_arg.options"
-							:searchable="false" />
+							:enable_random="query_arg.enable_random == 'true'" />
 					</div>
 				</div>
 				<StatusBar
@@ -36,10 +54,14 @@
 import SqlInput from "./components/SqlInput.vue";
 import ResultTable from "./components/ResultTable.vue";
 import StatusBar from "./components/StatusBar.vue";
+import OrderSelector from "./components/OrderSelector.vue";
+
+// these will come from the library
 import DillermSelect from "./components/DillermSelect.vue";
+import DillermText from "./components/DillermText.vue";
 
 function parseQueriesFile(text) {
-	var query_pattern = /\n?-- ([^\n]+)\n([\s\S]+?)(?=\n--|$)/g;
+	var query_pattern = /\n?--- ([^\n]+)\n([\s\S]+?)(?=\n---|$)/g;
 	return [...text.matchAll(query_pattern)].map(match => {
 		return {
 			label: match[1].trim(),
@@ -49,13 +71,15 @@ function parseQueriesFile(text) {
 }
 
 // parse queries
-import ARG_QUERIES_TEXT from "/arg_queries.sql?raw"
-import QUERIES_TEXT from "/queries.sql?raw"
+import ARG_QUERIES_TEXT from "/assets/arg_queries.sql?raw"
+import QUERIES_TEXT from "/assets/queries.sql?raw"
 const ARG_QUERIES = parseQueriesFile(ARG_QUERIES_TEXT);
 const PREDEFINED_QUERIES = parseQueriesFile(QUERIES_TEXT);
 PREDEFINED_QUERIES.push({ label: "(Custom)", query: null });
 
-const ARG_PATTERN = /\{([^\s]+) (query:[^\s]+)\}/g;
+const ARG_DEF_PATTERN = /-- \{arg ([^\}\s]+)\s+([^\}\s]+)(?:\s+([^\}]+))?\}/g;
+const ARG_REPL_PATTERN = /\{([^\s\}]+?)\}/g;
+const ARG_IF_PATTERN = /\{if ([^\s\}]+?)\}([\s\S]+?)\{endif\}\r?\n?/g;
 async function loadArgQuery(arg_query) {
 	var response = await doSqlQuery(arg_query.query);
 	if (response.status == 200) {
@@ -68,6 +92,7 @@ async function loadArgQuery(arg_query) {
 // current_args = [{ label, type, value, options }]
 
 async function doSqlQuery(query) {
+	query = encodeURI(query);
 	var response = await fetch(`/api/sql?q=${query}`);
 
 	if (response.ok) {
@@ -89,7 +114,9 @@ export default {
 		SqlInput,
 		ResultTable,
 		StatusBar,
-		DillermSelect
+		DillermSelect,
+		DillermText,
+		OrderSelector
 	},
 	data() {
 		return {
@@ -98,22 +125,34 @@ export default {
 			sql_query: "",
 			result_data: [],
 			status: "success",
-			status_text: ""
+			status_text: "",
+			show_sql: false
 		}
 	},
 	methods: {
+		setPending() {
+			this.status = "pending";
+			this.status_text = "";
+		},
 		async sendQuery() {
 			var query = this.sql_query;
 
 			if (this.query_args) {
-				query = query.replace(ARG_PATTERN, (match_str, group1) => {
-					var query_arg = this.query_args.find(arg => arg.label == group1);
-					return query_arg ? query_arg.value.value : match_str;
+				query = query.replace(ARG_DEF_PATTERN, "");
+				query = query.replace(ARG_IF_PATTERN, (match_str, group1, group2) => {
+					var query_arg = this.query_args.find(arg => arg.key == group1);
+					return (query_arg && query_arg.value) ? group2 : "";
 				});
+				query = query.replace(ARG_REPL_PATTERN, (match_str, group1) => {
+					var query_arg = this.query_args.find(arg => arg.key == group1);
+					return query_arg ? query_arg.value : match_str;
+				});
+				query = query.trim();
 			}
 
-			this.status = "pending";
-			this.status_text = "";
+			console.log("querying: " + query);
+			
+			this.setPending();
 			var timeStart = window.performance.now();
 			var response = await doSqlQuery(query);
 			var timeEnd = window.performance.now();
@@ -129,38 +168,63 @@ export default {
 			}
 		},
 		buildQueryArgs() {
-			// TODO: fix this so it only rebuilds and sets the variable if theres actually a change
-			// TODO: give some protection to this so we don't call it every time we do a minor change
-			this.query_args = [...this.sql_query.matchAll(ARG_PATTERN)].map(match => {
-				var label = match[1]
+			var new_source = [...this.sql_query.matchAll(ARG_DEF_PATTERN)].map(match => match[0]).join(",");
+			var old_source = this.query_args.map(arg => arg.source_text).join(",");
+
+			if (new_source == old_source) {
+				return false; // sources didn't change, so no need to rebuild
+			}
+
+			this.query_args = [...this.sql_query.matchAll(ARG_DEF_PATTERN)].map(match => {
+				var key = match[1]
 				var type = match[2];
-				var value = null;
-				var options = undefined;
-				if (type.includes(":")) {
-					var split = type.split(":");
-					type = split[0];
-					if (type == "query") {
-						var arg_query_name = split[1];
-						var arg_query = ARG_QUERIES.find(a => a.label == arg_query_name);
-						if (!arg_query || !arg_query.options) {
-							console.error(`couldn't find arg query named '${arg_query_name}'`);
-							return null;
+				var arg = {
+					key: key,
+					type: type,
+					value: null,
+					source_text: match[0]
+				}
+				if (match[3]) {
+					var props = match[3].split(" ");
+					for (var prop of props) {
+						if (!prop.includes(":")) {
+							console.warn(`invalid arg prop '${prop}' on '${key}', ignoring.`);
+							continue;
 						}
-						options = arg_query.options;
-						value = options[0];
-					}
-					else {
-						console.error(`error parsing query arg '${label}'`);
-						return null;
+						var split = prop.split(":");
+						arg[split[0]] = split[1];
 					}
 				}
-				return {
-					label: label,
-					type: type,
-					options: options,
-					value: value
-				};
+
+				if (type == "select") {
+					if (!arg.query) {
+						console.warn(`select arg '${key}' missing a defined query`);
+						return null;
+					}
+					var arg_query = ARG_QUERIES.find(a => a.label == arg.query);
+					if (!arg_query || !arg_query.options) {
+						console.warn(`couldn't find arg query named '${arg.query}'`);
+						return null;
+					}
+					arg.options = arg_query.options;
+					arg.value = arg.value == "null" ? null : arg.options[0].value;
+				}
+				else if (type == "text") {
+					if (!arg.value) {
+						arg.value = "";
+					}
+				}
+				else if (type == "order") {
+					arg.value = "";
+
+				}
+				else {
+					console.error(`invalid type for arg '${key}'`);
+					return null;
+				}
+				return arg;
 			}).filter(arg => arg);
+			return true;
 		}
 	},
 	watch: {
@@ -168,12 +232,12 @@ export default {
 			if (this.selected_query.query && this.selected_query.query != this.sql_query) {
 				this.selected_query = this.PREDEFINED_QUERIES[this.PREDEFINED_QUERIES.length - 1];
 			}
+			this.buildQueryArgs();
 			if (this.selected_query.query) {
 				this.buildQueryArgs();
 				await this.sendQuery();
 			}
 			else {
-				// TODO: call buildQueryArgs here once we have a way to make it cache/be more efficient
 				this.debouncedSendQuery();
 			}
 		},
@@ -183,9 +247,12 @@ export default {
 			}
 		},
 		query_args: {
-			async handler(oldVal, newVal) {
-				// TODO: this will still end up calling query too many times. fix to only call when the signature hasnt changed (gotta store signature on query_args somehow)
-				if (oldVal.length == newVal.length) {
+			async handler(old_val, new_val) {
+				var new_source = new_val.map(arg => arg.source_text).join(",");
+				var old_source = old_val.map(arg => arg.source_text).join(",");
+
+				if (old_source == new_source) {
+					// if the sources haven't changed, that means the user changed a value, so send the query
 					await this.sendQuery();
 				}
 			}, deep: true
@@ -195,15 +262,12 @@ export default {
 		this.PREDEFINED_QUERIES = PREDEFINED_QUERIES;
 
 		// load arg queries
-		// console.time("arg_query_loading");
 		await Promise.all(ARG_QUERIES.map(arg_query => loadArgQuery(arg_query)));
-		// console.timeEnd("arg_query_loading");
 
 		// setup debounced send query
 		this._debouncedSendQuery = DillermWebUtils.utils.debounceAsync(this.sendQuery, 1000);
 		this.debouncedSendQuery = () => {
-			this.status = "pending";
-			this.status_text = "";
+			this.setPending();
 			this._debouncedSendQuery();
 		}
 		this.selected_query = this.PREDEFINED_QUERIES[0];
@@ -212,6 +276,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 
 .main-app {
 	font-size: 14px;
@@ -235,15 +300,30 @@ export default {
 
 	.query-box-header {
 		padding: 10px;
+
+		display: flex;
+
+		:first-child {
+			flex: 1;
+			margin-right: 5px;
+		}
 	}
 
 	.query-box-contents {
 		padding: 0px 15px 15px 15px;
+
+		&.hidden {
+			display: none;
+		}
 	}
 }
 
 .query-args {
 	padding: 15px 100px;
+
+	> div {
+		margin-bottom: 5px;
+	}
 }
 
 </style>

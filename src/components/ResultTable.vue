@@ -30,7 +30,7 @@ const collapse_threshold = 100;
 
 const PRETTY_TYPES = [
 	{ // image
-		regex: new RegExp('^/.*\\.png$'),
+		regex: new RegExp('^(?!/vpk)/.*\\.png$'),
 		thing: value => {
 			return `<img src="/vpk${value}">`;
 		}
@@ -65,6 +65,12 @@ const PRETTY_TYPES = [
 		thing: value => {
 			return `<a href="${value}">${value}</a>`;
 		}
+	},
+	{ // audio
+		regex: new RegExp('^(?!/vpk)/.*\\.mp3$'),
+		thing: value => {
+			return `<audio controls preload="none"><source src="/vpk${value}" type="audio/mp3"/></audio>`;
+		}
 	}
 ];
 
@@ -82,6 +88,9 @@ export default {
 				Object.keys(row).forEach(key => {
 					var value = row[key];
 					var pretty_type = PRETTY_TYPES.find(p => p.regex.test(value));
+					if (value == null) {
+						value = "<pre>NULL</pre>";
+					}
 					new_row[key] = pretty_type ? pretty_type.thing(value) : value;
 				});
 				return new_row;
@@ -126,6 +135,11 @@ export default {
 
 	td {
 		height: 1px;
+
+		> pre {
+			font-family: var(--input-numerical-font-family);
+			font-size: var(--input-numerical-font-size);
+		}
 
 		> img {
 			max-height: 37px;

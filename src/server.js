@@ -106,7 +106,7 @@ app.use("/api/dotaversion", (req, res) => {
 // SQL query interface
 app.use("/api/(:?sql(:?ite)?)", (req, res) => {
 	var query = req.query.q || req.query.query || req.body;
-	
+
 	if (query) {
 		try {
 			var result = DOTABASE_DB.prepare(query).all();

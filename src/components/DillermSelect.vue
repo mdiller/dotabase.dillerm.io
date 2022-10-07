@@ -66,10 +66,7 @@ export default {
 	name: "dillerm-select",
 	props: {
 		value: {
-			required: true,
-			validator(value) {
-				return value == null || typeof(value) == "object" || typeof(value) == "string";
-			}
+			required: true
 		},
 		options: {
 			// type: Function, // callback(newoptions, optional newstatus), or just a list of options
@@ -98,6 +95,7 @@ export default {
 	},
 	data() {
 		return {
+			options_func: null,
 			selected_option: null,
 			input: "",
 			focused: false,
@@ -105,30 +103,6 @@ export default {
 			actual_options: [],
 			status: "",
 			TRANSPARENT_IMAGE: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAD0lEQVR42mNkwAIYh7IgAAVVAAuInjI5AAAAAElFTkSuQmCC"
-		}
-	},
-	computed: {
-		options_func() {			
-			if (this.options instanceof Function) {
-				return this.options;
-			}
-			else {
-				var newoptions = this.options;
-				if (newoptions.length > 0) {
-					if (typeof newoptions[0] == "string") {
-						newoptions = newoptions.map(opt => { return { label: opt, value: opt } });
-					}
-				}
-				return (input, callback) => {
-					if (input) {
-						var pattern = new RegExp(DillermWebUtils.utils.escapeRegex(input), "i");
-						callback(newoptions.filter(opt => pattern.test(opt.label)))
-					}
-					else {
-						callback(newoptions);
-					}
-				};
-			}
 		}
 	},
 	watch: {
@@ -146,9 +120,39 @@ export default {
 			else {
 				this.$emit('update:value', this.selected_option);
 			}
+		},
+		options: {
+			handler() {
+				this.compute_options_func();
+			}, immediate: true
 		}
 	},
 	methods: {
+		compute_options_func() {	
+			if (this.options instanceof Function) {
+				this.options_func = this.options;
+			}
+			else {
+				var newoptions = this.options;
+				if (newoptions.length > 0) {
+					if (typeof newoptions[0] == "string") {
+						newoptions = newoptions.map(opt => { return { label: opt, value: opt } });
+					}
+				}
+				this.options_func = (input, callback) => {
+					if (input) {
+						var pattern = new RegExp(DillermWebUtils.utils.escapeRegex(input), "i");
+						var results = newoptions.filter(opt => pattern.test(opt.label));
+						results = results.concat(newoptions.filter(opt => !pattern.test(opt.label) && (opt.aliases && pattern.test(opt.aliases))));
+						callback(results);
+					}
+					else {
+						callback(newoptions);
+					}
+				};
+			}
+			this.recreateOptions();
+		},
 		syncValueDown() {			
 			if (this.value != this.selected_option) {
 				if (this.emitvalue) {					
@@ -224,9 +228,8 @@ export default {
 	mounted() {
 		this.$el.addEventListener("keydown", this.keyHandler);
 	},
-	created() {		
+	created() {
 		this.debouncedRecreateOptions = DillermWebUtils.utils.debounce(this.recreateOptions, this.debounce_delay);
-		this.recreateOptions();
 		this.syncValueDown();
 	}
 };

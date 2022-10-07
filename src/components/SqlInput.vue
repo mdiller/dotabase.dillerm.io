@@ -9,7 +9,7 @@
 import { PrismEditor } from "vue-prism-editor";
 
 import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-sql";
+import "../utils/prism_sql_custom.js";
 
 export default {
 	components: {
