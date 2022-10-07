@@ -13,7 +13,7 @@ SELECT pretty as label, name as value FROM criteria WHERE matchkey = 'Concept' A
 
 --- criteria_subject
 select c.pretty as label, group_concat(c.name, ' %'' OR r.criteria LIKE ''% ') as value, ('/vpk' || COALESCE(h.icon, '') || COALESCE(i.icon, '') ) as icon, 'width: 32px; height: 32px; margin: 4px' as icon_style
-from criteria c left join heroes h on c.matchvalue = h.full_name left join items i on c.matchvalue = i.name
+from criteria c left join heroes h on lower(c.matchvalue) = h.full_name left join items i on lower(c.matchvalue) = i.name
 where c.matchkey != 'classname' and not (h.icon is null and i.icon is null) and
 (c.matchvalue like 'item_%' or c.matchvalue like 'npc_dota_hero%')
 group by c.pretty
