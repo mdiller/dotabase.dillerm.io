@@ -32,6 +32,11 @@
 							:placeholder="`Search...`"
 							:debounce_delay="500"
 							@typing="setPending" />
+						<dillerm-color
+							v-if="query_arg.type == 'color'"
+							v-model:value="query_arg._value"
+							@hue="hue => query_arg.value = hue"
+							:emithue="true" />
 						<order-selector
 							v-if="query_arg.type == 'order'"
 							v-model:value="query_arg.value"
@@ -59,6 +64,7 @@ import OrderSelector from "./components/OrderSelector.vue";
 // these will come from the library
 import DillermSelect from "./components/DillermSelect.vue";
 import DillermText from "./components/DillermText.vue";
+import DillermColor from "./components/DillermColor.vue";
 
 function parseQueriesFile(text) {
 	var query_pattern = /\n?--- ([^\n]+)\n([\s\S]+?)(?=\n---|$)/g;
@@ -116,6 +122,7 @@ export default {
 		StatusBar,
 		DillermSelect,
 		DillermText,
+		DillermColor,
 		OrderSelector
 	},
 	data() {
@@ -196,6 +203,7 @@ export default {
 					}
 				}
 
+				var simple_types = [ "color" ];
 				if (type == "select") {
 					if (!arg.query) {
 						console.warn(`select arg '${key}' missing a defined query`);
@@ -216,9 +224,8 @@ export default {
 				}
 				else if (type == "order") {
 					arg.value = "";
-
 				}
-				else {
+				else if (!simple_types.includes(type)) {
 					console.error(`invalid type for arg '${key}'`);
 					return null;
 				}

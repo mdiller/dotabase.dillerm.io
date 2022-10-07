@@ -32,7 +32,8 @@ const PRETTY_TYPES = [
 	{ // image
 		regex: new RegExp('^(?!/vpk)/.*\\.png$'),
 		thing: value => {
-			return `<img src="/vpk${value}">`;
+			var link = `/vpk${value}`;
+			return `<a href="${link}" target="_blank"><img src="${link}"></a>`;
 		}
 	},
 	{ // stat
@@ -141,7 +142,8 @@ export default {
 			font-size: var(--input-numerical-font-size);
 		}
 
-		> img {
+		> img,
+		> a > img {
 			max-height: 37px;
 			margin: -10px;
 			vertical-align: middle;
