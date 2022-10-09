@@ -19,8 +19,7 @@
 <script>
 import ArrowDown from "../assets/arrow_down.svg?component";
 	
-// these will come from the library
-import DillermSelect from "./DillermSelect.vue";
+import DillermSelect from "@dillerm/webutils/src/components/controls/DillermSelect.vue";
 
 export default {
 	props: {

@@ -67,10 +67,16 @@ const PRETTY_TYPES = [
 			return `<a href="${value}">${value}</a>`;
 		}
 	},
-	{ // audio
+	{ // audio mp3
 		regex: new RegExp('^(?!/vpk)/.*\\.mp3$'),
 		thing: value => {
 			return `<audio controls preload="none"><source src="/vpk${value}" type="audio/mp3"/></audio>`;
+		}
+	},
+	{ // audio wav
+		regex: new RegExp('^(?!/vpk)/.*\\.wav$'),
+		thing: value => {
+			return `<audio controls preload="none"><source src="/vpk${value}" type="audio/wav"/></audio>`;
 		}
 	}
 ];

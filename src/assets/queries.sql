@@ -1,13 +1,3 @@
---- Loading Screens
--- {arg hero select query:heroes value:null nullable:true searchable:true}
--- {arg color color}
-select image as Image, name as Name, color as Color
-from loadingscreens
-where true
-{if hero}AND (hero_ids like '{hero}|%' or hero_ids like '%|{hero}' or hero_ids like '%|{hero}|%' or hero_ids == '{hero}') {endif}
-{if color}ORDER BY ABS(hue - {color}) {endif}
-limit 100
-
 --- Responses
 -- {arg text text clearable:true}
 -- {arg voice select query:voices value:null nullable:true searchable:true}
@@ -23,6 +13,16 @@ WHERE text != ''
 {if subject}AND (r.criteria LIKE '% {subject} %') {endif}
 {order_by}
 LIMIT 100
+
+--- Loading Screens
+-- {arg hero select query:heroes value:null nullable:true searchable:true}
+-- {arg color color}
+select image as Image, name as Name, color as Color
+from loadingscreens
+where true
+{if hero}AND (hero_ids like '{hero}|%' or hero_ids like '%|{hero}' or hero_ids like '%|{hero}|%' or hero_ids == '{hero}') {endif}
+{if color}ORDER BY ABS(hue - {color}) {endif}
+limit 100
 
 --- Heroes
 select id, icon, image, localized_name as Name, attr_primary as Attribute from heroes

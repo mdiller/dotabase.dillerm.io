@@ -61,10 +61,9 @@ import ResultTable from "./components/ResultTable.vue";
 import StatusBar from "./components/StatusBar.vue";
 import OrderSelector from "./components/OrderSelector.vue";
 
-// these will come from the library
-import DillermSelect from "./components/DillermSelect.vue";
-import DillermText from "./components/DillermText.vue";
-import DillermColor from "./components/DillermColor.vue";
+import DillermSelect from "@dillerm/webutils/src/components/controls/DillermSelect.vue";
+import DillermText from "@dillerm/webutils/src/components/controls/DillermText.vue";
+import DillermColor from "@dillerm/webutils/src/components/controls/DillermColor.vue";
 
 function parseQueriesFile(text) {
 	var query_pattern = /\n?--- ([^\n]+)\n([\s\S]+?)(?=\n---|$)/g;
@@ -330,6 +329,12 @@ export default {
 
 	> div {
 		margin-bottom: 5px;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.query-args {
+		padding: 15px 20px;
 	}
 }
 
