@@ -1,18 +1,13 @@
-networks:
-  default:
-    external:
-      name: traefik
-
 services:
-  vuedotabase:
+  dotabase-web:
     restart: unless-stopped
-    container_name: vue.dotabase.dillerm.io
+    container_name: dotabase-web
     build: .
+    environment:
+      - PORT=3000
+      - VPK_DIR=/dotavpk
     volumes:
-    expose:
-      - 80
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.vuedotabase.rule=Host(`dotabase.skrattpotatis.dillerm.io`)
-      - traefik.http.routers.vuedotabase.tls.certresolver=le
-      - traefik.http.routers.vuedotabase.entrypoints=websecure
+      - ${VPK_DIR}:/dotavpk
+    ports:
+      - 3000:3000
+    

@@ -10,6 +10,8 @@ shell.config.silent = true;
 var VPK_DIR = process.env.VPK_DIR || path.join(__dirname, "components");
 var LISTEN_PORT = process.env.PORT || 3000;
 
+console.log("Serving to: ", LISTEN_PORT);
+
 var BASE_PATH = path.join(__dirname, "..");
 var DOTABASE_DIRNAME = "_dotabase";
 var DOTABASE_PATH = path.join(BASE_PATH, DOTABASE_DIRNAME);

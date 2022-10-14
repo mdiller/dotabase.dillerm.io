@@ -1,8 +1,5 @@
 FROM node:16
 
-# set listen port to 80
-ENV LISTEN_PORT=80
-
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -18,5 +15,4 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 80
 CMD [ "npm", "run", "prod" ]
