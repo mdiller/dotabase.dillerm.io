@@ -10,7 +10,7 @@ WHERE text != ''
 {if text}AND text_simple like '% {text} %' {endif}
 {if voice}AND voice_id == {voice} {endif}
 {if criteria}AND (r.criteria LIKE '{criteria}%' OR r.criteria LIKE '%|{criteria}%') {endif}
-{if subject}AND (r.criteria LIKE '% {subject} %') {endif}
+{if subject}AND (r.criteria LIKE '% {subject} %' OR r.criteria LIKE '% {subject}') {endif}
 {order_by}
 LIMIT 100
 
