@@ -9,7 +9,7 @@
 						:options="PREDEFINED_QUERIES"
 						:searchable="false" />
 					<div :class="{ 'dillerm-button': true, 'toggled': show_sql }" @click="show_sql = !show_sql">
-						<img src="/assets/sqlite.svg" />
+						<SqliteIcon />
 					</div>
 				</div>
 				<div :class="{ 'query-box-contents': true, 'hidden': !show_sql }">
@@ -60,6 +60,7 @@ import SqlInput from "./components/SqlInput.vue";
 import ResultTable from "./components/ResultTable.vue";
 import StatusBar from "./components/StatusBar.vue";
 import OrderSelector from "./components/OrderSelector.vue";
+import SqliteIcon from "./assets/sqlite.svg?component";
 
 import DillermSelect from "@dillerm/webutils/src/components/controls/DillermSelect.vue";
 import DillermText from "@dillerm/webutils/src/components/controls/DillermText.vue";
@@ -122,7 +123,8 @@ export default {
 		DillermSelect,
 		DillermText,
 		DillermColor,
-		OrderSelector
+		OrderSelector,
+		SqliteIcon
 	},
 	data() {
 		return {
@@ -282,7 +284,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 
 .main-app {
 	font-size: 14px;
