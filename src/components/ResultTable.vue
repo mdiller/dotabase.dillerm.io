@@ -33,7 +33,7 @@ const PRETTY_TYPES = [
 		regex: new RegExp('^(?!/vpk)/.*\\.png$'),
 		thing: value => {
 			var link = `/vpk${value}`;
-			return `<a href="${link}" target="_blank"><img src="${link}"></a>`;
+			return `<a href="${link}" target="_blank"><img loading="lazy" src="${link}"></a>`;
 		}
 	},
 	{ // stat

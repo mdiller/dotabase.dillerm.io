@@ -5,7 +5,7 @@ SELECT name as label, name as value FROM sqlite_schema WHERE type IN ('table','v
 select localized_name as label, id as value, '/vpk' || icon as icon, 'width: 32px; height: 32px; margin: 4px' as icon_style from heroes
 
 --- voices
-select v.name as label, v.id as value, '/vpk' || v.icon as icon, 'width: 32px; height: 32px; margin: 4px' as icon_style, h.aliases
+select v.name as label, v.id as value, '/vpk' || v.icon as icon, 'width: 32px; height: 32px; margin: 4px' as icon_style, h.aliases as aliases
 from voices v left join heroes h on v.hero_id = h.id
 
 --- criteria

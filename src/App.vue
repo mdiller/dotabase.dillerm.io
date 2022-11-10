@@ -1,7 +1,6 @@
 <template>
 	<div class="dillerm main-app">
 		<div class="dillerm dillerm-content">
-			<h1>Dotabase</h1>
 			<div class="query-box">
 				<div class="query-box-header">
 					<dillerm-select 
@@ -65,6 +64,7 @@ import SqliteIcon from "./assets/sqlite.svg?component";
 import DillermSelect from "@dillerm/webutils/src/components/controls/DillermSelect.vue";
 import DillermText from "@dillerm/webutils/src/components/controls/DillermText.vue";
 import DillermColor from "@dillerm/webutils/src/components/controls/DillermColor.vue";
+import { escapeRegex } from "@dillerm/webutils/src/utils.js";
 
 function parseQueriesFile(text) {
 	var query_pattern = /\n?--- ([^\n]+)\n([\s\S]+?)(?=\n---|$)/g;
@@ -205,6 +205,7 @@ export default {
 				}
 
 				var simple_types = [ "color" ];
+
 				if (type == "select") {
 					if (!arg.query) {
 						console.warn(`select arg '${key}' missing a defined query`);
@@ -215,7 +216,21 @@ export default {
 						console.warn(`couldn't find arg query named '${arg.query}'`);
 						return null;
 					}
-					arg.options = arg_query.options;
+					arg.options = (input, callback) => {
+						if (input) {
+							var pattern = new RegExp(escapeRegex(input), "i");
+							var options = Array.from(arg_query.options.filter(opt => pattern.test(opt.label)));
+							if (arg_query.options.length > 0 && arg_query.options.some(opt => opt.aliases)) {
+								options = options.concat(arg_query.options.filter(opt => {
+									return opt.aliases && !pattern.test(opt.label) && opt.aliases.split("|").some(alias => pattern.test(alias));
+								}));
+							}
+							callback(options);
+						}
+						else {
+							callback(arg_query.options);
+						}
+					};
 					arg.value = arg.value == "null" ? null : arg.options[0].value;
 				}
 				else if (type == "text") {
