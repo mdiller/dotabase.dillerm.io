@@ -8,7 +8,6 @@ services:
       - VPK_DIR=/dotavpk
     volumes:
       - ${VPK_DIR}:/dotavpk
-      - ./_build:/usr/src/app
     ports:
       - 3000:3000
     
