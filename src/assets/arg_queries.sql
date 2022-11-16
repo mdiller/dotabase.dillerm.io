@@ -18,3 +18,7 @@ where c.matchkey != 'classname' and not (h.icon is null and i.icon is null) and
 (c.matchvalue like 'item_%' or c.matchvalue like 'npc_dota_hero%')
 group by c.pretty
 order by c.pretty
+
+--- tables
+SELECT name FROM sqlite_schema WHERE type = 'table' AND name NOT LIKE 'sqlite_%'
+

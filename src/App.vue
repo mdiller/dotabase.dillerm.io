@@ -8,7 +8,7 @@
 						:options="PREDEFINED_QUERIES"
 						:searchable="false" />
 					<div :class="{ 'dillerm-button': true, 'toggled': show_sql }" @click="show_sql = !show_sql">
-						<SqliteIcon />
+						<i class="fa fa-feather"></i>
 					</div>
 				</div>
 				<div :class="{ 'query-box-contents': true, 'hidden': !show_sql }">
@@ -59,7 +59,6 @@ import SqlInput from "./components/SqlInput.vue";
 import ResultTable from "./components/ResultTable.vue";
 import StatusBar from "./components/StatusBar.vue";
 import OrderSelector from "./components/OrderSelector.vue";
-import SqliteIcon from "./assets/sqlite.svg?component";
 
 import DillermSelect from "@dillerm/webutils/src/components/controls/DillermSelect.vue";
 import DillermText from "@dillerm/webutils/src/components/controls/DillermText.vue";
@@ -123,8 +122,7 @@ export default {
 		DillermSelect,
 		DillermText,
 		DillermColor,
-		OrderSelector,
-		SqliteIcon
+		OrderSelector
 	},
 	data() {
 		return {
@@ -167,7 +165,8 @@ export default {
 			var timePretty = `${timeEnd - timeStart}`;
 			if (response.status == 200) {
 				this.result_data = response.data;
-				this.status_text = `${this.result_data.length} results in ${timePretty} ms`;
+				var plus = this.query_limit == this.result_data.length ? "+" : "";
+				this.status_text = `${this.result_data.length}${plus} results in ${timePretty} ms`;
 				this.status = "success";
 			}
 			else {
@@ -231,7 +230,14 @@ export default {
 							callback(arg_query.options);
 						}
 					};
-					arg.value = arg.value == "null" ? null : arg.options[0].value;
+					if (arg.value === "null") {
+						arg.value = null;
+					}
+					else {
+						arg.options("", options => {
+							arg.value = options[0].value;
+						})
+					}
 				}
 				else if (type == "text") {
 					if (!arg.value) {
@@ -248,6 +254,12 @@ export default {
 				return arg;
 			}).filter(arg => arg);
 			return true;
+		}
+	},
+	computed: {
+		query_limit() {
+			var match = /.*LIMIT (\d+).*/.exec(this.sql_query);
+			return match ? parseInt(match[1]) : -1;
 		}
 	},
 	watch: {
@@ -352,6 +364,11 @@ export default {
 	.query-args {
 		padding: 15px 20px;
 	}
+}
+
+.dillerm-button i {
+	color: var(--input-highlight-color);
+	font-size: 20px;
 }
 
 </style>

@@ -11,13 +11,12 @@
 		<span
 			:class="{ toggled: is_desc, random: selected_sort_order == 'RANDOM()' }"
 			@click="is_desc = !is_desc">
-			<ArrowDown />
+			<i class="fa fa-arrow-down"></i>
 		</span>
 	</div>
 </template>
 
 <script>
-import ArrowDown from "../assets/arrow_down.svg?component";
 	
 import DillermSelect from "@dillerm/webutils/src/components/controls/DillermSelect.vue";
 
@@ -37,8 +36,7 @@ export default {
 		}
 	},
 	components: {
-		DillermSelect,
-		ArrowDown
+		DillermSelect
 	},
 	data() {
 		return {
@@ -125,29 +123,30 @@ export default {
 		height: var(--input-height);
 		background-color: var(--background-color4);
 
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
 		cursor: pointer;
 
-		svg {
+		i {
 			opacity: 0.75;
-			transform: scale(0.8);
 			transition: transform 0.25s;
-
-			path {
-				fill: var(--input-color);
-			}
+			color: var(--input-color);
+			font-size: 24px;
 		}
 
-		&.toggled svg {
-			transform: scale(0.8) rotate(-180deg);
+		&.toggled i {
+			transform: rotate(-180deg);
 		}
 
 		&.random {
-			svg {
+			i {
 				transition: transform 0.5s;
-				transform: scale(0.8) rotate(90deg);
+				transform: rotate(90deg);
 			}
-			&.toggled svg {
-				transform: scale(0.8) rotate(450deg);
+			&.toggled i {
+				transform: rotate(450deg);
 			}
 		}
 	}
