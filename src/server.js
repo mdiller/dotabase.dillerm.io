@@ -4,6 +4,7 @@ const serveIndex = require("serve-index");
 const path = require("path");
 const fs = require("fs");
 const shell = require("shelljs");
+const cors = require("cors");
 
 shell.config.silent = true;
 
@@ -77,15 +78,24 @@ app.listen(LISTEN_PORT);
 app.use("/favicon.ico", express.static(path.join(__dirname, "assets", "favicon.ico")));
  
 // Serving vpk stuff
+fs.copyFileSync(path.join(__dirname, "vpk_browser.html"), path.join(VPK_DIR, "index.html"))
 app.use("/(:?dota-)?vpk/", express.static(path.join(VPK_DIR)));
-app.use("/(:?dota-)?vpk/", serveIndex(path.resolve(VPK_DIR), {
-	icons: true,
-	view: "tiles",
-	template: path.resolve(__dirname, "vpk_browser_template.html")
-}));
+
+// Gets the files in the vpk's directory
+app.use("/api/vpkfiles/:filename(*)", (req, res) => {
+	var filename = req.params.filename;
+	var dir = path.join(VPK_DIR, filename);
+	if (dir.includes("..")) {
+		res.json([]);
+		return;
+	}
+	fs.readdir(dir, (err, files) => {
+		res.json(files);
+	});
+});
 
 // The version of dotabase
-app.use("/api/version", (req, res) => {
+app.use("/api/version", cors(), (req, res) => {
 	res.status(200).send(DOTABASE_VERSION);
 });
 
@@ -101,12 +111,12 @@ app.use("/githook", (req, res) => {
 });
 
 // The version of dota
-app.use("/api/dotaversion", (req, res) => {
+app.use("/api/dotaversion", cors(), (req, res) => {
 	res.status(200).send(DOTA_VERSION);
 });
 
 // SQL query interface
-app.use("/api/(:?sql(:?ite)?)", (req, res) => {
+app.use("/api/(:?sql(:?ite)?)", cors(), (req, res) => {
 	var query = req.query.q || req.query.query || req.body;
 
 	if (query) {
