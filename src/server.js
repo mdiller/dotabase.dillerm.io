@@ -93,7 +93,7 @@ function syncDotabase() {
 
 	DOTABASE_DB = better_sqlite(db_path, options);
 	DOTA_VERSION = DOTABASE_DB.prepare("select number from patches order by timestamp desc limit 1").all()[0].number;
-	console.log("] database synced!");
+	console.log("] database synced");
 
 	// Fill Icon Routes
 	icon_redirects.forEach(redirect => {
@@ -106,10 +106,12 @@ function syncDotabase() {
 			redirect.data = data;
 		}
 	})
-	console.log("] icon redirects built!");
+	console.log("] icon redirects built");
 }
 
 syncDotabase();
+
+console.log("] done!");
 
 const app = express();
 app.listen(LISTEN_PORT);
