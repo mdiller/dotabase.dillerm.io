@@ -27,6 +27,33 @@ var DOTABASE_VERSION = null;
 var DOTABASE_DB = null;
 var DOTA_VERSION = null;
 
+const icon_redirects = [
+	{
+		type: "item",
+		query: "SELECT id as key, icon as value FROM items"
+	},
+	{
+		type: "ability",
+		query: "SELECT id as key, icon as value FROM abilities"
+	},
+	{
+		type: "emoticon",
+		query: "SELECT id as key, url as value FROM emoticons"
+	},
+	{
+		type: "hero_icon",
+		query: "SELECT id as key, icon as value FROM heroes"
+	},
+	{
+		type: "hero_image",
+		query: "SELECT id as key, image as value FROM heroes"
+	},
+	{
+		type: "hero_portrait",
+		query: "SELECT id as key, portrait as value FROM heroes"
+	}
+];
+
 // syncs the dotabase repository and sets up the sql database connection
 function syncDotabase() {
 	console.log("] syncing dotabase");
@@ -66,7 +93,19 @@ function syncDotabase() {
 
 	DOTABASE_DB = better_sqlite(db_path, options);
 	DOTA_VERSION = DOTABASE_DB.prepare("select number from patches order by timestamp desc limit 1").all()[0].number;
-	console.log("] done!");
+	console.log("] database synced!");
+
+	// Fill Icon Routes
+	icon_redirects.forEach(redirect => {
+		if (redirect.query) {
+			let data = {};
+			let query_result = DOTABASE_DB.prepare(redirect.query).all();
+			query_result.forEach(kv => {
+				data[kv.key.toString()] = kv.value;
+			});
+			redirect.data = data;
+		}
+	})
 }
 
 syncDotabase();
@@ -133,6 +172,23 @@ app.use("/api/(:?sql(:?ite)?)", cors(), (req, res) => {
 	}
 });
 
+// Icons by ID routing
+app.use("/api/icon/:icon_type/:icon_id", (req, res) => {
+	var icon_type = req.params.icon_type;
+	var icon_id = req.params.icon_id;
+
+	var route = icon_redirects.find(r => r.type == icon_type);
+	if (route == undefined) {
+		res.status(404).send(`Error: Don't recognize that icon type`);
+	}
+	else if (!(Object.keys(route.data).includes(icon_id))) {
+		res.status(404).send(`Error: Couldn't find an icon by that ID`);
+	}
+	else {
+		var baseUrl = req.originalUrl.split("/api/icon/")[0];
+		res.status(302).redirect(`${baseUrl}/vpk${route.data[icon_id]}`);
+	}
+});
 
 // Serve built client files
 app.use("/", express.static(path.join(__dirname, "..", "build")));
