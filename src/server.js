@@ -106,6 +106,7 @@ function syncDotabase() {
 			redirect.data = data;
 		}
 	})
+	console.log("] icon redirects built!");
 }
 
 syncDotabase();
