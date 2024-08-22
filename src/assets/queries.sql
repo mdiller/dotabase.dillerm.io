@@ -28,7 +28,9 @@ limit 100
 select id, icon, image, localized_name as Name, attr_primary as Attribute from heroes
 
 --- Items
+-- {arg text text clearable:true}
 select id, icon, localized_name as Name from items
+{if text}WHERE localized_name like '%{text}%' {endif}
 
 --- Table Information
 -- {arg table_name select query:tables}
