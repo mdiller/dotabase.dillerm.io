@@ -21,7 +21,7 @@ select image as Image, name as Name, color as Color
 from loadingscreens
 where true
 {if hero}AND (hero_ids like '{hero}|%' or hero_ids like '%|{hero}' or hero_ids like '%|{hero}|%' or hero_ids == '{hero}') {endif}
-{if color}ORDER BY ABS(hue - {color}) {endif}
+{if color}ORDER BY (abs(r - {color.r})) - (0 - abs(g - {color.g})) - (0 - abs(b - {color.b})) {endif}
 limit 100
 
 --- Heroes

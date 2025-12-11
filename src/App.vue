@@ -33,9 +33,7 @@
 							@typing="setPending" />
 						<dillerm-color
 							v-if="query_arg.type == 'color'"
-							v-model:value="query_arg._value"
-							@hue="hue => query_arg.value = hue"
-							:emithue="true" />
+							v-model:value="query_arg.value" />
 						<order-selector
 							v-if="query_arg.type == 'order'"
 							v-model:value="query_arg.value"
@@ -64,6 +62,18 @@ import DillermSelect from "@dillerm/webutils/src/components/controls/DillermSele
 import DillermText from "@dillerm/webutils/src/components/controls/DillermText.vue";
 import DillermColor from "@dillerm/webutils/src/components/controls/DillermColor.vue";
 import { escapeRegex } from "@dillerm/webutils/src/utils.js";
+
+function hexToRGB(hex) {
+	// Remove # if present
+	hex = hex.replace(/^#/, '');
+	
+	return {
+		hex: '#' + hex,
+		r: parseInt(hex.substring(0, 2), 16),
+		g: parseInt(hex.substring(2, 4), 16),
+		b: parseInt(hex.substring(4, 6), 16)
+	};
+}
 
 function parseQueriesFile(text) {
 	var query_pattern = /\n?--- ([^\n]+)\n([\s\S]+?)(?=\n---|$)/g;
@@ -150,8 +160,34 @@ export default {
 					return (query_arg && query_arg.value) ? group2 : "";
 				});
 				query = query.replace(ARG_REPL_PATTERN, (match_str, group1) => {
-					var query_arg = this.query_args.find(arg => arg.key == group1);
-					return query_arg ? query_arg.value : match_str;
+					// Support dot notation for accessing object properties (e.g., {color.hue})
+					if (group1.includes('.')) {
+						var [argKey, ...propPath] = group1.split('.');
+						var query_arg = this.query_args.find(arg => arg.key == argKey);
+						if (query_arg) {
+							var value = query_arg.value;
+
+							// If it's a color type arg with a hex string value, convert to RGB
+							if (query_arg.type === "color" && typeof value === "string") {
+								value = hexToRGB(value);
+							}
+
+							for (var prop of propPath) {
+								if (value && typeof value === 'object' && Object.prototype.hasOwnProperty.call(value, prop)) {
+									value = value[prop];
+								} else {
+									value = undefined;
+									break;
+								}
+							}
+							var result = value !== undefined && value !== null ? value : match_str;
+							return result;
+						}
+					} else {
+						var query_arg = this.query_args.find(arg => arg.key == group1);
+						return query_arg ? query_arg.value : match_str;
+					}
+					return match_str;
 				});
 				query = query.trim();
 			}
