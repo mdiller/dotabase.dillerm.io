@@ -2,7 +2,7 @@
 </script>
 
 <template>
-	<prism-editor class="my-editor" v-model="value" :highlight="highlighter"></prism-editor>
+	<prism-editor class="my-editor" v-model="localValue" :highlight="highlighter"></prism-editor>
 </template>
 
 <script>
@@ -21,9 +21,14 @@ export default {
 			required: true
 		}
 	},
-	watch: {
-		value() {
-			this.$emit('update:value', this.value);
+	computed: {
+		localValue: {
+			get() {
+				return this.value;
+			},
+			set(newValue) {
+				this.$emit('update:value', newValue);
+			}
 		}
 	},
 	methods: {

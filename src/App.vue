@@ -162,7 +162,7 @@ export default {
 			var timeStart = window.performance.now();
 			var response = await doSqlQuery(query);
 			var timeEnd = window.performance.now();
-			var timePretty = `${timeEnd - timeStart}`;
+			var timePretty = `${Math.round(timeEnd - timeStart)}`;
 			if (response.status == 200) {
 				this.result_data = response.data;
 				var plus = this.query_limit == this.result_data.length ? "+" : "";

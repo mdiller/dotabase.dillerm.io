@@ -1,14 +1,18 @@
 <template>
 	<table class="result-table">
-		<tr>
-			<th v-for="column in columns">
-				{{ column }}
-			</th>
-		</tr>
-		<tr v-for="row in rows">
-			<td v-for="column in columns" v-html="row[column]">
-			</td>
-		</tr>
+		<thead>
+			<tr>
+				<th v-for="column in columns" :key="column">
+					{{ column }}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="(row, index) in rows" :key="index">
+				<td v-for="column in columns" :key="column" v-html="row[column]">
+				</td>
+			</tr>
+		</tbody>
 	</table>
 </template>
 

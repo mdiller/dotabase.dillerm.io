@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://tools.dillerm.io/lib/dillerm.css?version=dev" rel="stylesheet" type="text/css">
+</head>
+<!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+<script src="https://tools.dillerm.io/lib/dillerm.umd.js?version=dev"></script>
+
+<body>
+<div id="navbar"></div>
+<div id="wrapper">
+	<div id="content" class="dillerm dillerm-content">
+		<dillerm-select
+			v-model:value="display_mode"
+			:options="display_modes"
+			:emitvalue="true"></dillerm-select>
+		<h2>
+			<a v-for="crumb in directory_crumbs" :href="crumb.link">
+				<span>{{crumb.name}}</span>
+				<span>/</span>
+			</a>
+		</h2>
+		<table v-if="display_mode == 'List'" class="files">
+			<tr v-for="file in files">
+				<td>
+					<i
+						:class="`fa ${file.type.icon}`"
+						:style="{ color: file.type.icon_color }"></i>
+				</td>
+				<td>
+					<a :href="file.link">
+						{{ file.name }}
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div v-if="display_mode == 'Gallery'" class="gallery">
+		<a
+			v-for="file in files"
+			:href="file.link"
+			:class="{ 'non-image': file.type.name != 'image' }">
+			<span v-if="file.type.name != 'image'">
+				<i
+					:class="`fa ${file.type.icon}`"
+					:style="{ color: file.type.icon_color }"></i>
+				<span>{{file.name}}</span>
+			</span>
+			<img
+				v-if="file.type.name == 'image'"
+				loading="lazy"
+				:src="file.link"
+				@load="imgLoadHelper"
+				>
+		</a>
+	</div>
+</div>
+<script>
+DillermWebUtils.init("#navbar", {
+	title: "Dotabase VPK",
+	github_url: "https://github.com/mdiller/vue.dotabase.dillerm.io"
+});
+
+const FILE_TYPES = [
+	{
+		name: "image",
+		pattern: /.*\.png$/,
+		icon: "fa-file-image",
+		icon_color: "#0ca8ed"
+	},
+	{
+		name: "audio",
+		pattern: /.*\.(mp3|wav)$/,
+		icon: "fa-file-audio",
+		icon_color: "#1365c2"
+	},
+	{
+		name: "text",
+		pattern: /.*\.txt$/,
+		icon: "fa-file-text",
+		icon_color: "#ffb54c"
+	},
+	{
+		name: "code",
+		pattern: /.*\.(vsnd_c|vtex_c|vsndevts|vsndevts_c|xml|vxml_c|css|js|vcss_c|vjs_c)$/,
+		icon: "fa-file-code",
+		icon_color: "#ff776b"
+	},
+	{
+		name: "dir",
+		pattern: /^(\.\.|[^\.]*)$/,
+		icon: "fa-folder",
+		icon_color: "#ffe278"
+	},
+	{
+		name: "other",
+		pattern: /.*\..*$/,
+		icon: "fa-file",
+		icon_color: "#b0d16f"
+	}
+] // use "other" if none of the above match
+
+const app = DillermWebUtils.createVueApp({
+	data() {
+		return {
+			display_mode: "List",
+			display_modes: [
+				"List",
+				"Gallery"
+			],
+			directory: null,
+			files: null
+		}
+	},
+	components: DillermWebUtils.components,
+	computed: {
+		directory_crumbs() {
+			var dir = this.directory.replace(/^\/vpk/, "VPK");
+			var crumbs = dir.split("/");
+			crumbs = crumbs.filter(crumb => crumb != "");
+			return Array.from(crumbs.map((crumb, i) => {
+				return {
+					name: crumb,
+					link: crumbs.slice(0, i + 1).join("/").replace(/^VPK/, "/vpk/#")
+				}
+			}));
+		}	
+	},
+	methods: {
+		imgLoadHelper(event) {
+			// so lazy load works but doenst get in way
+			event.target.style["min-width"] = "0px";
+			event.target.style["min-height"] = "0px";
+		},
+		async hashChange() {
+			var path = window.location.hash.slice(1) || '/';
+			var url = `/api/vpkfiles${path}`;
+			var self = this;
+			fetch(url).then(response => {
+				return response.json();
+			}).then(data => {
+				self.directory = `/vpk${path}/`
+				self.files = self.initFiles(data);
+			});
+		},
+		initFiles(files) {
+			var result = Array.from(files.filter(file => file).map(file => {
+				var type = null;
+				FILE_TYPES.forEach(t => {
+					if (type == null && t.pattern.test(file)) {
+						type = t;
+					}
+				});
+				var is_dir = type.name == "dir";
+				var dir = is_dir ? this.directory.replace(/^\/vpk\//, "/vpk/#/") : this.directory;
+				return {
+					name: file,
+					is_dir: is_dir,
+					link: `${dir}${file}`,
+					type: type
+				};
+			}));
+			result.sort((a, b) => a.is_dir == b.is_dir ? (a.name.localeCompare(b.name)) : (a.is_dir ? -1 : 1));
+			return result;
+		}
+	},
+	async created() {
+		this.directory = "/vpk/";
+		this.files = [];
+
+		window.removeEventListener('hashchange', this.hashChange);
+		window.addEventListener('hashchange', this.hashChange);
+		await this.hashChange();
+	}
+});
+app.mount("#wrapper");
+</script>
+
+<style>
+
+#wrapper a {
+	color: var(--text-color);
+}
+
+h2 a:first-child span {
+	color: grey;
+}
+.files {
+	border-spacing: 0px;
+}
+
+.files td:first-child {
+	text-align: right;
+}
+
+.files td {
+	padding: 3px;
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+}
+
+.gallery > * {
+	padding: 8px;
+	list-style: none;
+	cursor: pointer;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.gallery > * img {
+	object-fit: cover;
+	width: 100%;
+	vertical-align: middle;
+	border-radius: 5px;
+	max-height: 100px;
+
+	/* These next two are for placeholders for proper lazy loading */
+	min-width: 100px;
+	min-height: 100px;
+}
+
+.gallery .non-image {
+	text-decoration: none;
+	background: var(--background-color2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.gallery .non-image span span {
+	padding: 4px;
+}
+
+
+/* .files td a {
+	color: var(--text-color);
+} */
+
+</style>
+
+
+</body>
+</html>
