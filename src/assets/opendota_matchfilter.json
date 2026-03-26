@@ -1,0 +1,286 @@
+{
+	"endpoint": "https://api.opendota.com/api/players/{account_id}/matches",
+	"description": "Fetch match history for a player with optional filters. Returns an array of match objects.",
+	"docs_url": "https://docs.opendota.com/#tag/players%2Fpaths%2F~1players~1%7Baccount_id%7D~1matches%2Fget",
+	"params": [
+		{
+			"key": "account_id",
+			"label": "Account ID",
+			"type": "text",
+			"in": "path",
+			"required": true,
+			"placeholder": "e.g. 87287966",
+			"description": "Steam account ID (32-bit). Convert from 64-bit by subtracting 76561197960265728."
+		},
+		{
+			"key": "limit",
+			"label": "Limit",
+			"type": "number",
+			"in": "query",
+			"required": false,
+			"default": 20,
+			"min": 1,
+			"max": 500,
+			"description": "Number of matches to return (default 20, max 500)."
+		},
+		{
+			"key": "offset",
+			"label": "Offset",
+			"type": "number",
+			"in": "query",
+			"required": false,
+			"default": null,
+			"min": 0,
+			"description": "Number of matches to skip (for pagination)."
+		},
+		{
+			"key": "win",
+			"label": "Win/Loss",
+			"type": "select",
+			"in": "query",
+			"required": false,
+			"options": [
+				{ "label": "Any", "value": null },
+				{ "label": "Won", "value": 1 },
+				{ "label": "Lost", "value": 0 }
+			],
+			"description": "Filter by win or loss."
+		},
+		{
+			"key": "lobby_type",
+			"label": "Lobby Type",
+			"type": "select",
+			"in": "query",
+			"required": false,
+			"options": [
+				{ "label": "Any", "value": null },
+				{ "label": "Ranked", "value": 7 },
+				{ "label": "Unranked (Normal)", "value": 0 },
+				{ "label": "Bot Match", "value": 1 },
+				{ "label": "Ranked Team MM", "value": 9 }
+			],
+			"description": "Filter by lobby type."
+		},
+		{
+			"key": "game_mode",
+			"label": "Game Mode",
+			"type": "select",
+			"in": "query",
+			"required": false,
+			"options": [
+				{ "label": "Any", "value": null },
+				{ "label": "All Pick (1)", "value": 1 },
+				{ "label": "Captains Mode (2)", "value": 2 },
+				{ "label": "Random Draft (3)", "value": 3 },
+				{ "label": "Single Draft (4)", "value": 4 },
+				{ "label": "All Random (5)", "value": 5 },
+				{ "label": "Captains Draft (16)", "value": 16 },
+				{ "label": "Ranked All Pick (22)", "value": 22 },
+				{ "label": "Turbo (23)", "value": 23 },
+				{ "label": "Ability Draft (18)", "value": 18 },
+				{ "label": "Mid Only (11)", "value": 11 }
+			],
+			"description": "Filter by game mode."
+		},
+		{
+			"key": "significant",
+			"label": "Significant",
+			"type": "select",
+			"in": "query",
+			"required": false,
+			"options": [
+				{ "label": "Any", "value": null },
+				{ "label": "Standard only (AP/RD)", "value": 1 },
+				{ "label": "Include non-standard", "value": 0 }
+			],
+			"description": "Filter to significant (AP/RD) or all modes. Setting game_mode will force this to 0."
+		},
+		{
+			"key": "party_size",
+			"label": "Party Size",
+			"type": "select",
+			"in": "query",
+			"required": false,
+			"options": [
+				{ "label": "Any", "value": null },
+				{ "label": "Solo (1)", "value": 1 },
+				{ "label": "2-stack", "value": 2 },
+				{ "label": "3-stack", "value": 3 },
+				{ "label": "4-stack", "value": 4 },
+				{ "label": "5-stack", "value": 5 }
+			],
+			"description": "Filter by party size."
+		},
+		{
+			"key": "hero_id",
+			"label": "Hero (played as)",
+			"type": "number",
+			"in": "query",
+			"required": false,
+			"placeholder": "Hero ID, e.g. 75 (Silencer)",
+			"description": "Filter to matches where the player played this hero. Use the hero lookup table or OpenDota /heroes endpoint for IDs."
+		},
+		{
+			"key": "with_hero_id",
+			"label": "With Hero (ally)",
+			"type": "number",
+			"in": "query",
+			"required": false,
+			"placeholder": "Hero ID",
+			"description": "Filter to matches where this hero was an ally. Requires project=hero_id in many cases."
+		},
+		{
+			"key": "against_hero_id",
+			"label": "Against Hero (enemy)",
+			"type": "number",
+			"in": "query",
+			"required": false,
+			"placeholder": "Hero ID",
+			"description": "Filter to matches where this hero was an enemy."
+		},
+		{
+			"key": "included_account_id",
+			"label": "With Player (account ID)",
+			"type": "number",
+			"in": "query",
+			"required": false,
+			"placeholder": "Account ID",
+			"description": "Filter to matches where this player was also in the match (on either team)."
+		},
+		{
+			"key": "excluded_account_id",
+			"label": "Without Player (account ID)",
+			"type": "number",
+			"in": "query",
+			"required": false,
+			"placeholder": "Account ID",
+			"description": "Filter to matches where this player was NOT in the match."
+		},
+		{
+			"key": "date",
+			"label": "Days (lookback)",
+			"type": "number",
+			"in": "query",
+			"required": false,
+			"placeholder": "e.g. 30",
+			"min": 1,
+			"description": "Return matches from the last N days. 7 = last week, 30 = last month, 365 = last year."
+		},
+		{
+			"key": "region",
+			"label": "Region",
+			"type": "select",
+			"in": "query",
+			"required": false,
+			"options": [
+				{ "label": "Any", "value": null },
+				{ "label": "US West (1)", "value": 1 },
+				{ "label": "US East (2)", "value": 2 },
+				{ "label": "Europe (3)", "value": 3 },
+				{ "label": "SE Asia (5)", "value": 5 },
+				{ "label": "Dubai (6)", "value": 6 },
+				{ "label": "Australia (7)", "value": 7 },
+				{ "label": "Stockholm (8)", "value": 8 },
+				{ "label": "Austria (9)", "value": 9 },
+				{ "label": "Brazil (10)", "value": 10 },
+				{ "label": "South Africa (11)", "value": 11 },
+				{ "label": "China (PW) (12)", "value": 12 },
+				{ "label": "China (13)", "value": 13 }
+			],
+			"description": "Filter by server region."
+		},
+		{
+			"key": "lane_role",
+			"label": "Lane Role",
+			"type": "select",
+			"in": "query",
+			"required": false,
+			"notes": "Requires parsed matches (project=lane,is_roaming)",
+			"options": [
+				{ "label": "Any", "value": null },
+				{ "label": "Safelane (1)", "value": 1 },
+				{ "label": "Mid (2)", "value": 2 },
+				{ "label": "Offlane (3)", "value": 3 },
+				{ "label": "Jungle (4)", "value": 4 }
+			],
+			"description": "Filter by lane role. Only works on parsed matches — requires project=lane and project=is_roaming."
+		},
+		{
+			"key": "project",
+			"label": "Project Fields",
+			"type": "multiselect",
+			"in": "query",
+			"required": false,
+			"description": "Additional match fields to include in the response. Some filters require specific project fields.",
+			"options": [
+				{ "label": "kills", "value": "kills" },
+				{ "label": "deaths", "value": "deaths" },
+				{ "label": "assists", "value": "assists" },
+				{ "label": "hero_id", "value": "hero_id" },
+				{ "label": "hero_damage", "value": "hero_damage" },
+				{ "label": "tower_damage", "value": "tower_damage" },
+				{ "label": "hero_healing", "value": "hero_healing" },
+				{ "label": "last_hits", "value": "last_hits" },
+				{ "label": "denies", "value": "denies" },
+				{ "label": "gold_per_min", "value": "gold_per_min" },
+				{ "label": "xp_per_min", "value": "xp_per_min" },
+				{ "label": "duration", "value": "duration" },
+				{ "label": "start_time", "value": "start_time" },
+				{ "label": "game_mode", "value": "game_mode" },
+				{ "label": "lobby_type", "value": "lobby_type" },
+				{ "label": "region", "value": "region" },
+				{ "label": "version", "value": "version" },
+				{ "label": "radiant_win", "value": "radiant_win" },
+				{ "label": "player_slot", "value": "player_slot" },
+				{ "label": "party_size", "value": "party_size" },
+				{ "label": "lane", "value": "lane" },
+				{ "label": "is_roaming", "value": "is_roaming" },
+				{ "label": "lane_role", "value": "lane_role" },
+				{ "label": "net_worth", "value": "net_worth" },
+				{ "label": "item_0", "value": "item_0" },
+				{ "label": "item_1", "value": "item_1" },
+				{ "label": "item_2", "value": "item_2" },
+				{ "label": "item_3", "value": "item_3" },
+				{ "label": "item_4", "value": "item_4" },
+				{ "label": "item_5", "value": "item_5" },
+				{ "label": "cluster", "value": "cluster" },
+				{ "label": "leaver_status", "value": "leaver_status" },
+				{ "label": "patch", "value": "patch" }
+			]
+		}
+	],
+	"examples": [
+		{
+			"label": "Last 20 ranked wins",
+			"params": { "win": 1, "lobby_type": 7, "limit": 20 }
+		},
+		{
+			"label": "Turbo matches this week",
+			"params": { "game_mode": 23, "significant": 0, "date": 7, "limit": 50 }
+		},
+		{
+			"label": "Ranked solo mid",
+			"params": { "lobby_type": 7, "party_size": 1, "lane_role": 2, "project": ["lane", "is_roaming"], "limit": 30 }
+		},
+		{
+			"label": "All wins as Silencer (hero 75)",
+			"params": { "hero_id": 75, "win": 1, "limit": 50 }
+		},
+		{
+			"label": "Matches vs Axe (hero 2) ranked last 3 months",
+			"params": { "against_hero_id": 2, "lobby_type": 7, "date": 90, "limit": 30 }
+		},
+		{
+			"label": "KDA breakdown (with stats)",
+			"params": { "limit": 20, "project": ["kills", "deaths", "assists", "hero_id", "duration"] }
+		},
+		{
+			"label": "Ranked offlane wins last year",
+			"params": { "lobby_type": 7, "win": 1, "lane_role": 3, "date": 365, "project": ["lane", "is_roaming"] }
+		},
+		{
+			"label": "US West ranked last month",
+			"params": { "region": 1, "lobby_type": 7, "date": 30, "limit": 30 }
+		}
+	]
+}
