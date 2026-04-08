@@ -82,7 +82,9 @@ export default {
 				hp_current: 1100,
 				hp_max:     1400,
 				mp_current: 900,
-				mp_max:     900
+				mp_max:     900,
+				hp_regen:   0,
+				mana_regen: 0
 			}
 		};
 	},
@@ -92,13 +94,15 @@ export default {
 			const prev_hp_pct = this.config.hp_max > 0 ? this.config.hp_current / this.config.hp_max : 1;
 			const prev_mp_pct = this.config.mp_max > 0 ? this.config.mp_current / this.config.mp_max : 1;
 
-			const { hp_max, mp_max } = await calculateResources(this.selectedHeroId, this.level);
+			const { hp_max, mp_max, hp_regen, mana_regen } = await calculateResources(this.selectedHeroId, this.level);
 
 			this.config.hero_id    = this.selectedHeroId;
 			this.config.hp_max     = hp_max;
 			this.config.mp_max     = mp_max;
 			this.config.hp_current = Math.round(prev_hp_pct * hp_max);
 			this.config.mp_current = Math.round(prev_mp_pct * mp_max);
+			this.config.hp_regen   = hp_regen;
+			this.config.mana_regen = mana_regen;
 		}
 	},
 

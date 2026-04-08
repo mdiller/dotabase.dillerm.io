@@ -1,6 +1,6 @@
-// CalculationEngine - computes hero HP/MP based on hero stats and level
+// CalculationEngine — computes hero HP/MP/regen based on hero stats and level
+// Formulas from: docs/ResourceCalculatorResearch.md
 // TODO: Add item bonus calculations when item selection is implemented
-// TODO: Verify hero table column names against dotabase schema if stats seem wrong
 
 async function doSqlQuery(query) {
 	const response = await fetch(`/api/sql?q=${encodeURI(query)}`);
@@ -10,29 +10,35 @@ async function doSqlQuery(query) {
 	return null;
 }
 
-// Dota 2 HP/MP formulas:
-//   HP = base_health + (base_str + str_gain * (level-1)) * 20
-//   MP = base_mana  + (base_int + int_gain * (level-1)) * 12
+// Dota 2 formulas:
+//   total_str  = attr_strength_base     + floor(attr_strength_gain     * (level - 1))
+//   total_int  = attr_intelligence_base + floor(attr_intelligence_gain * (level - 1))
+//   hp_max     = 120 + (total_str * 22)
+//   mp_max     = 75  + (total_int * 12)
+//   hp_regen   = base_health_regen + (total_str * 0.1)
+//   mana_regen = base_mana_regen   + (total_int * 0.05)
 export async function calculateResources(heroId, level = 1) {
 	try {
 		const data = await doSqlQuery(
-			`SELECT base_str, str_gain, base_int, int_gain, base_health, base_mana FROM heroes WHERE id = ${heroId}`
+			`SELECT attr_strength_base, attr_strength_gain, attr_intelligence_base, attr_intelligence_gain, base_health_regen, base_mana_regen FROM heroes WHERE id = ${heroId}`
 		);
 
 		if (!data || !data.length) {
-			return { hp_max: 1400, mp_max: 900 };
+			return { hp_max: 1400, mp_max: 900, hp_regen: 0, mana_regen: 0 };
 		}
 
 		const h = data[0];
-		const str   = (h.base_str  || 0) + (h.str_gain  || 0) * (level - 1);
-		const intel = (h.base_int  || 0) + (h.int_gain  || 0) * (level - 1);
+		const total_str  = (h.attr_strength_base     || 0) + Math.floor((h.attr_strength_gain     || 0) * (level - 1));
+		const total_int  = (h.attr_intelligence_base || 0) + Math.floor((h.attr_intelligence_gain || 0) * (level - 1));
 
 		return {
-			hp_max: (h.base_health || 200) + Math.round(str   * 20),
-			mp_max: (h.base_mana   ||  75) + Math.round(intel * 12)
+			hp_max:     120 + (total_str * 22),
+			mp_max:      75 + (total_int * 12),
+			hp_regen:   (h.base_health_regen || 0) + total_str * 0.1,
+			mana_regen: (h.base_mana_regen   || 0) + total_int * 0.05
 		};
 	} catch (e) {
 		console.error('CalculationEngine error:', e);
-		return { hp_max: 1400, mp_max: 900 };
+		return { hp_max: 1400, mp_max: 900, hp_regen: 0, mana_regen: 0 };
 	}
 }
