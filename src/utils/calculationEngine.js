@@ -12,6 +12,9 @@
 export const STAT_COLORS = {
 	hp:   '#adf762',
 	mana: '#4f78fa',
+	str:  '#d9413c',
+	agi:  '#40c77d',
+	int:  '#5694f2',
 };
 
 async function doSqlQuery(query) {
@@ -46,6 +49,7 @@ export async function calculateResources(heroId, level = 1) {
 	try {
 		const data = await doSqlQuery(
 			`SELECT attr_strength_base, attr_strength_gain,
+			        attr_agility_base, attr_agility_gain,
 			        attr_intelligence_base, attr_intelligence_gain,
 			        base_health_regen, base_mana_regen
 			 FROM heroes WHERE id = ${heroId}`
@@ -56,15 +60,30 @@ export async function calculateResources(heroId, level = 1) {
 		const h = data[0];
 		const strBase  = h.attr_strength_base     || 0;
 		const strGain  = h.attr_strength_gain      || 0;
+		const agiBase  = h.attr_agility_base       || 0;
+		const agiGain  = h.attr_agility_gain       || 0;
 		const intBase  = h.attr_intelligence_base  || 0;
 		const intGain  = h.attr_intelligence_gain  || 0;
 		const baseHpR  = h.base_health_regen       || 0;
 		const baseMpR  = h.base_mana_regen         || 0;
 
-		const totalStr = strBase + Math.floor(strGain * (level - 1));
-		const totalInt = intBase + Math.floor(intGain * (level - 1));
+		const lvls     = level - 1;
+		const totalStr = strBase + Math.floor(strGain * lvls);
+		const totalAgi = agiBase + Math.floor(agiGain * lvls);
+		const totalInt = intBase + Math.floor(intGain * lvls);
+
+		const levelBonusComponents = (base, gain, lvls) => {
+			const bonus = Math.floor(gain * lvls);
+			return [
+				{ label: 'Base',                                           value: base },
+				...(lvls > 0 ? [{ label: `${lvls} levels × ${gain}`,      value: bonus }] : []),
+			];
+		};
 
 		return [
+			statGroup('strength', 'Strength', STAT_COLORS.str, levelBonusComponents(strBase, strGain, lvls)),
+			statGroup('agility',  'Agility',  STAT_COLORS.agi, levelBonusComponents(agiBase, agiGain, lvls)),
+			statGroup('intelligence', 'Intelligence', STAT_COLORS.int, levelBonusComponents(intBase, intGain, lvls)),
 			statGroup('hp_max', 'Max HP', STAT_COLORS.hp, [
 				{ label: 'Base HP',                         value: 120 },
 				{ label: `${totalStr} Strength × 22`,       value: totalStr * 22 },
@@ -90,10 +109,13 @@ export async function calculateResources(heroId, level = 1) {
 
 function buildFallbackStats() {
 	return [
-		{ key: 'hp_max',     label: 'Max HP',     color: STAT_COLORS.hp,   value: 0, components: [] },
-		{ key: 'mp_max',     label: 'Max Mana',   color: STAT_COLORS.mana, value: 0, components: [] },
-		{ key: 'hp_regen',   label: 'HP Regen',   color: STAT_COLORS.hp,   value: 0, components: [] },
-		{ key: 'mana_regen', label: 'Mana Regen', color: STAT_COLORS.mana, value: 0, components: [] },
+		{ key: 'strength',      label: 'Strength',      color: STAT_COLORS.str,  value: 0, components: [] },
+		{ key: 'agility',       label: 'Agility',       color: STAT_COLORS.agi,  value: 0, components: [] },
+		{ key: 'intelligence',  label: 'Intelligence',  color: STAT_COLORS.int,  value: 0, components: [] },
+		{ key: 'hp_max',        label: 'Max HP',        color: STAT_COLORS.hp,   value: 0, components: [] },
+		{ key: 'mp_max',        label: 'Max Mana',      color: STAT_COLORS.mana, value: 0, components: [] },
+		{ key: 'hp_regen',      label: 'HP Regen',      color: STAT_COLORS.hp,   value: 0, components: [] },
+		{ key: 'mana_regen',    label: 'Mana Regen',    color: STAT_COLORS.mana, value: 0, components: [] },
 	];
 }
 

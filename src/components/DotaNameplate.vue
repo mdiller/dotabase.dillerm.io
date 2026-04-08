@@ -1,12 +1,12 @@
 <template>
 	<div class="nameplate-outer">
 		<div class="nameplate-scale" :class="{ 'no-scale': !scaled }">
-			<div class="nameplate-bar">
+			<div class="nameplate-bar" :style="nameplateBarStyle">
 				<!-- hp + mana bars, positioned left:21 right:32 top:2 bottom:1 -->
 				<div class="bars-container">
 					<div class="bar-div" style="height:1px"></div>
 					<div class="hp-bar">
-						<div class="hp-fill" :style="{ width: hpPercent + '%' }"></div>
+						<div class="hp-fill" :style="{ width: hpPercent + '%', ...hpFillStyle }"></div>
 						<template v-for="tick in ticks" :key="tick.hp">
 							<div
 								v-if="tick.show"
@@ -34,11 +34,23 @@
 <script>
 export default {
 	props: {
-		config: { type: Object, required: true },
-		level:  { type: Number, default: 1 },
-		scaled: { type: Boolean, default: true }
+		config:   { type: Object, required: true },
+		level:    { type: Number, default: 1 },
+		scaled:   { type: Boolean, default: true },
+		is_ally:  { type: Boolean, default: true }
 	},
 	computed: {
+		nameplateBarStyle() {
+			if (this.is_ally) return {};
+			return {
+				background: '#5f2f2f',
+				border: '1px solid #401d1e',
+			};
+		},
+		hpFillStyle() {
+			if (this.is_ally) return {};
+			return { background: '#f33d00' };
+		},
 		hpPercent() {
 			if (!this.config.hp_max) return 0;
 			return Math.max(0, Math.min(100, this.config.hp_current / this.config.hp_max * 100));
@@ -54,11 +66,13 @@ export default {
 			const max     = this.config.hp_max;
 			const current = this.config.hp_current;
 			const result  = [];
+			const tick250  = this.is_ally ? '#8cc64e' : '#c53000';
+			const tick1000 = this.is_ally ? '#3f5d20' : '#5b1100';
 			for (let hp = 250; hp < max; hp += 250) {
 				result.push({
 					hp,
 					left:  (hp / max * 100) + '%',
-					color: hp % 1000 === 0 ? '#3f5d20' : '#8cc64e',
+					color: hp % 1000 === 0 ? tick1000 : tick250,
 					show:  hp <= current
 				});
 			}
@@ -69,13 +83,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* Outer wrapper provides centering and padding for overflow from 2x scale + icon */
+/* Outer wrapper provides centering and padding for overflow from 2x scale + icon.
+   min-width: 420px ensures the 2x-scaled 200px bar (visually 400px) stays within
+   this box and doesn't overflow into adjacent elements. */
 .nameplate-outer {
 	display: flex;
 	justify-content: center;
 	padding-top: 20px;
 	padding-bottom: 40px;
 	overflow: visible;
+	min-width: 420px;
 }
 
 .nameplate-scale {
@@ -126,7 +143,7 @@ export default {
 
 .tick {
 	position: absolute;
-	width:  1px;
+	width:  2px;
 	top:    0;
 	bottom: 0;
 	z-index: 1;

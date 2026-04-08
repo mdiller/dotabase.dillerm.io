@@ -8,23 +8,28 @@ function mdiSvgUrl(path) {
 	return `data:image/svg+xml;base64,${btoa(svg)}`;
 }
 
+const ICON_STYLE = 'padding: 6px';
+
 export const PAGES = [
 	{
 		label: 'Database Query',
 		value: 'database-query',
 		icon: mdiSvgUrl(mdiDatabase),
+		icon_style: ICON_STYLE,
 		component: DatabaseQuery
 	},
 	{
 		label: 'Axe',
 		value: 'axe',
 		icon: mdiSvgUrl(mdiAxeBattle),
+		icon_style: ICON_STYLE,
 		component: Axe
 	},
 	{
 		label: 'Resource Calculator',
 		value: 'resource-calculator',
 		icon: mdiSvgUrl(mdiCalculatorVariant),
+		icon_style: ICON_STYLE,
 		component: ResourceCalculator
 	}
 ];
