@@ -12,6 +12,7 @@
 								:options="heroOptions"
 								:searchable="true"
 								:emitvalue="true"
+								:clearable="false"
 								placeholder="Select a hero..." />
 						</div>
 
@@ -82,10 +83,9 @@ export default {
 	components: { DillermSelect, DillermSlider, DillermNumerical, DotaNameplate, BreakdownPanel },
 
 	data() {
-		const savedId = localStorage.getItem(STORAGE_KEY);
 		return {
 			heroOptions:    [],
-			selectedHeroId: savedId ? Number(savedId) : DEFAULT_HERO_ID,
+			selectedHeroId: null,
 			level: 1,
 			stats: [],
 			config: {
@@ -118,7 +118,11 @@ export default {
 
 	watch: {
 		selectedHeroId(id) {
-			if (id != null) localStorage.setItem(STORAGE_KEY, id);
+			if (id == null) {
+				this.selectedHeroId = DEFAULT_HERO_ID;
+				return;
+			}
+			localStorage.setItem(STORAGE_KEY, id);
 			this.runCalculation();
 		},
 		level() { this.runCalculation(); }
@@ -134,9 +138,13 @@ export default {
 			this.heroOptions = await res.json();
 		}
 
-		// selectedHeroId is already set from localStorage/default in data();
-		// run initial calculation
-		await this.runCalculation();
+		// Wait for DillermSelect to process the new options into actual_options
+		await this.$nextTick();
+
+		// Set after options load so DillermSelect can find the matching option
+		const savedId = localStorage.getItem(STORAGE_KEY);
+		this.selectedHeroId = savedId ? Number(savedId) : DEFAULT_HERO_ID;
+		// Watcher fires and calls runCalculation()
 	}
 };
 </script>
