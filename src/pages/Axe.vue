@@ -7,7 +7,7 @@
 				<div class="culling-title">
 					<img
 						class="culling-icon"
-						src="/vpk/panorama/images/spellicons/axe_culling_blade_png.png"
+						:src="'/vpk/panorama/images/spellicons/axe_culling_blade_png.png'"
 						title="Play Culling Blade sound"
 						@click="playSound"
 					/>
