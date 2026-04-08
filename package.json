@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "concurrently --kill-others \"npm run dev-server\" \"sleep 3 && npm run dev-client\"",
-    "dev-server": "node src/server.js",
+    "dev-server": "node --env-file=.env src/server.js",
     "dev-client": "vite --host",
     "build": "vite build",
     "prod": "vite build && node src/server.js"

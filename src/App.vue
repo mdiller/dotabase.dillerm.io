@@ -23,7 +23,26 @@ export default {
 		}
 	},
 	created() {
-		this.current_page = PAGES[0];
+		const hash = window.location.hash.replace(/^#\/?/, '');
+		this.current_page = PAGES.find(p => p.value === hash) ?? PAGES[0];
+		window.addEventListener('popstate', this.onPopState);
+	},
+	beforeUnmount() {
+		window.removeEventListener('popstate', this.onPopState);
+	},
+	watch: {
+		current_page(page) {
+			const hash = `#${page.value}`;
+			if (window.location.hash !== hash) {
+				history.pushState(null, '', hash);
+			}
+		}
+	},
+	methods: {
+		onPopState() {
+			const hash = window.location.hash.replace(/^#\/?/, '');
+			this.current_page = PAGES.find(p => p.value === hash) ?? PAGES[0];
+		}
 	}
 };
 </script>

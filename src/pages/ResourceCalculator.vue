@@ -1,64 +1,69 @@
 <template>
 	<div class="dillerm main-app">
 		<div class="dillerm dillerm-content">
-			<div class="calc-box">
-				<div class="calc-controls">
-					<!-- Hero select -->
-					<div class="control-row">
-						<label>Hero</label>
-						<dillerm-select
-							v-model:value="selectedHeroId"
-							:options="heroOptions"
-							:searchable="true"
-							:emitvalue="true"
-							placeholder="Select a hero..." />
-					</div>
-
-					<!-- Level slider + number -->
-					<div class="control-row">
-						<label>Level</label>
-						<dillerm-slider
-							v-model:value="level"
-							:min="1"
-							:max="30" />
-						<dillerm-numerical
-							class="level-number-input"
-							v-model:value="level"
-							:min="1"
-							:max="30"
-							:integer="true" />
-					</div>
-
-					<!-- HP current slider -->
-					<div class="control-row">
-						<label>HP</label>
-						<div class="hp-slider-wrap">
-							<dillerm-slider
-								v-model:value="config.hp_current"
-								:min="0"
-								:max="config.hp_max" />
+			<div class="resource-center">
+				<div class="calc-box">
+					<div class="calc-controls">
+						<!-- Hero select -->
+						<div class="control-row">
+							<label>Hero</label>
+							<dillerm-select
+								v-model:value="selectedHeroId"
+								:options="heroOptions"
+								:searchable="true"
+								:emitvalue="true"
+								placeholder="Select a hero..." />
 						</div>
-					</div>
 
-					<!-- MP current slider -->
-					<div class="control-row">
-						<label>Mana</label>
-						<div class="mp-slider-wrap">
+						<!-- Level slider + number -->
+						<div class="control-row">
+							<label>Level</label>
 							<dillerm-slider
-								v-model:value="config.mp_current"
-								:min="0"
-								:max="config.mp_max" />
+								v-model:value="level"
+								:min="1"
+								:max="30" />
+							<dillerm-numerical
+								class="level-number-input"
+								v-model:value="level"
+								:min="1"
+								:max="30"
+								:integer="true" />
+						</div>
+
+						<!-- HP current slider -->
+						<div class="control-row">
+							<label>HP</label>
+							<div class="hp-slider-wrap">
+								<dillerm-slider
+									v-model:value="config.hp_current"
+									:min="0"
+									:max="config.hp_max" />
+							</div>
+						</div>
+
+						<!-- MP current slider -->
+						<div class="control-row">
+							<label>Mana</label>
+							<div class="mp-slider-wrap">
+								<dillerm-slider
+									v-model:value="config.mp_current"
+									:min="0"
+									:max="config.mp_max" />
+							</div>
 						</div>
 					</div>
 				</div>
+
+				<!-- 2x scaled nameplate -->
+				<DotaNameplate :config="config" :level="level" :scaled="true" />
+
+				<!-- 1x nameplate -->
+				<DotaNameplate :config="config" :level="level" :scaled="false" />
+
+				<!-- Calculation breakdown -->
+				<BreakdownPanel :stats="stats" />
 			</div>
 		</div>
-
-		<!-- 2x scaled nameplate -->
-		<DotaNameplate :config="config" :level="level" :scaled="true" />
-
-		<!-- 1x nameplate -->
-		<DotaNameplate :config="config" :level="level" :scaled="false" />
 	</div>
 </template>
 
@@ -67,24 +72,28 @@ import DillermSelect    from "@dillerm/webutils/src/components/controls/DillermS
 import DillermSlider    from "@dillerm/webutils/src/components/controls/DillermSlider.vue";
 import DillermNumerical from "@dillerm/webutils/src/components/controls/DillermNumerical.vue";
 import DotaNameplate    from "../components/DotaNameplate.vue";
-import { calculateResources } from "../utils/calculationEngine.js";
+import BreakdownPanel   from "../components/BreakdownPanel.vue";
+import { calculateResources, getStat } from "../utils/calculationEngine.js";
+
+const STORAGE_KEY = 'resourceCalc_heroId';
+const DEFAULT_HERO_ID = 105;
 
 export default {
-	components: { DillermSelect, DillermSlider, DillermNumerical, DotaNameplate },
+	components: { DillermSelect, DillermSlider, DillermNumerical, DotaNameplate, BreakdownPanel },
 
 	data() {
+		const savedId = localStorage.getItem(STORAGE_KEY);
 		return {
 			heroOptions:    [],
-			selectedHeroId: null,
+			selectedHeroId: savedId ? Number(savedId) : DEFAULT_HERO_ID,
 			level: 1,
+			stats: [],
 			config: {
 				hero_id:    null,
-				hp_current: 1100,
-				hp_max:     1400,
-				mp_current: 900,
-				mp_max:     900,
-				hp_regen:   0,
-				mana_regen: 0
+				hp_current: 0,
+				hp_max:     0,
+				mp_current: 0,
+				mp_max:     0,
 			}
 		};
 	},
@@ -94,21 +103,25 @@ export default {
 			const prev_hp_pct = this.config.hp_max > 0 ? this.config.hp_current / this.config.hp_max : 1;
 			const prev_mp_pct = this.config.mp_max > 0 ? this.config.mp_current / this.config.mp_max : 1;
 
-			const { hp_max, mp_max, hp_regen, mana_regen } = await calculateResources(this.selectedHeroId, this.level);
+			this.stats = await calculateResources(this.selectedHeroId, this.level);
+
+			const hp_max = getStat(this.stats, 'hp_max');
+			const mp_max = getStat(this.stats, 'mp_max');
 
 			this.config.hero_id    = this.selectedHeroId;
 			this.config.hp_max     = hp_max;
 			this.config.mp_max     = mp_max;
 			this.config.hp_current = Math.round(prev_hp_pct * hp_max);
 			this.config.mp_current = Math.round(prev_mp_pct * mp_max);
-			this.config.hp_regen   = hp_regen;
-			this.config.mana_regen = mana_regen;
 		}
 	},
 
 	watch: {
-		selectedHeroId() { this.runCalculation(); },
-		level()          { this.runCalculation(); }
+		selectedHeroId(id) {
+			if (id != null) localStorage.setItem(STORAGE_KEY, id);
+			this.runCalculation();
+		},
+		level() { this.runCalculation(); }
 	},
 
 	async created() {
@@ -121,22 +134,30 @@ export default {
 			this.heroOptions = await res.json();
 		}
 
-		// Set default AFTER options load so DillermSelect can find and display the match
-		this.selectedHeroId = 105;
+		// selectedHeroId is already set from localStorage/default in data();
+		// run initial calculation
 		await this.runCalculation();
 	}
 };
 </script>
 
 <style lang="scss">
+.resource-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+}
+
 .calc-box {
 	border-radius: 5px;
 	background-color: var(--background-color2);
 	padding: 10px;
+	width: 100%;
 }
 
 .calc-controls {
-	padding: 10px 100px;
+	padding: 10px 20px;
 
 	.control-row {
 		display: flex;
@@ -173,9 +194,4 @@ export default {
 	--input-color: #4f78fa;
 }
 
-@media only screen and (max-width: 650px) {
-	.calc-controls {
-		padding: 10px 20px;
-	}
-}
 </style>
