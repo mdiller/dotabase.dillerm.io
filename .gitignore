@@ -4,3 +4,4 @@ _dotabase/
 build/
 .env
 push.sh
+.claude/settings.local.json

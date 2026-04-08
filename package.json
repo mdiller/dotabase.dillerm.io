@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@dillerm/webutils": "^0.0.13",
+    "@mdi/js": "^7.4.47",
     "better-sqlite3": "^11.8.0",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",

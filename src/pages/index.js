@@ -1,0 +1,30 @@
+import { mdiDatabase, mdiAxeBattle, mdiCalculatorVariant } from '@mdi/js';
+import DatabaseQuery from './DatabaseQuery.vue';
+import Axe from './Axe.vue';
+import ResourceCalculator from './ResourceCalculator.vue';
+
+function mdiSvgUrl(path) {
+	const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="${path}" fill="#cdd6e0"/></svg>`;
+	return `data:image/svg+xml;base64,${btoa(svg)}`;
+}
+
+export const PAGES = [
+	{
+		label: 'Database Query',
+		value: 'database-query',
+		icon: mdiSvgUrl(mdiDatabase),
+		component: DatabaseQuery
+	},
+	{
+		label: 'Axe',
+		value: 'axe',
+		icon: mdiSvgUrl(mdiAxeBattle),
+		component: Axe
+	},
+	{
+		label: 'Resource Calculator',
+		value: 'resource-calculator',
+		icon: mdiSvgUrl(mdiCalculatorVariant),
+		component: ResourceCalculator
+	}
+];

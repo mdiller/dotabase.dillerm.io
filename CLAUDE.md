@@ -6,7 +6,7 @@ A Vue 3 web interface for browsing Dota 2 game data from the [dotabase](https://
 
 ## Architecture
 
-**Frontend:** Vue 3 + Vite (no router — single page app)
+**Frontend:** Vue 3 + Vite (multi-page app, no router — page switching handled in App.vue)
 **Backend:** Express.js server on port 3000
 **Database:** SQLite via `better-sqlite3` (read-only, auto-synced from GitHub)
 
@@ -18,11 +18,32 @@ npm run prod       # builds Vite bundle then starts Express
 
 Vite proxies `/api` and `/vpk` to `http://localhost:3000`.
 
+## Pages
+
+Pages are defined in [`src/pages/index.js`](src/pages/index.js) as a `PAGES` array — this is the single place to add, rename, or reorder pages. Each entry has:
+- `label` — display name shown in the page selector
+- `value` — unique string identifier
+- `icon` — MDI icon (from `@mdi/js`), converted to an SVG data URL via `mdiSvgUrl()`
+- `component` — the Vue component to render for that page
+
+Page components live in `src/pages/`. The page selector is a `DillermSelect` in App.vue, fixed-positioned over the right side of the dillerm navbar (64px from the right edge).
+
+**Current pages:**
+| Label | Icon | Component |
+|-------|------|-----------|
+| Database Query | `mdiDatabase` | `DatabaseQuery.vue` |
+| Axe | `mdiAxeBattle` | `Axe.vue` |
+| Resource Calculator | `mdiCalculatorVariant` | `ResourceCalculator.vue` |
+
 ## Key Files
 
 | File | Purpose |
 |------|---------|
-| [src/App.vue](src/App.vue) | Main component — query selection, arg parsing, query execution |
+| [src/App.vue](src/App.vue) | Root component — page selector + dynamic page rendering |
+| [src/pages/index.js](src/pages/index.js) | **Page definitions** — add/edit pages here |
+| [src/pages/DatabaseQuery.vue](src/pages/DatabaseQuery.vue) | Query page — query selection, arg parsing, query execution |
+| [src/pages/Axe.vue](src/pages/Axe.vue) | Axe page (stub) |
+| [src/pages/ResourceCalculator.vue](src/pages/ResourceCalculator.vue) | Resource Calculator page (stub) |
 | [src/server.js](src/server.js) | Express backend — SQL API, VPK serving, dotabase sync |
 | [src/components/ResultTable.vue](src/components/ResultTable.vue) | Formats query results (images, audio, colors, etc.) |
 | [src/components/SqlInput.vue](src/components/SqlInput.vue) | Prism-highlighted SQL editor |
