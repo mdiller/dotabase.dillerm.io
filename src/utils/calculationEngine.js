@@ -41,7 +41,9 @@ function statGroup(key, label, color, components) {
 //   mp_max     = 75  + total_int  * 12
 //   hp_regen   = base_health_regen + total_str  * 0.1
 //   mana_regen = base_mana_regen   + total_int  * 0.05
-export async function calculateResources(heroId, level = 1) {
+export async function calculateResources(heroId, level = 1, items = []) {
+	// items: array of item option objects (or nulls) from the inventory
+	// TODO: incorporate item stat bonuses into the calculation
 	const fallback = buildFallbackStats();
 
 	if (!heroId) return fallback;
