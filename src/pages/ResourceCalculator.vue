@@ -2,6 +2,8 @@
 	<div class="dillerm main-app">
 		<div class="dillerm dillerm-content">
 			<div class="resource-center">
+				<!-- Controls panel -->
+				<div class="controls-panel">
 				<div class="calc-box">
 					<div class="calc-controls">
 						<!-- Hero select -->
@@ -74,6 +76,10 @@
 					</div>
 				</div>
 
+				<!-- Stats panel: absolutely positioned to the right of the controls panel -->
+				<BreakdownPanel class="stats-panel" :stats="stats" />
+				</div><!-- end controls-panel -->
+
 				<!-- Item picker popup -->
 				<div v-if="itemPickerSlot !== null" class="item-picker-overlay" @click.self="closeItemPicker">
 					<div class="item-picker-popup" :style="itemPickerStyle">
@@ -81,7 +87,7 @@
 							:value="inventory[itemPickerSlot]"
 							:options="itemOptions"
 							:searchable="true"
-							:clearable="true"
+							:nullable="true"
 							:emitvalue="false"
 							placeholder="Select an item..."
 							@update:value="onItemSelected"
@@ -94,9 +100,6 @@
 
 				<!-- 1x nameplate -->
 				<DotaNameplate :config="config" :level="level" :scaled="false" />
-
-				<!-- Calculation breakdown -->
-				<BreakdownPanel :stats="stats" />
 			</div>
 		</div>
 	</div>
@@ -122,7 +125,7 @@ export default {
 			heroOptions:       [],
 			itemOptions:       [],
 			selectedHeroId:    null,
-			level:             1,
+			level:             6,
 			stats:             [],
 			inventory:         Array(INVENTORY_SIZE).fill(null),
 			itemPickerSlot:    null,
@@ -165,7 +168,7 @@ export default {
 					top:  `${rect.bottom + 4}px`,
 					left: `${rect.left}px`,
 					zIndex: 1000,
-					width: '220px',
+					width: '270px',
 				};
 			}
 			this.itemPickerReady = false;
@@ -238,6 +241,25 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	gap: 16px;
+}
+
+.controls-panel {
+	position: relative;
+	width: 100%;
+}
+
+.stats-panel {
+	position: absolute;
+	left: calc(100% + 8px);
+	top: 0;
+}
+
+@media (max-width: 900px) {
+	.stats-panel {
+		position: static;
+		width: 100%;
+		margin-top: 8px;
+	}
 }
 
 .calc-box {

@@ -139,7 +139,7 @@ export async function calculateResources(heroId, level = 1, items = []) {
 			const bonus = Math.floor(gain * lvls);
 			return [
 				{ label: 'Base',                                      value: base },
-				...(lvls > 0 ? [{ label: `${lvls} levels × ${gain}`, value: bonus }] : []),
+				...(lvls > 0 ? [{ label: `Level ${lvls} × ${gain}`, value: bonus }] : []),
 			];
 		};
 
