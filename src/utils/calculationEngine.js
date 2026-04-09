@@ -93,6 +93,13 @@ function itemCascadeComponents(itemBonuses, accessor, mult, abbrev) {
 		.map(i => ({ label: `${i.name} (${accessor(i)} ${abbrev} × ${mult})`, value: accessor(i) * mult }));
 }
 
+// Levels where the game auto-forces an attribute bonus pick (all regular abilities maxed)
+const FORCED_ATTR_BONUS_LEVELS = [15, 16, 17, 19, 20, 21, 22];
+
+function getForcedAttrBonusCount(level) {
+	return FORCED_ATTR_BONUS_LEVELS.filter(l => l <= level).length;
+}
+
 // Dota 2 formulas (source: docs/ResourceCalculatorResearch.md):
 //   total_str  = attr_strength_base     + floor(attr_strength_gain     * (level - 1))
 //   total_int  = attr_intelligence_base + floor(attr_intelligence_gain * (level - 1))
@@ -141,9 +148,10 @@ export async function calculateResources(heroId, level = 1, items = []) {
 		const heroBaseMR = (h.magic_resistance || 25) / 100;
 
 		const lvls        = level - 1;
-		const heroStr     = strBase + Math.floor(strGain * lvls);
-		const heroAgi     = agiBase + Math.floor(agiGain * lvls);
-		const heroInt     = intBase + Math.floor(intGain * lvls);
+		const attrBonus   = getForcedAttrBonusCount(level) * 2;
+		const heroStr     = strBase + Math.floor(strGain * lvls) + attrBonus;
+		const heroAgi     = agiBase + Math.floor(agiGain * lvls) + attrBonus;
+		const heroInt     = intBase + Math.floor(intGain * lvls) + attrBonus;
 
 		const itemBonuses = parseItemBonuses(itemData || []);
 
@@ -153,9 +161,11 @@ export async function calculateResources(heroId, level = 1, items = []) {
 
 		const levelBonusComponents = (base, gain, lvls) => {
 			const bonus = Math.floor(gain * lvls);
+			const forcedCount = getForcedAttrBonusCount(level);
 			return [
 				{ label: 'Base',                                      value: base },
 				...(lvls > 0 ? [{ label: `Level ${lvls} × ${gain}`, value: bonus }] : []),
+				...(forcedCount > 0 ? [{ label: `Attribute Bonus (${forcedCount} × +2)`, value: forcedCount * 2 }] : []),
 			];
 		};
 
@@ -172,8 +182,8 @@ export async function calculateResources(heroId, level = 1, items = []) {
 				...levelBonusComponents(intBase, intGain, lvls),
 				...itemComponents(itemBonuses, i => i.int),
 			]),
-			statGroup('hp_max', 'Max HP', STAT_COLORS.hp, [
-				{ label: 'Base HP',                  value: 120 },
+			statGroup('hp_max', 'Max Health', STAT_COLORS.hp, [
+				{ label: 'Base Health',              value: 120 },
 				{ label: `${heroStr} Strength × 22`, value: heroStr * 22 },
 				...itemCascadeComponents(itemBonuses, i => i.str, 22, 'Str'),
 				...itemComponents(itemBonuses, i => i.flatHp),
@@ -195,7 +205,7 @@ export async function calculateResources(heroId, level = 1, items = []) {
 				const ampComponents = itemBonuses
 					.filter(i => i.hpRegenAmp)
 					.map(i => ({ label: `${i.name} (+${Math.round(i.hpRegenAmp * 100)}%)`, value: flatTotal * i.hpRegenAmp }));
-				return statGroup('hp_regen', 'HP Regen', STAT_COLORS.hp, [...flatComponents, ...ampComponents]);
+				return statGroup('hp_regen', 'Health Regen', STAT_COLORS.hp, [...flatComponents, ...ampComponents]);
 			})(),
 			(() => {
 				const flatComponents = [
@@ -255,7 +265,7 @@ export async function calculateResources(heroId, level = 1, items = []) {
 				const hp_max     = getStat_local(itemBonuses, heroStr, heroInt, heroAgi, baseHpR, baseMpR);
 				const ehpPhys    = hp_max / (1 - physResist);
 				return statGroup('ehp_phys', 'EHP (Physical)', STAT_COLORS.str, [
-					{ label: 'Max HP',      value: hp_max },
+					{ label: 'Max Health',      value: hp_max },
 					{ label: 'Armor bonus', value: ehpPhys - hp_max },
 				]);
 			})(),
@@ -291,7 +301,7 @@ export async function calculateResources(heroId, level = 1, items = []) {
 				const hp_max     = getStat_local(itemBonuses, heroStr, heroInt, heroAgi, baseHpR, baseMpR);
 				const ehpMagic   = hp_max / magicDmgTaken;
 				return statGroup('ehp_magic', 'EHP (Magic)', STAT_COLORS.int, [
-					{ label: 'Max HP',             value: hp_max },
+					{ label: 'Max Health',             value: hp_max },
 					{ label: 'Magic resist bonus', value: ehpMagic - hp_max },
 				]);
 			})(),

@@ -24,7 +24,8 @@
 							<dillerm-slider
 								v-model:value="level"
 								:min="1"
-								:max="30" />
+								:max="30"
+								style="--input-color: #b28a49" />
 							<dillerm-numerical
 								class="level-number-input"
 								v-model:value="level"
@@ -35,12 +36,13 @@
 
 						<!-- HP current slider -->
 						<div class="control-row">
-							<label>HP</label>
+							<label>Health</label>
 							<div class="hp-slider-wrap">
 								<dillerm-slider
 									v-model:value="config.hp_current"
 									:min="0"
 									:max="config.hp_max" />
+								<span class="regen-overlay">+{{ fmtRegen(hpRegen) }}</span>
 							</div>
 						</div>
 
@@ -52,26 +54,31 @@
 									v-model:value="config.mp_current"
 									:min="0"
 									:max="config.mp_max" />
+								<span class="regen-overlay">+{{ fmtRegen(mpRegen) }}</span>
 							</div>
 						</div>
 
 						<!-- Inventory -->
 						<div class="inventory-section">
-							<div class="inventory-grid">
-								<div
-									v-for="(slot, i) in inventory"
-									:key="i"
-									class="inventory-slot"
-									:class="{ 'has-item': slot !== null }"
-									:ref="el => slotRefs[i] = el"
-									@click="openItemPicker(i)">
-									<img
-										v-if="slot"
-										:src="slot.icon"
-										:alt="slot.label"
-										class="item-icon" />
-								</div>
-							</div>
+							<table class="inventory-table">
+								<tbody>
+									<tr v-for="row in 2" :key="row">
+										<td
+											v-for="col in 3"
+											:key="col"
+											class="inventory-slot"
+											:class="{ 'has-item': inventory[(row-1)*3+(col-1)] !== null, 'active': itemPickerSlot === (row-1)*3+(col-1) }"
+											:ref="el => slotRefs[(row-1)*3+(col-1)] = el"
+											@click="openItemPicker((row-1)*3+(col-1))">
+											<img
+												v-if="inventory[(row-1)*3+(col-1)]"
+												:src="inventory[(row-1)*3+(col-1)].icon"
+												:alt="inventory[(row-1)*3+(col-1)].label"
+												class="item-icon" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -81,7 +88,7 @@
 				</div><!-- end controls-panel -->
 
 				<!-- Item picker popup -->
-				<div v-if="itemPickerSlot !== null" class="item-picker-overlay" @click.self="closeItemPicker">
+				<div v-if="itemPickerSlot !== null" class="item-picker-overlay" @click.self="closeItemPicker" @keydown.tab.prevent="onTabInPicker" @keydown.esc="closeItemPicker" @keydown="onPickerArrow" @keydown.backspace="onPickerBackspace">
 					<div class="item-picker-popup" :style="itemPickerStyle">
 						<dillerm-select
 							:value="inventory[itemPickerSlot]"
@@ -113,6 +120,7 @@ import DotaNameplate    from "../components/DotaNameplate.vue";
 import BreakdownPanel   from "../components/BreakdownPanel.vue";
 import { calculateResources, getStat } from "../utils/calculationEngine.js";
 
+
 const STORAGE_KEY = 'resourceCalc_heroId';
 const DEFAULT_HERO_ID = 105;
 const INVENTORY_SIZE = 6;
@@ -142,7 +150,17 @@ export default {
 		};
 	},
 
+	computed: {
+		hpRegen() { return getStat(this.stats, 'hp_regen'); },
+		mpRegen() { return getStat(this.stats, 'mana_regen'); },
+	},
+
 	methods: {
+		fmtRegen(v) {
+			if (v === 0) return '0';
+			return parseFloat(v.toFixed(1)).toString();
+		},
+
 		async runCalculation() {
 			const prev_hp_pct = this.config.hp_max > 0 ? this.config.hp_current / this.config.hp_max : 1;
 			const prev_mp_pct = this.config.mp_max > 0 ? this.config.mp_current / this.config.mp_max : 1;
@@ -194,8 +212,45 @@ export default {
 		onItemSelected(item) {
 			if (this.itemPickerSlot === null || !this.itemPickerReady) return;
 			this.inventory[this.itemPickerSlot] = item ?? null;
+			const next = this.itemPickerSlot + 1;
+			const shouldAdvance = next < INVENTORY_SIZE && this.inventory[next] === null;
 			this.closeItemPicker();
 			this.runCalculation();
+			if (shouldAdvance) {
+				this.$nextTick(() => this.openItemPicker(next));
+			}
+		},
+
+		onPickerArrow(e) {
+			if (!e.ctrlKey) return;
+			const COLS = 3, ROWS = 2;
+			const slot = this.itemPickerSlot;
+			const row = Math.floor(slot / COLS);
+			const col = slot % COLS;
+			let target = null;
+			if (e.key === 'ArrowLeft'  && col > 0)        target = slot - 1;
+			if (e.key === 'ArrowRight' && col < COLS - 1) target = slot + 1;
+			if (e.key === 'ArrowUp'    && row > 0)        target = slot - COLS;
+			if (e.key === 'ArrowDown'  && row < ROWS - 1) target = slot + COLS;
+			if (target === null) return;
+			e.preventDefault();
+			this.closeItemPicker();
+			this.$nextTick(() => this.openItemPicker(target));
+		},
+
+		onPickerBackspace() {
+			const input = this.$refs.itemPickerSelectRef?.$refs?.input;
+			if (input && input.value.length > 0) return;
+			if (this.itemPickerSlot === null) return;
+			this.inventory[this.itemPickerSlot] = null;
+			this.closeItemPicker();
+			this.runCalculation();
+		},
+
+		onTabInPicker() {
+			const next = (this.itemPickerSlot + 1) % INVENTORY_SIZE;
+			this.closeItemPicker();
+			this.$nextTick(() => this.openItemPicker(next));
 		},
 	},
 
@@ -275,7 +330,7 @@ export default {
 	.control-row {
 		display: flex;
 		align-items: center;
-		gap: 10px;
+		gap: 14px;
 		margin-bottom: 8px;
 
 		label {
@@ -283,6 +338,7 @@ export default {
 			flex-shrink: 0;
 			color: var(--text-color-secondary, #aaa);
 			font-size: 13px;
+			text-align: right;
 		}
 
 		> *:not(label) {
@@ -298,14 +354,40 @@ export default {
 /* HP slider: green fill */
 .hp-slider-wrap {
 	flex: 1;
+	position: relative;
 	--input-color: #adf762;
+
+	.regen-overlay {
+		color: mix(white, #adf762, 82%);
+		text-shadow: 0 0 6px rgba(#adf762, 0.7), 0 0 12px rgba(#adf762, 0.35);
+	}
 }
 
 /* MP slider: blue fill */
 .mp-slider-wrap {
 	flex: 1;
+	position: relative;
 	--input-color: #4f78fa;
+
+	.regen-overlay {
+		color: mix(white, #4f78fa, 82%);
+		text-shadow: 0 0 6px rgba(#4f78fa, 0.7), 0 0 12px rgba(#4f78fa, 0.35);
+	}
 }
+
+.regen-overlay {
+	position: absolute;
+	left: 58px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 11px;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	pointer-events: none;
+	white-space: nowrap;
+	line-height: 1;
+}
+
 
 /* Inventory */
 .inventory-section {
@@ -314,34 +396,37 @@ export default {
 	border-top: 1px solid var(--border-color, #333);
 }
 
-.inventory-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 88px);
-	grid-template-rows: repeat(2, 64px);
-	gap: 4px;
+.inventory-table {
 	margin: 0 auto;
-	width: fit-content;
+	border-collapse: separate;
+	border-spacing: 6px;
+	background: var(--background-color4);
+	border-radius: var(--input-border-radius);
+	overflow: hidden;
 }
 
 .inventory-slot {
 	width: 88px;
 	height: 64px;
-	border: 2px solid var(--border-color, #444);
-	border-radius: 4px;
-	background-color: var(--background-color3, #111);
+	background-color: var(--input-background);
 	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	padding: 0;
 	overflow: hidden;
-	transition: border-color 0.15s;
+	position: relative;
 
-	&:hover {
-		border-color: var(--input-color, #888);
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.98);
+		pointer-events: none;
+		opacity: 0.5;
+		transition: opacity 0.15s;
 	}
 
-	&.has-item {
-		border-color: var(--border-color-accent, #555);
+	&:hover::after,
+	&.active::after {
+		opacity: 1;
 	}
 
 	.item-icon {
