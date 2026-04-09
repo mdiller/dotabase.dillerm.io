@@ -6,8 +6,6 @@
 // StatGroup shape:
 //   { key: string, label: string, value: number, color: string,
 //     components: Array<{ label: string, value: number }> }
-//
-// TODO: Add item bonus calculations when item selection is implemented
 
 export const STAT_COLORS = {
 	hp:   '#adf762',
@@ -34,32 +32,89 @@ function statGroup(key, label, color, components) {
 	};
 }
 
+// Parse ability_special JSON for each item row individually.
+// Returns an array of per-item bonus objects:
+//   { name, str, agi, int, flatHp, flatMana, hpRegen, manaRegen, hpRegenAmp, manaRegenAmp }
+// Amp values are fractions (e.g. 0.12 for 12%).
+function parseItemBonuses(itemRows) {
+	return itemRows.map(row => {
+		const bonus = { name: row.localized_name, str: 0, agi: 0, int: 0, flatHp: 0, flatMana: 0, hpRegen: 0, manaRegen: 0, hpRegenAmp: 0, manaRegenAmp: 0 };
+		let specs;
+		try { specs = JSON.parse(row.ability_special); } catch { return bonus; }
+		if (!Array.isArray(specs)) return bonus;
+
+		for (const spec of specs) {
+			// Skip placeholder entries (no header means display-only / disabled)
+			if (!spec.header) continue;
+			const v = parseFloat(spec.value);
+			if (!v) continue;
+
+			switch (spec.key) {
+				case 'bonus_strength':       bonus.str          += v; break;
+				case 'bonus_agility':        bonus.agi          += v; break;
+				case 'bonus_intellect':      bonus.int          += v; break;
+				case 'bonus_all_stats':      bonus.str += v; bonus.agi += v; bonus.int += v; break;
+				case 'bonus_health':         bonus.flatHp       += v; break;
+				case 'bonus_mana':           bonus.flatMana     += v; break;
+				case 'bonus_health_regen':   bonus.hpRegen      += v; break;
+				case 'bonus_mana_regen':     bonus.manaRegen    += v; break;
+				case 'hp_regen_amp':         bonus.hpRegenAmp   += v / 100; break;
+				case 'mana_regen_multiplier': bonus.manaRegenAmp += v / 100; break;
+			}
+		}
+		return bonus;
+	});
+}
+
+// Build breakdown components for a per-item stat, one entry per contributing item.
+function itemComponents(itemBonuses, accessor) {
+	return itemBonuses
+		.filter(i => accessor(i))
+		.map(i => ({ label: i.name, value: accessor(i) }));
+}
+
+// Build breakdown components for item stat cascading into a multiplied value.
+// e.g. Crown giving +4 str shows as "Crown (4 Str × 22)" with value 88.
+function itemCascadeComponents(itemBonuses, accessor, mult, abbrev) {
+	return itemBonuses
+		.filter(i => accessor(i))
+		.map(i => ({ label: `${i.name} (${accessor(i)} ${abbrev} × ${mult})`, value: accessor(i) * mult }));
+}
+
 // Dota 2 formulas (source: docs/ResourceCalculatorResearch.md):
 //   total_str  = attr_strength_base     + floor(attr_strength_gain     * (level - 1))
 //   total_int  = attr_intelligence_base + floor(attr_intelligence_gain * (level - 1))
-//   hp_max     = 120 + total_str  * 22
-//   mp_max     = 75  + total_int  * 12
-//   hp_regen   = base_health_regen + total_str  * 0.1
-//   mana_regen = base_mana_regen   + total_int  * 0.05
+//   hp_max     = 120 + total_str * 22 [+ item str * 22] [+ flat item hp]
+//   mp_max     = 75  + total_int * 12 [+ item int * 12] [+ flat item mana]
+//   hp_regen   = (base_health_regen + total_str * 0.1 [+ item str * 0.1] [+ flat item hp_regen]) * (1 + Σ hp_regen_amp)
+//   mana_regen = (base_mana_regen + total_int * 0.05 [+ item int * 0.05] [+ flat item mana_regen]) * (1 + Σ mana_regen_multiplier)
 export async function calculateResources(heroId, level = 1, items = []) {
-	// items: array of item option objects (or nulls) from the inventory
-	// TODO: incorporate item stat bonuses into the calculation
 	const fallback = buildFallbackStats();
 
 	if (!heroId) return fallback;
 
 	try {
-		const data = await doSqlQuery(
-			`SELECT attr_strength_base, attr_strength_gain,
-			        attr_agility_base, attr_agility_gain,
-			        attr_intelligence_base, attr_intelligence_gain,
-			        base_health_regen, base_mana_regen
-			 FROM heroes WHERE id = ${heroId}`
-		);
+		// Fetch hero base stats and item ability_special in parallel
+		const itemIds = items.map(i => i.value).filter(Boolean);
+		const [heroData, itemData] = await Promise.all([
+			doSqlQuery(
+				`SELECT attr_strength_base, attr_strength_gain,
+				        attr_agility_base, attr_agility_gain,
+				        attr_intelligence_base, attr_intelligence_gain,
+				        base_health_regen, base_mana_regen
+				 FROM heroes WHERE id = ${heroId}`
+			),
+			itemIds.length
+				? doSqlQuery(
+					`SELECT localized_name, ability_special
+					 FROM items WHERE id IN (${itemIds.join(',')})`
+				)
+				: Promise.resolve([]),
+		]);
 
-		if (!data || !data.length) return fallback;
+		if (!heroData || !heroData.length) return fallback;
 
-		const h = data[0];
+		const h = heroData[0];
 		const strBase  = h.attr_strength_base     || 0;
 		const strGain  = h.attr_strength_gain      || 0;
 		const agiBase  = h.attr_agility_base       || 0;
@@ -69,39 +124,76 @@ export async function calculateResources(heroId, level = 1, items = []) {
 		const baseHpR  = h.base_health_regen       || 0;
 		const baseMpR  = h.base_mana_regen         || 0;
 
-		const lvls     = level - 1;
-		const totalStr = strBase + Math.floor(strGain * lvls);
-		const totalAgi = agiBase + Math.floor(agiGain * lvls);
-		const totalInt = intBase + Math.floor(intGain * lvls);
+		const lvls        = level - 1;
+		const heroStr     = strBase + Math.floor(strGain * lvls);
+		const heroAgi     = agiBase + Math.floor(agiGain * lvls);
+		const heroInt     = intBase + Math.floor(intGain * lvls);
+
+		const itemBonuses = parseItemBonuses(itemData || []);
+
+		const totalStr = heroStr + itemBonuses.reduce((s, i) => s + i.str, 0);
+		const totalAgi = heroAgi + itemBonuses.reduce((s, i) => s + i.agi, 0);
+		const totalInt = heroInt + itemBonuses.reduce((s, i) => s + i.int, 0);
 
 		const levelBonusComponents = (base, gain, lvls) => {
 			const bonus = Math.floor(gain * lvls);
 			return [
-				{ label: 'Base',                                           value: base },
-				...(lvls > 0 ? [{ label: `${lvls} levels × ${gain}`,      value: bonus }] : []),
+				{ label: 'Base',                                      value: base },
+				...(lvls > 0 ? [{ label: `${lvls} levels × ${gain}`, value: bonus }] : []),
 			];
 		};
 
 		return [
-			statGroup('strength', 'Strength', STAT_COLORS.str, levelBonusComponents(strBase, strGain, lvls)),
-			statGroup('agility',  'Agility',  STAT_COLORS.agi, levelBonusComponents(agiBase, agiGain, lvls)),
-			statGroup('intelligence', 'Intelligence', STAT_COLORS.int, levelBonusComponents(intBase, intGain, lvls)),
+			statGroup('strength', 'Strength', STAT_COLORS.str, [
+				...levelBonusComponents(strBase, strGain, lvls),
+				...itemComponents(itemBonuses, i => i.str),
+			]),
+			statGroup('agility', 'Agility', STAT_COLORS.agi, [
+				...levelBonusComponents(agiBase, agiGain, lvls),
+				...itemComponents(itemBonuses, i => i.agi),
+			]),
+			statGroup('intelligence', 'Intelligence', STAT_COLORS.int, [
+				...levelBonusComponents(intBase, intGain, lvls),
+				...itemComponents(itemBonuses, i => i.int),
+			]),
 			statGroup('hp_max', 'Max HP', STAT_COLORS.hp, [
-				{ label: 'Base HP',                         value: 120 },
-				{ label: `${totalStr} Strength × 22`,       value: totalStr * 22 },
+				{ label: 'Base HP',                  value: 120 },
+				{ label: `${heroStr} Strength × 22`, value: heroStr * 22 },
+				...itemCascadeComponents(itemBonuses, i => i.str, 22, 'Str'),
+				...itemComponents(itemBonuses, i => i.flatHp),
 			]),
 			statGroup('mp_max', 'Max Mana', STAT_COLORS.mana, [
-				{ label: 'Base Mana',                       value: 75 },
-				{ label: `${totalInt} Intelligence × 12`,   value: totalInt * 12 },
+				{ label: 'Base Mana',                      value: 75 },
+				{ label: `${heroInt} Intelligence × 12`,   value: heroInt * 12 },
+				...itemCascadeComponents(itemBonuses, i => i.int, 12, 'Int'),
+				...itemComponents(itemBonuses, i => i.flatMana),
 			]),
-			statGroup('hp_regen', 'HP Regen', STAT_COLORS.hp, [
-				...(baseHpR  ? [{ label: 'Base Regen',              value: baseHpR }] : []),
-				{ label: `${totalStr} Strength × 0.1`,      value: totalStr * 0.1 },
-			]),
-			statGroup('mana_regen', 'Mana Regen', STAT_COLORS.mana, [
-				...(baseMpR  ? [{ label: 'Base Regen',              value: baseMpR }] : []),
-				{ label: `${totalInt} Intelligence × 0.05`, value: totalInt * 0.05 },
-			]),
+				(() => {
+				const flatComponents = [
+					...(baseHpR ? [{ label: 'Base Regen',         value: baseHpR }] : []),
+					{ label: `${heroStr} Strength × 0.1`, value: heroStr * 0.1 },
+					...itemCascadeComponents(itemBonuses, i => i.str, 0.1, 'Str'),
+					...itemComponents(itemBonuses, i => i.hpRegen),
+				];
+				const flatTotal = flatComponents.reduce((s, c) => s + c.value, 0);
+				const ampComponents = itemBonuses
+					.filter(i => i.hpRegenAmp)
+					.map(i => ({ label: `${i.name} (+${Math.round(i.hpRegenAmp * 100)}%)`, value: flatTotal * i.hpRegenAmp }));
+				return statGroup('hp_regen', 'HP Regen', STAT_COLORS.hp, [...flatComponents, ...ampComponents]);
+			})(),
+			(() => {
+				const flatComponents = [
+					...(baseMpR ? [{ label: 'Base Regen',             value: baseMpR }] : []),
+					{ label: `${heroInt} Intelligence × 0.05`, value: heroInt * 0.05 },
+					...itemCascadeComponents(itemBonuses, i => i.int, 0.05, 'Int'),
+					...itemComponents(itemBonuses, i => i.manaRegen),
+				];
+				const flatTotal = flatComponents.reduce((s, c) => s + c.value, 0);
+				const ampComponents = itemBonuses
+					.filter(i => i.manaRegenAmp)
+					.map(i => ({ label: `${i.name} (+${Math.round(i.manaRegenAmp * 100)}%)`, value: flatTotal * i.manaRegenAmp }));
+				return statGroup('mana_regen', 'Mana Regen', STAT_COLORS.mana, [...flatComponents, ...ampComponents]);
+			})(),
 		];
 	} catch (e) {
 		console.error('CalculationEngine error:', e);
