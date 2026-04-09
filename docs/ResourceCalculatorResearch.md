@@ -11,6 +11,8 @@ Research notes for implementing the Max HP / Max Mana calculation engine in the 
 - [Liquipedia — Attributes](https://liquipedia.net/dota2/Attributes)
 - [Liquipedia — Strength](https://liquipedia.net/dota2/Strength)
 - [Liquipedia — Intelligence](https://liquipedia.net/dota2/Intelligence)
+- [Liquipedia — Armor](https://liquipedia.net/dota2/Armor)
+- [Liquipedia — Magic Resistance](https://liquipedia.net/dota2/Magic_Resistance)
 
 ---
 
@@ -138,6 +140,92 @@ Ogre Magi has `"StatusMana": "120"` and `"StatusHealthRegen": "1.5"` in `json_da
 ### Universal Heroes (`attr_primary = 'all'`)
 
 Universal heroes get +0.45 attack damage per point of any attribute (instead of +1 from their primary). This affects attack damage only — HP and mana still use the same formulas (strength → HP, intelligence → mana). No special handling needed for HP/mana calculation.
+
+---
+
+## Armor
+
+Source: [Liquipedia — Armor](https://liquipedia.net/dota2/Armor)
+
+### Total Armor
+
+```
+total_armor = base_armor + (total_agility × 0.167) + Σ(item bonus_armor)
+```
+
+- `base_armor` comes from the `heroes` table (`base_armor` column)
+- **0.167 (1/6) armor per agility point**
+- Items contribute via `bonus_armor` key in `ability_special`
+
+### Physical Damage Reduction
+
+```
+phys_resist = (0.06 × total_armor) / (1 + 0.06 × |total_armor|)
+```
+
+- Handles negative armor correctly (increases damage taken)
+- At 10 armor: ~37.5% reduction
+- At 20 armor: ~54.5% reduction
+
+### Effective HP vs Physical
+
+```
+ehp_physical = max_hp / (1 - phys_resist)
+```
+
+---
+
+## Magic Resistance
+
+Source: [Liquipedia — Magic Resistance](https://liquipedia.net/dota2/Magic_Resistance)
+
+### Base Magic Resistance
+
+```
+base_magic_resist = 0.25 + (total_intelligence × 0.001)
+```
+
+- All heroes have **25% innate magic resistance** (stored as integer `25` in `heroes.magic_resistance`)
+- **+0.1% per intelligence point** (1% per 10 int)
+
+### Item Magic Resistance Stacking
+
+Item sources stack **multiplicatively**:
+
+```
+magic_damage_taken = (1 - base_magic_resist) × Π(1 - item_mr_i)
+total_magic_resist = 1 - magic_damage_taken
+```
+
+**Example:** Base 25% + int bonus 3% + Cloak 18% + Pipe 20%:
+```
+damage_taken = (1 - 0.28) × (1 - 0.18) × (1 - 0.20)
+             = 0.72 × 0.82 × 0.80 = 0.4723
+total_resist = 1 - 0.4723 = 52.77%
+```
+
+### Item `ability_special` Keys for Magic Resistance
+
+| Key | Used by | Format |
+|-----|---------|--------|
+| `tooltip_resist` | Cloak | `"18%"` |
+| `magic_resistance` | Pipe of Insight | `"20%"` |
+| `bonus_magical_armor` | Glimmer Cape | `"20%"` (with header) |
+
+Note: Cloak also has `bonus_magical_armor: "18"` (no header, no `%`) — this is skipped in favor of `tooltip_resist`.
+
+### Effective HP vs Magic
+
+```
+ehp_magic = max_hp / magic_damage_taken
+```
+
+### Database Fields (Heroes)
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `base_armor` | INTEGER | Hero's innate base armor (before agility contribution) |
+| `magic_resistance` | INTEGER | Stored as `25` meaning 25% — same for all heroes currently |
 
 ---
 

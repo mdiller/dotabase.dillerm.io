@@ -7,7 +7,7 @@
 		>
 			<div class="stat-total">
 				<span class="stat-label" :style="{ color: group.color }">{{ group.label }}</span>
-				<span class="stat-value" :style="{ color: group.color }">{{ fmtVal(group.value) }}</span>
+				<span class="stat-value" :style="{ color: group.color }">{{ fmtVal(group.value, group.format) }}</span>
 			</div>
 			<div
 				v-for="(comp, i) in group.components"
@@ -15,7 +15,7 @@
 				class="stat-component"
 			>
 				<span class="comp-sign">+</span>
-				<span class="comp-value">{{ fmtVal(comp.value) }}</span>
+				<span class="comp-value">{{ fmtVal(comp.value, group.format) }}</span>
 				<span class="comp-label">{{ comp.label }}</span>
 			</div>
 		</div>
@@ -30,7 +30,10 @@ export default {
 	},
 
 	methods: {
-		fmtVal(v) {
+		fmtVal(v, format) {
+			if (format === 'percent') {
+				return parseFloat((v * 100).toFixed(1)) + '%';
+			}
 			if (v === 0) return '0';
 			if (Number.isInteger(v)) return String(v);
 			// Up to 2 decimal places, no trailing zeros
@@ -45,7 +48,7 @@ export default {
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	min-width: 260px;
+	min-width: 290px;
 	padding: 14px 16px;
 	background: var(--background-color2);
 	border-radius: 5px;

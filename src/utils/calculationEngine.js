@@ -33,12 +33,18 @@ function statGroup(key, label, color, components) {
 }
 
 // Parse ability_special JSON for each item row individually.
-// Returns an array of per-item bonus objects:
-//   { name, str, agi, int, flatHp, flatMana, hpRegen, manaRegen, hpRegenAmp, manaRegenAmp }
-// Amp values are fractions (e.g. 0.12 for 12%).
+// Returns an array of per-item bonus objects.
+// magicResist is a fraction (e.g. 0.18 for 18%). Amp values likewise.
 function parseItemBonuses(itemRows) {
 	return itemRows.map(row => {
-		const bonus = { name: row.localized_name, str: 0, agi: 0, int: 0, flatHp: 0, flatMana: 0, hpRegen: 0, manaRegen: 0, hpRegenAmp: 0, manaRegenAmp: 0 };
+		const bonus = {
+			name: row.localized_name,
+			str: 0, agi: 0, int: 0,
+			flatHp: 0, flatMana: 0,
+			hpRegen: 0, manaRegen: 0,
+			hpRegenAmp: 0, manaRegenAmp: 0,
+			armor: 0, magicResist: 0,
+		};
 		let specs;
 		try { specs = JSON.parse(row.ability_special); } catch { return bonus; }
 		if (!Array.isArray(specs)) return bonus;
@@ -50,16 +56,22 @@ function parseItemBonuses(itemRows) {
 			if (!v) continue;
 
 			switch (spec.key) {
-				case 'bonus_strength':       bonus.str          += v; break;
-				case 'bonus_agility':        bonus.agi          += v; break;
-				case 'bonus_intellect':      bonus.int          += v; break;
-				case 'bonus_all_stats':      bonus.str += v; bonus.agi += v; bonus.int += v; break;
-				case 'bonus_health':         bonus.flatHp       += v; break;
-				case 'bonus_mana':           bonus.flatMana     += v; break;
-				case 'bonus_health_regen':   bonus.hpRegen      += v; break;
-				case 'bonus_mana_regen':     bonus.manaRegen    += v; break;
-				case 'hp_regen_amp':         bonus.hpRegenAmp   += v / 100; break;
+				case 'bonus_strength':        bonus.str          += v; break;
+				case 'bonus_agility':         bonus.agi          += v; break;
+				case 'bonus_intellect':       bonus.int          += v; break;
+				case 'bonus_all_stats':       bonus.str += v; bonus.agi += v; bonus.int += v; break;
+				case 'bonus_health':          bonus.flatHp       += v; break;
+				case 'bonus_mana':            bonus.flatMana     += v; break;
+				case 'bonus_health_regen':
+				case 'health_regen':          bonus.hpRegen      += v; break;
+				case 'bonus_mana_regen':      bonus.manaRegen    += v; break;
+				case 'hp_regen_amp':          bonus.hpRegenAmp   += v / 100; break;
 				case 'mana_regen_multiplier': bonus.manaRegenAmp += v / 100; break;
+				case 'bonus_armor':           bonus.armor        += v; break;
+				// Magic resist: stored as "18%" or "20%" — strip % and convert to fraction
+				case 'tooltip_resist':
+				case 'magic_resistance':
+				case 'bonus_magical_armor':   bonus.magicResist  += v / 100; break;
 			}
 		}
 		return bonus;
@@ -101,7 +113,8 @@ export async function calculateResources(heroId, level = 1, items = []) {
 				`SELECT attr_strength_base, attr_strength_gain,
 				        attr_agility_base, attr_agility_gain,
 				        attr_intelligence_base, attr_intelligence_gain,
-				        base_health_regen, base_mana_regen
+				        base_health_regen, base_mana_regen,
+				        base_armor, magic_resistance
 				 FROM heroes WHERE id = ${heroId}`
 			),
 			itemIds.length
@@ -115,14 +128,17 @@ export async function calculateResources(heroId, level = 1, items = []) {
 		if (!heroData || !heroData.length) return fallback;
 
 		const h = heroData[0];
-		const strBase  = h.attr_strength_base     || 0;
-		const strGain  = h.attr_strength_gain      || 0;
-		const agiBase  = h.attr_agility_base       || 0;
-		const agiGain  = h.attr_agility_gain       || 0;
-		const intBase  = h.attr_intelligence_base  || 0;
-		const intGain  = h.attr_intelligence_gain  || 0;
-		const baseHpR  = h.base_health_regen       || 0;
-		const baseMpR  = h.base_mana_regen         || 0;
+		const strBase    = h.attr_strength_base     || 0;
+		const strGain    = h.attr_strength_gain      || 0;
+		const agiBase    = h.attr_agility_base       || 0;
+		const agiGain    = h.attr_agility_gain       || 0;
+		const intBase    = h.attr_intelligence_base  || 0;
+		const intGain    = h.attr_intelligence_gain  || 0;
+		const baseHpR    = h.base_health_regen       || 0;
+		const baseMpR    = h.base_mana_regen         || 0;
+		const baseArmor  = h.base_armor              || 0;
+		// heroes.magic_resistance is stored as integer 25 (meaning 25%)
+		const heroBaseMR = (h.magic_resistance || 25) / 100;
 
 		const lvls        = level - 1;
 		const heroStr     = strBase + Math.floor(strGain * lvls);
@@ -194,6 +210,91 @@ export async function calculateResources(heroId, level = 1, items = []) {
 					.map(i => ({ label: `${i.name} (+${Math.round(i.manaRegenAmp * 100)}%)`, value: flatTotal * i.manaRegenAmp }));
 				return statGroup('mana_regen', 'Mana Regen', STAT_COLORS.mana, [...flatComponents, ...ampComponents]);
 			})(),
+
+			// --- Armor, resists, and effective HP ---
+			// Source: https://liquipedia.net/dota2/Armor
+			// Source: https://liquipedia.net/dota2/Magic_Resistance
+
+			(() => {
+				// 1 agility = 0.167 (1/6) armor
+				const heroAgiArmor  = heroAgi * (1/6);
+				const itemAgiArmor  = itemBonuses.filter(i => i.agi).map(i => ({
+					label: `${i.name} (${i.agi} Agi × 0.167)`,
+					value: i.agi * (1/6),
+				}));
+				const itemFlatArmor = itemBonuses.filter(i => i.armor).map(i => ({
+					label: i.name,
+					value: i.armor,
+				}));
+				return statGroup('armor', 'Armor', STAT_COLORS.str, [
+					...(baseArmor ? [{ label: 'Base Armor', value: baseArmor }] : []),
+					{ label: `${heroAgi} Agility × 0.167`, value: heroAgiArmor },
+					...itemAgiArmor,
+					...itemFlatArmor,
+				]);
+			})(),
+
+			(() => {
+				// phys_resist = (0.06 × armor) / (1 + 0.06 × |armor|)
+				const totalArmor = baseArmor + totalAgi * (1/6)
+					+ itemBonuses.reduce((s, i) => s + i.armor, 0);
+				const physResist = (0.06 * totalArmor) / (1 + 0.06 * Math.abs(totalArmor));
+				return {
+					...statGroup('phys_resist', 'Phys Resist', STAT_COLORS.str, [
+						{ label: `From ${parseFloat(totalArmor.toFixed(1))} armor`, value: physResist },
+					]),
+					format: 'percent',
+				};
+			})(),
+
+			(() => {
+				// phys_resist = (0.06 × armor) / (1 + 0.06 × |armor|)
+				const totalArmor = baseArmor + totalAgi * (1/6)
+					+ itemBonuses.reduce((s, i) => s + i.armor, 0);
+				const physResist = (0.06 * totalArmor) / (1 + 0.06 * Math.abs(totalArmor));
+				const hp_max     = getStat_local(itemBonuses, heroStr, heroInt, heroAgi, baseHpR, baseMpR);
+				const ehpPhys    = hp_max / (1 - physResist);
+				return statGroup('ehp_phys', 'EHP (Physical)', STAT_COLORS.str, [
+					{ label: 'Max HP',      value: hp_max },
+					{ label: 'Armor bonus', value: ehpPhys - hp_max },
+				]);
+			})(),
+
+			(() => {
+				// Base resist = hero innate (25%) + int*0.1% (from Liquipedia)
+				// Item resists stack multiplicatively
+				const intMR      = totalInt * 0.001;
+				const baseMR     = heroBaseMR + intMR;
+				const itemMRMult = itemBonuses.reduce((mult, i) => mult * (1 - i.magicResist), 1);
+				const magicDmgTaken = (1 - baseMR) * itemMRMult;
+				const totalMR    = 1 - magicDmgTaken;
+				const mrComponents = [
+					{ label: `Hero base (${Math.round(heroBaseMR * 100)}%)`, value: heroBaseMR },
+					{ label: `${totalInt} Intelligence × 0.1%`, value: intMR },
+					...itemBonuses.filter(i => i.magicResist).map(i => ({
+						label: i.name,
+						value: i.magicResist,
+					})),
+				];
+				return {
+					...statGroup('magic_resist', 'Magic Resist', STAT_COLORS.int, mrComponents),
+					value: totalMR,  // override sum with correct multiplicative result
+					format: 'percent',
+				};
+			})(),
+
+			(() => {
+				const intMR      = totalInt * 0.001;
+				const baseMR     = heroBaseMR + intMR;
+				const itemMRMult = itemBonuses.reduce((mult, i) => mult * (1 - i.magicResist), 1);
+				const magicDmgTaken = (1 - baseMR) * itemMRMult;
+				const hp_max     = getStat_local(itemBonuses, heroStr, heroInt, heroAgi, baseHpR, baseMpR);
+				const ehpMagic   = hp_max / magicDmgTaken;
+				return statGroup('ehp_magic', 'EHP (Magic)', STAT_COLORS.int, [
+					{ label: 'Max HP',             value: hp_max },
+					{ label: 'Magic resist bonus', value: ehpMagic - hp_max },
+				]);
+			})(),
 		];
 	} catch (e) {
 		console.error('CalculationEngine error:', e);
@@ -201,15 +302,29 @@ export async function calculateResources(heroId, level = 1, items = []) {
 	}
 }
 
+// Local helper: compute max_hp from parsed hero/item values (avoids duplicating the formula).
+function getStat_local(itemBonuses, heroStr, heroInt, heroAgi, baseHpR, baseMpR) {
+	const totalStr  = heroStr + itemBonuses.reduce((s, i) => s + i.str, 0);
+	const totalInt  = heroInt + itemBonuses.reduce((s, i) => s + i.int, 0);
+	const flatHp    = itemBonuses.reduce((s, i) => s + i.flatHp, 0);
+	return 120 + totalStr * 22 + flatHp;
+}
+
 function buildFallbackStats() {
+	const pct = { format: 'percent' };
 	return [
-		{ key: 'strength',      label: 'Strength',      color: STAT_COLORS.str,  value: 0, components: [] },
-		{ key: 'agility',       label: 'Agility',       color: STAT_COLORS.agi,  value: 0, components: [] },
-		{ key: 'intelligence',  label: 'Intelligence',  color: STAT_COLORS.int,  value: 0, components: [] },
-		{ key: 'hp_max',        label: 'Max HP',        color: STAT_COLORS.hp,   value: 0, components: [] },
-		{ key: 'mp_max',        label: 'Max Mana',      color: STAT_COLORS.mana, value: 0, components: [] },
-		{ key: 'hp_regen',      label: 'HP Regen',      color: STAT_COLORS.hp,   value: 0, components: [] },
-		{ key: 'mana_regen',    label: 'Mana Regen',    color: STAT_COLORS.mana, value: 0, components: [] },
+		{ key: 'strength',      label: 'Strength',        color: STAT_COLORS.str,  value: 0, components: [] },
+		{ key: 'agility',       label: 'Agility',         color: STAT_COLORS.agi,  value: 0, components: [] },
+		{ key: 'intelligence',  label: 'Intelligence',    color: STAT_COLORS.int,  value: 0, components: [] },
+		{ key: 'hp_max',        label: 'Max HP',          color: STAT_COLORS.hp,   value: 0, components: [] },
+		{ key: 'mp_max',        label: 'Max Mana',        color: STAT_COLORS.mana, value: 0, components: [] },
+		{ key: 'hp_regen',      label: 'HP Regen',        color: STAT_COLORS.hp,   value: 0, components: [] },
+		{ key: 'mana_regen',    label: 'Mana Regen',      color: STAT_COLORS.mana, value: 0, components: [] },
+		{ key: 'armor',         label: 'Armor',           color: STAT_COLORS.str,  value: 0, components: [] },
+		{ key: 'phys_resist',   label: 'Phys Resist',     color: STAT_COLORS.str,  value: 0, components: [], ...pct },
+		{ key: 'ehp_phys',      label: 'EHP (Physical)',  color: STAT_COLORS.str,  value: 0, components: [] },
+		{ key: 'magic_resist',  label: 'Magic Resist',    color: STAT_COLORS.int,  value: 0, components: [], ...pct },
+		{ key: 'ehp_magic',     label: 'EHP (Magic)',     color: STAT_COLORS.int,  value: 0, components: [] },
 	];
 }
 
