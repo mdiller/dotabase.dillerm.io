@@ -109,13 +109,63 @@ function syncDotabase() {
 	console.log("] icon redirects built");
 }
 
-syncDotabase();
-
-console.log("] done!");
-
 const app = express();
 app.listen(LISTEN_PORT);
- 
+console.log("] listening on port", LISTEN_PORT);
+
+let isReady = false;
+const INITIALIZING_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="3">
+<title>Initializing...</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1a2e;
+    color: #c9d1d9;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .spinner {
+    width: 40px; height: 40px;
+    border: 3px solid #30363d;
+    border-top-color: #58a6ff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  h1 { font-size: 1.2rem; color: #58a6ff; }
+  p { font-size: 0.9rem; color: #8b949e; }
+</style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <h1>Database Initializing</h1>
+  <p>Syncing dotabase &mdash; this page will refresh automatically.</p>
+</body>
+</html>`;
+
+app.use((req, res, next) => {
+	if (!isReady) {
+		res.status(503).send(INITIALIZING_HTML);
+		return;
+	}
+	next();
+});
+
+setImmediate(() => {
+	syncDotabase();
+	isReady = true;
+	console.log("] done!");
+});
+
 // Favicon
 app.use("/favicon.ico", express.static(path.join(__dirname, "assets", "favicon.ico")));
  
