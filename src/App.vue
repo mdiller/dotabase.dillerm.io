@@ -23,8 +23,8 @@ export default {
 		}
 	},
 	created() {
-		const hash = window.location.hash.replace(/^#\/?/, '');
-		this.current_page = PAGES.find(p => p.value === hash) ?? PAGES[0];
+		const seg = window.location.pathname.split('/').filter(Boolean)[0] ?? '';
+		this.current_page = PAGES.find(p => p.path === seg) ?? PAGES[0];
 		window.addEventListener('popstate', this.onPopState);
 	},
 	beforeUnmount() {
@@ -32,16 +32,17 @@ export default {
 	},
 	watch: {
 		current_page(page) {
-			const hash = `#${page.value}`;
-			if (window.location.hash !== hash) {
-				history.pushState(null, '', hash);
+			const pagePath = '/' + page.path;
+			const cur = window.location.pathname;
+			if (cur !== pagePath && !cur.startsWith(pagePath + '/')) {
+				history.pushState(null, '', pagePath);
 			}
 		}
 	},
 	methods: {
 		onPopState() {
-			const hash = window.location.hash.replace(/^#\/?/, '');
-			this.current_page = PAGES.find(p => p.value === hash) ?? PAGES[0];
+			const seg = window.location.pathname.split('/').filter(Boolean)[0] ?? '';
+			this.current_page = PAGES.find(p => p.path === seg) ?? PAGES[0];
 		}
 	}
 };

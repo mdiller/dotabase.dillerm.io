@@ -91,7 +91,7 @@ export default {
 .breakdown-panel {
 	display: flex;
 	flex-direction: column;
-	min-width: 290px;
+	min-width: 310px;
 	background: var(--background-color2);
 	border-radius: 5px;
 	font-size: 13px;

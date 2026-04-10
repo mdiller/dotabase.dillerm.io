@@ -83,6 +83,9 @@
 					</div>
 				</div>
 
+				<!-- Applets panel: absolutely positioned to the left of the controls panel -->
+				<AppletsPanel class="applets-panel-pos" :inventory="inventory" :stats="stats" />
+
 				<!-- Stats panel: absolutely positioned to the right of the controls panel -->
 				<BreakdownPanel class="stats-panel" :stats="stats" />
 				</div><!-- end controls-panel -->
@@ -118,6 +121,7 @@ import DillermSlider    from "@dillerm/webutils/src/components/controls/DillermS
 import DillermNumerical from "@dillerm/webutils/src/components/controls/DillermNumerical.vue";
 import DotaNameplate    from "../components/DotaNameplate.vue";
 import BreakdownPanel   from "../components/BreakdownPanel.vue";
+import AppletsPanel     from "../components/AppletsPanel.vue";
 import { calculateResources, getStat } from "../utils/calculationEngine.js";
 
 
@@ -126,7 +130,7 @@ const DEFAULT_HERO_ID = 105;
 const INVENTORY_SIZE = 6;
 
 export default {
-	components: { DillermSelect, DillermSlider, DillermNumerical, DotaNameplate, BreakdownPanel },
+	components: { DillermSelect, DillermSlider, DillermNumerical, DotaNameplate, BreakdownPanel, AppletsPanel },
 
 	data() {
 		return {
@@ -140,6 +144,7 @@ export default {
 			itemPickerStyle:   {},
 			itemPickerReady:   false,
 			slotRefs:          [],
+			urlReady:          false,
 			config: {
 				hero_id:    null,
 				hp_current: 0,
@@ -156,6 +161,33 @@ export default {
 	},
 
 	methods: {
+		syncUrl() {
+			if (!this.urlReady) return;
+			const params = new URLSearchParams();
+
+			if (this.selectedHeroId !== DEFAULT_HERO_ID) {
+				params.set('hero', this.selectedHeroId);
+			}
+			if (this.level !== 6) {
+				params.set('level', this.level);
+			}
+
+			// Encode inventory preserving slot positions; trim trailing empty slots
+			const parts = this.inventory.map(item => item ? String(item.value) : '');
+			let last = parts.length - 1;
+			while (last >= 0 && parts[last] === '') last--;
+			const trimmed = parts.slice(0, last + 1);
+			if (trimmed.some(p => p !== '')) {
+				params.set('items', trimmed.join(','));
+			}
+
+			const qs = params.toString();
+			const newUrl = window.location.pathname + (qs ? '?' + qs : '');
+			if (window.location.pathname + window.location.search !== newUrl) {
+				history.replaceState(null, '', newUrl);
+			}
+		},
+
 		fmtRegen(v) {
 			if (v === 0) return '0';
 			return parseFloat(v.toFixed(1)).toString();
@@ -238,9 +270,10 @@ export default {
 			this.$nextTick(() => this.openItemPicker(target));
 		},
 
-		onPickerBackspace() {
+		onPickerBackspace(e) {
 			const input = this.$refs.itemPickerSelectRef?.$refs?.input;
 			if (input && input.value.length > 0) return;
+			e.preventDefault();
 			if (this.itemPickerSlot === null) return;
 			this.inventory[this.itemPickerSlot] = null;
 			this.closeItemPicker();
@@ -262,8 +295,13 @@ export default {
 			}
 			localStorage.setItem(STORAGE_KEY, id);
 			this.runCalculation();
+			this.syncUrl();
 		},
-		level() { this.runCalculation(); }
+		level() {
+			this.runCalculation();
+			this.syncUrl();
+		},
+		inventory: { handler() { this.syncUrl(); }, deep: true },
 	},
 
 	async created() {
@@ -277,15 +315,43 @@ export default {
 		]);
 
 		if (heroRes.ok) this.heroOptions = await heroRes.json();
-		if (itemRes.ok) this.itemOptions = await itemRes.json();
+		if (itemRes.ok) {
+			this.itemOptions = (await itemRes.json()).map(item => ({
+				...item,
+				icon_style: 'width: auto',
+			}));
+		}
 
 		// Wait for DillermSelect to process the new options into actual_options
 		await this.$nextTick();
 
-		// Set after options load so DillermSelect can find the matching option
+		const params = new URLSearchParams(window.location.search);
+
+		// Apply level + items before hero so the first runCalculation() sees them
+		if (params.has('level')) {
+			const lvl = Number(params.get('level'));
+			if (lvl >= 1 && lvl <= 30) this.level = lvl;
+		}
+		if (params.has('items')) {
+			const parts = params.get('items').split(',');
+			for (let i = 0; i < Math.min(parts.length, INVENTORY_SIZE); i++) {
+				const s = parts[i].trim();
+				if (s) {
+					const id = Number(s);
+					const item = this.itemOptions.find(o => o.value === id);
+					if (item) this.inventory[i] = item;
+				}
+			}
+		}
+
+		// URL hero takes priority over localStorage
+		const urlHeroId = params.has('hero') ? Number(params.get('hero')) : null;
 		const savedId = localStorage.getItem(STORAGE_KEY);
-		this.selectedHeroId = savedId ? Number(savedId) : DEFAULT_HERO_ID;
+		this.selectedHeroId = urlHeroId ?? (savedId ? Number(savedId) : DEFAULT_HERO_ID);
 		// Watcher fires and calls runCalculation()
+
+		this.urlReady = true;
+		this.syncUrl(); // normalize URL (strips defaults, adds missing params)
 	}
 };
 </script>
@@ -303,6 +369,12 @@ export default {
 	width: 100%;
 }
 
+.applets-panel-pos {
+	position: absolute;
+	right: calc(100% + 8px);
+	top: 0;
+}
+
 .stats-panel {
 	position: absolute;
 	left: calc(100% + 8px);
@@ -310,6 +382,12 @@ export default {
 }
 
 @media (max-width: 900px) {
+	.applets-panel-pos {
+		position: static;
+		width: 100%;
+		margin-top: 8px;
+	}
+
 	.stats-panel {
 		position: static;
 		width: 100%;
@@ -451,6 +529,22 @@ export default {
 	border-radius: 6px;
 	padding: 6px;
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+
+	.select-search-current {
+		display: flex;
+		align-items: center;
+		padding-right: calc(var(--input-icon-button-size) + var(--input-icon-button-side-padding) * 2);
+
+		span {
+			position: static;
+			padding: 0;
+			flex: 1;
+			min-width: 0;
+		}
+	}
+
+	.select-search-current .option-icon { margin-right: 6px; }
+	.select-search-option  .option-icon { margin-right: 1px; }
 }
 
 </style>

@@ -245,3 +245,8 @@ app.use("/api/icon/:icon_type/:icon_id", (req, res) => {
 
 // Serve built client files
 app.use("/", express.static(path.join(__dirname, "..", "build")));
+
+// SPA fallback: serve index.html for any unmatched path
+app.use((req, res) => {
+	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+});

@@ -14,6 +14,7 @@ export const PAGES = [
 	{
 		label: 'Database Query',
 		value: 'database-query',
+		path: 'query',
 		icon: mdiSvgUrl(mdiDatabase),
 		icon_style: ICON_STYLE,
 		component: DatabaseQuery
@@ -21,6 +22,7 @@ export const PAGES = [
 	{
 		label: 'Axe',
 		value: 'axe',
+		path: 'axe',
 		icon: mdiSvgUrl(mdiAxeBattle),
 		icon_style: ICON_STYLE,
 		component: Axe
@@ -28,6 +30,7 @@ export const PAGES = [
 	{
 		label: 'Resource Calculator',
 		value: 'resource-calculator',
+		path: 'calculator',
 		icon: mdiSvgUrl(mdiCalculatorVariant),
 		icon_style: ICON_STYLE,
 		component: ResourceCalculator

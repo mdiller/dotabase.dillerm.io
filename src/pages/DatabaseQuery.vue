@@ -75,11 +75,17 @@ function hexToRGB(hex) {
 	};
 }
 
+function labelToSlug(label) {
+	return label.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+}
+
 function parseQueriesFile(text) {
 	var query_pattern = /\n?--- ([^\n]+)\n([\s\S]+?)(?=\n---|$)/g;
 	return [...text.matchAll(query_pattern)].map(match => {
+		const label = match[1].trim();
 		return {
-			label: match[1].trim(),
+			label,
+			value: labelToSlug(label),
 			query: match[2].trim()
 		};
 	});
@@ -90,7 +96,7 @@ import ARG_QUERIES_TEXT from "/assets/arg_queries.sql?raw"
 import QUERIES_TEXT from "/assets/queries.sql?raw"
 const ARG_QUERIES = parseQueriesFile(ARG_QUERIES_TEXT);
 const PREDEFINED_QUERIES = parseQueriesFile(QUERIES_TEXT);
-PREDEFINED_QUERIES.push({ label: "(Custom)", query: null });
+PREDEFINED_QUERIES.push({ label: "(Custom)", value: 'custom', query: null });
 
 const ARG_DEF_PATTERN = /-- \{arg ([^\}\s]+)\s+([^\}\s]+)(?:\s+([^\}]+))?\}/g;
 const ARG_REPL_PATTERN = /\{([^\s\}]+?)\}/g;
@@ -311,9 +317,14 @@ export default {
 				this.debouncedSendQuery();
 			}
 		},
-		selected_query() {
-			if (this.selected_query && this.selected_query.query) {
-				this.sql_query = this.selected_query.query;
+		selected_query(q) {
+			if (q && q.query) {
+				this.sql_query = q.query;
+			}
+			const slug = q?.value ?? 'custom';
+			const newPath = '/query/' + slug;
+			if (window.location.pathname !== newPath) {
+				history.replaceState(null, '', newPath);
 			}
 		},
 		query_args: {
@@ -340,7 +351,9 @@ export default {
 			this.setPending();
 			this._debouncedSendQuery();
 		}
-		this.selected_query = this.PREDEFINED_QUERIES[0];
+		const slug = window.location.pathname.split('/').filter(Boolean)[1] ?? '';
+		const fromUrl = slug ? this.PREDEFINED_QUERIES.find(q => q.value === slug) : null;
+		this.selected_query = fromUrl ?? this.PREDEFINED_QUERIES[0];
 	}
 };
 </script>
