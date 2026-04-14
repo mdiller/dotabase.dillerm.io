@@ -147,6 +147,8 @@ function mdiSvgUrl(path) {
 //   Enchanted Mango:replenish_amount = flat mana; no HP (hp_regen is a passive stat)
 //   Arcane Boots:   replenish_amount = flat mana; no HP
 //   Magic Stick/Wand: restore_per_charge for both HP and mana (multiplier = charge count)
+//   Holy Locket:    health_restore_per_charge + mana_restore_per_charge, both amplified
+//                   by heal_increase_passive (10% passive healing bonus always active)
 const REGEN_ITEMS = [
 	{
 		label: 'Bottle',          value: 'bottle',
@@ -200,6 +202,16 @@ const REGEN_ITEMS = [
 		parseRegen(specs) {
 			const g = k => parseFloat(specs.find(s => s.key === k)?.value) || 0;
 			return { hp: g('restore_per_charge'), mp: g('restore_per_charge') };
+		},
+	},
+	{
+		label: 'Holy Locket',     value: 'holy_locket',
+		icon: '/vpk/panorama/images/items/holy_locket_png.png',
+		dbName: 'Holy Locket',
+		parseRegen(specs) {
+			const g = k => parseFloat(specs.find(s => s.key === k)?.value) || 0;
+			const passiveAmp = 1 + g('heal_increase_passive') / 100;
+			return { hp: g('health_restore_per_charge') * passiveAmp, mp: g('mana_restore_per_charge') * passiveAmp };
 		},
 	},
 	{
