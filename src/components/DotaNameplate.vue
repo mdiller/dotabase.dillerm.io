@@ -6,7 +6,7 @@
 				<div class="bars-container">
 					<div class="bar-div" style="height:1px"></div>
 					<div class="hp-bar">
-						<div class="hp-fill" :style="{ width: hpPercent + '%', ...hpFillStyle }"></div>
+						<div class="hp-fill" :style="{ width: hpPercent + '%', background: hpFillColor }"></div>
 						<template v-for="tick in ticks" :key="tick.hp">
 							<div
 								v-if="tick.show"
@@ -34,10 +34,11 @@
 <script>
 export default {
 	props: {
-		config:   { type: Object, required: true },
-		level:    { type: Number, default: 1 },
-		scaled:   { type: Boolean, default: true },
-		is_ally:  { type: Boolean, default: true }
+		config:     { type: Object, required: true },
+		level:      { type: Number, default: 1 },
+		scaled:     { type: Boolean, default: true },
+		is_ally:    { type: Boolean, default: true },
+		healthMode: { type: String, default: 'hp' },
 	},
 	computed: {
 		nameplateBarStyle() {
@@ -47,9 +48,9 @@ export default {
 				border: '1px solid #401d1e',
 			};
 		},
-		hpFillStyle() {
-			if (this.is_ally) return {};
-			return { background: '#f33d00' };
+		hpFillColor() {
+			if (!this.is_ally) return '#f33d00';
+			return '#adf762';
 		},
 		hpPercent() {
 			if (!this.config.hp_max) return 0;

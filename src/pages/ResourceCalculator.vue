@@ -36,8 +36,8 @@
 
 						<!-- HP current slider -->
 						<div class="control-row">
-							<label>Health</label>
-							<div class="hp-slider-wrap">
+							<label class="health-mode-label" @click="cycleHealthMode" :title="healthModeCycleHint">{{ healthModeLabel }}</label>
+							<div class="hp-slider-wrap" :style="hpSliderVars">
 								<dillerm-slider
 									v-model:value="config.hp_current"
 									:min="0"
@@ -49,7 +49,7 @@
 						<!-- MP current slider -->
 						<div class="control-row">
 							<label>Mana</label>
-							<div class="mp-slider-wrap">
+							<div class="mp-slider-wrap" :style="mpSliderVars">
 								<dillerm-slider
 									v-model:value="config.mp_current"
 									:min="0"
@@ -69,7 +69,9 @@
 											class="inventory-slot"
 											:class="{ 'has-item': inventory[(row-1)*3+(col-1)] !== null, 'active': itemPickerSlot === (row-1)*3+(col-1) }"
 											:ref="el => slotRefs[(row-1)*3+(col-1)] = el"
-											@click="openItemPicker((row-1)*3+(col-1))">
+											@click="openItemPicker((row-1)*3+(col-1))"
+											@mouseenter="hoveredItemSlot = (row-1)*3+(col-1)"
+											@mouseleave="hoveredItemSlot = null">
 											<img
 												v-if="inventory[(row-1)*3+(col-1)]"
 												:src="inventory[(row-1)*3+(col-1)].icon"
@@ -106,10 +108,10 @@
 				</div>
 
 				<!-- 2x scaled nameplate -->
-				<DotaNameplate :config="config" :level="level" :scaled="true" />
+				<DotaNameplate :config="config" :level="level" :scaled="true" :health-mode="healthMode" />
 
 				<!-- 1x nameplate -->
-				<DotaNameplate :config="config" :level="level" :scaled="false" />
+				<DotaNameplate :config="config" :level="level" :scaled="false" :health-mode="healthMode" />
 			</div>
 		</div>
 	</div>
@@ -129,6 +131,14 @@ const STORAGE_KEY = 'resourceCalc_heroId';
 const DEFAULT_HERO_ID = 105;
 const INVENTORY_SIZE = 6;
 
+// Bar colors per health mode
+const HP_MODE_COLORS = {
+	hp:        { color: '#adf762', glow: 'rgba(173,247,98,0.7)' },
+	ehp_phys:  { color: '#d47a6a', glow: 'rgba(212,122,106,0.7)' },
+	ehp_magic: { color: '#7dd8c8', glow: 'rgba(125,216,200,0.7)' },
+};
+const MP_COLOR = { color: '#4f78fa', glow: 'rgba(79,120,250,0.7)' };
+
 export default {
 	components: { DillermSelect, DillermSlider, DillermNumerical, DotaNameplate, BreakdownPanel, AppletsPanel },
 
@@ -139,7 +149,10 @@ export default {
 			selectedHeroId:    null,
 			level:             6,
 			stats:             [],
+			itemContributions: {},
 			inventory:         Array(INVENTORY_SIZE).fill(null),
+			hoveredItemSlot:   null,
+			healthMode:        'hp',
 			itemPickerSlot:    null,
 			itemPickerStyle:   {},
 			itemPickerReady:   false,
@@ -158,9 +171,96 @@ export default {
 	computed: {
 		hpRegen() { return getStat(this.stats, 'hp_regen'); },
 		mpRegen() { return getStat(this.stats, 'mana_regen'); },
+
+		hoveredItemContrib() {
+			const slot = this.hoveredItemSlot;
+			if (slot === null || !this.inventory[slot]) return null;
+			return this.itemContributions[this.inventory[slot].value] ?? null;
+		},
+
+		healthModeLabel() {
+			if (this.healthMode === 'ehp_phys') return 'EHP Phys';
+			if (this.healthMode === 'ehp_magic') return 'EHP Mag';
+			return 'Health';
+		},
+
+		healthModeCycleHint() {
+			if (this.healthMode === 'hp') return 'Click: → EHP Physical';
+			if (this.healthMode === 'ehp_phys') return 'Click: → EHP Magic';
+			return 'Click: → Health';
+		},
+
+		hpBlackBarPct() {
+			const c = this.hoveredItemContrib;
+			if (!c) return 0;
+			const mode = this.healthMode;
+			let contrib, total;
+			if (mode === 'ehp_phys') {
+				contrib = c.ehp_phys;
+				total   = getStat(this.stats, 'ehp_phys');
+			} else if (mode === 'ehp_magic') {
+				contrib = c.ehp_magic;
+				total   = getStat(this.stats, 'ehp_magic');
+			} else {
+				contrib = c.hp_max;
+				total   = this.config.hp_max;
+			}
+			if (!total || contrib <= 0) return 0;
+			return Math.min(100, (contrib / total) * 100);
+		},
+
+		hpHoverText() {
+			const pct = this.hpBlackBarPct;
+			if (!pct) return '';
+			return parseFloat(pct.toFixed(1)) + '%';
+		},
+
+		mpBlackBarPct() {
+			const c = this.hoveredItemContrib;
+			if (!c || !this.config.mp_max || c.mp_max <= 0) return 0;
+			return Math.min(100, (c.mp_max / this.config.mp_max) * 100);
+		},
+
+		mpHoverText() {
+			const pct = this.mpBlackBarPct;
+			if (!pct) return '';
+			return parseFloat(pct.toFixed(1)) + '%';
+		},
+
+		hpSliderVars() {
+			const { color, glow } = HP_MODE_COLORS[this.healthMode] || HP_MODE_COLORS.hp;
+			const show = this.hpBlackBarPct > 0;
+			return {
+				'--input-color':      color,
+				'--bar-black-display': show ? 'flex' : 'none',
+				'--bar-black-width':  show ? this.hpBlackBarPct + '%' : '0%',
+				'--bar-black-value':  show ? '"' + this.hpHoverText + '"' : '""',
+				'--bar-black-color':  color,
+				'--bar-black-glow':   glow,
+			};
+		},
+
+		mpSliderVars() {
+			const { color, glow } = MP_COLOR;
+			const show = this.mpBlackBarPct > 0;
+			return {
+				'--input-color':      color,
+				'--bar-black-display': show ? 'flex' : 'none',
+				'--bar-black-width':  show ? this.mpBlackBarPct + '%' : '0%',
+				'--bar-black-value':  show ? '"' + this.mpHoverText + '"' : '""',
+				'--bar-black-color':  color,
+				'--bar-black-glow':   glow,
+			};
+		},
 	},
 
 	methods: {
+		cycleHealthMode() {
+			const modes = ['hp', 'ehp_phys', 'ehp_magic'];
+			const idx = modes.indexOf(this.healthMode);
+			this.healthMode = modes[(idx + 1) % modes.length];
+		},
+
 		syncUrl() {
 			if (!this.urlReady) return;
 			const params = new URLSearchParams();
@@ -197,7 +297,9 @@ export default {
 			const prev_hp_pct = this.config.hp_max > 0 ? this.config.hp_current / this.config.hp_max : 1;
 			const prev_mp_pct = this.config.mp_max > 0 ? this.config.mp_current / this.config.mp_max : 1;
 
-			this.stats = await calculateResources(this.selectedHeroId, this.level, this.inventory.filter(Boolean));
+			const result = await calculateResources(this.selectedHeroId, this.level, this.inventory.filter(Boolean));
+			this.stats             = result.stats;
+			this.itemContributions = result.itemContributions;
 
 			const hp_max = getStat(this.stats, 'hp_max');
 			const mp_max = getStat(this.stats, 'mp_max');
@@ -425,14 +527,68 @@ export default {
 	}
 }
 
+.health-mode-label {
+	cursor: pointer;
+	user-select: none;
+	transition: color 0.15s;
+
+	&:hover {
+		color: var(--text-color, #fff) !important;
+	}
+}
+
 .level-number-input {
 	flex: 0 0 80px !important;
 }
 
-/* HP slider: green fill */
-.hp-slider-wrap {
+/* Shared slider wrap mixin — black bar overlay via CSS variables */
+%slider-wrap-base {
 	flex: 1;
 	position: relative;
+
+	/* Black bar overlay: injected into .slider-bar-back via ::after */
+	.slider-bar-back::after {
+		content: var(--bar-black-value, "");
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: var(--bar-black-width, 0%);
+		display: var(--bar-black-display, none);
+		align-items: center;
+		justify-content: center;
+		background: rgba(0, 0, 0, 0.5);
+		overflow: hidden;
+		pointer-events: none;
+		z-index: 3;
+		font-size: 11px;
+		font-weight: 600;
+		font-variant-numeric: tabular-nums;
+		line-height: 1;
+		white-space: nowrap;
+		color: var(--bar-black-color, #fff);
+		text-shadow:
+			0 0 6px var(--bar-black-glow, rgba(255,255,255,0.7)),
+			0 0 12px var(--bar-black-glow, rgba(255,255,255,0.35));
+	}
+
+	.regen-overlay {
+		position: absolute;
+		left: 58px;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 11px;
+		font-weight: 600;
+		font-variant-numeric: tabular-nums;
+		pointer-events: none;
+		white-space: nowrap;
+		line-height: 1;
+	}
+}
+
+/* HP slider: green fill (default, overridable via --input-color) */
+.hp-slider-wrap {
+	@extend %slider-wrap-base;
 	--input-color: #adf762;
 
 	.regen-overlay {
@@ -443,27 +599,13 @@ export default {
 
 /* MP slider: blue fill */
 .mp-slider-wrap {
-	flex: 1;
-	position: relative;
+	@extend %slider-wrap-base;
 	--input-color: #4f78fa;
 
 	.regen-overlay {
 		color: mix(white, #4f78fa, 82%);
 		text-shadow: 0 0 6px rgba(#4f78fa, 0.7), 0 0 12px rgba(#4f78fa, 0.35);
 	}
-}
-
-.regen-overlay {
-	position: absolute;
-	left: 58px;
-	top: 50%;
-	transform: translateY(-50%);
-	font-size: 11px;
-	font-weight: 600;
-	font-variant-numeric: tabular-nums;
-	pointer-events: none;
-	white-space: nowrap;
-	line-height: 1;
 }
 
 
