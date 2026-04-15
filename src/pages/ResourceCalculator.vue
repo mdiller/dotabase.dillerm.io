@@ -86,7 +86,7 @@
 				</div>
 
 				<!-- Applets panel: absolutely positioned to the left of the controls panel -->
-				<AppletsPanel class="applets-panel-pos" :inventory="inventory" :stats="stats" />
+				<AppletsPanel class="applets-panel-pos" :inventory="inventory" :stats="stats" @add-item="onAddItem" />
 
 				<!-- Stats panel: absolutely positioned to the right of the controls panel -->
 				<BreakdownPanel class="stats-panel" :stats="stats" />
@@ -263,13 +263,18 @@ export default {
 
 		syncUrl() {
 			if (!this.urlReady) return;
-			const params = new URLSearchParams();
+			// Preserve any params written by child components (applet, tankiness_stat, etc.)
+			const params = new URLSearchParams(window.location.search);
 
 			if (this.selectedHeroId !== DEFAULT_HERO_ID) {
 				params.set('hero', this.selectedHeroId);
+			} else {
+				params.delete('hero');
 			}
 			if (this.level !== 6) {
 				params.set('level', this.level);
+			} else {
+				params.delete('level');
 			}
 
 			// Encode inventory preserving slot positions; trim trailing empty slots
@@ -279,6 +284,8 @@ export default {
 			const trimmed = parts.slice(0, last + 1);
 			if (trimmed.some(p => p !== '')) {
 				params.set('items', trimmed.join(','));
+			} else {
+				params.delete('items');
 			}
 
 			const qs = params.toString();
@@ -286,6 +293,11 @@ export default {
 			if (window.location.pathname + window.location.search !== newUrl) {
 				history.replaceState(null, '', newUrl);
 			}
+		},
+
+		onAddItem({ slotIndex, item }) {
+			this.inventory[slotIndex] = item;
+			this.runCalculation();
 		},
 
 		fmtRegen(v) {

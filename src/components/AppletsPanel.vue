@@ -11,6 +11,13 @@
 		</div>
 
 		<div v-if="selectedApplet" class="applets-body">
+			<template v-if="selectedApplet === 'tankiness'">
+				<tankiness-applet
+					:inventory="inventory"
+					:stats="stats"
+					@add-item="$emit('add-item', $event)" />
+			</template>
+
 			<template v-if="selectedApplet === 'backpack_efficiency'">
 
 				<!-- Regen source row -->
@@ -131,9 +138,10 @@
 </template>
 
 <script>
-import { mdiBagPersonal } from '@mdi/js';
+import { mdiBagPersonal, mdiShield } from '@mdi/js';
 import DillermSelect    from "@dillerm/webutils/src/components/controls/DillermSelect.vue";
 import DillermNumerical from "@dillerm/webutils/src/components/controls/DillermNumerical.vue";
+import TankinessApplet  from "./TankinessApplet.vue";
 
 function mdiSvgUrl(path) {
 	const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="${path}" fill="#cdd6e0"/></svg>`;
@@ -245,7 +253,9 @@ function parseHpMpBonuses(abilitySpecialJson) {
 }
 
 export default {
-	components: { DillermSelect, DillermNumerical },
+	components: { DillermSelect, DillermNumerical, TankinessApplet },
+
+	emits: ['add-item'],
 
 	props: {
 		inventory: { type: Array, default: () => [] },
@@ -255,11 +265,18 @@ export default {
 	data() {
 		return {
 			selectedApplet: 'backpack_efficiency',
+			urlReady: false,
 			appletOptions: [
 				{
 					label: 'Backpack Efficiency',
 					value: 'backpack_efficiency',
 					icon: mdiSvgUrl(mdiBagPersonal),
+					icon_style: 'padding: 4px',
+				},
+				{
+					label: 'Tankiness',
+					value: 'tankiness',
+					icon: mdiSvgUrl(mdiShield),
 					icon_style: 'padding: 4px',
 				},
 			],
@@ -368,6 +385,21 @@ export default {
 		fmt(n)    { return Math.round(n); },
 		fmtPct(n) { return n.toFixed(1) + '%'; },
 
+		syncUrl() {
+			if (!this.urlReady) return;
+			const params = new URLSearchParams(window.location.search);
+			if (this.selectedApplet && this.selectedApplet !== 'backpack_efficiency') {
+				params.set('applet', this.selectedApplet);
+			} else {
+				params.delete('applet');
+			}
+			const qs     = params.toString();
+			const newUrl = window.location.pathname + (qs ? '?' + qs : '');
+			if (window.location.pathname + window.location.search !== newUrl) {
+				history.replaceState(null, '', newUrl);
+			}
+		},
+
 		toggleBackpackItem(idx) {
 			const s = new Set(this.disabledBackpackSet);
 			if (s.has(idx)) s.delete(idx);
@@ -376,7 +408,16 @@ export default {
 		},
 	},
 
-	async created() {
+	created() {
+		const params = new URLSearchParams(window.location.search);
+		if (params.has('applet')) {
+			const v = params.get('applet');
+			if (this.appletOptions.some(o => o.value === v)) this.selectedApplet = v;
+		}
+		this.urlReady = true;
+	},
+
+	async mounted() {
 		const itemsToFetch = REGEN_ITEMS.filter(i => i.dbName);
 		const names = itemsToFetch.map(i => `'${i.dbName}'`).join(',');
 		const res = await fetch(`/api/sql?q=${encodeURI(
@@ -396,6 +437,10 @@ export default {
 	},
 
 	watch: {
+		selectedApplet() {
+			this.syncUrl();
+		},
+
 		selectedRegenItem() {
 			this.disabledBackpackSet = new Set();
 		},

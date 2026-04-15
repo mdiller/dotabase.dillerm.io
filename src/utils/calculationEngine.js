@@ -288,7 +288,7 @@ export async function calculateResources(heroId, level = 1, items = []) {
 				format: 'percent',
 			},
 
-			statGroup('ehp_phys', 'EHP (Physical)', STAT_COLORS.str, [
+			statGroup('ehp_phys', 'EHP Physical', STAT_COLORS.str, [
 				{ label: 'Max Health',  value: hpMaxVal },
 				{ label: 'Armor bonus', value: ehpPhysVal - hpMaxVal },
 			]),
@@ -306,7 +306,7 @@ export async function calculateResources(heroId, level = 1, items = []) {
 				format: 'percent',
 			},
 
-			statGroup('ehp_magic', 'EHP (Magic)', STAT_COLORS.int, [
+			statGroup('ehp_magic', 'EHP Magical', STAT_COLORS.int, [
 				{ label: 'Max Health',        value: hpMaxVal },
 				{ label: 'Magic resist bonus', value: ehpMagicVal - hpMaxVal },
 			]),
@@ -332,9 +332,9 @@ function buildFallbackStats() {
 			{ key: 'mana_regen',    label: 'Mana Regen',      color: STAT_COLORS.mana, value: 0, components: [] },
 			{ key: 'armor',         label: 'Armor',           color: STAT_COLORS.str,  value: 0, components: [] },
 			{ key: 'phys_resist',   label: 'Phys Resist',     color: STAT_COLORS.str,  value: 0, components: [], ...pct },
-			{ key: 'ehp_phys',      label: 'EHP (Physical)',  color: STAT_COLORS.str,  value: 0, components: [] },
+			{ key: 'ehp_phys',      label: 'EHP Physical',   color: STAT_COLORS.str,  value: 0, components: [] },
 			{ key: 'magic_resist',  label: 'Magic Resist',    color: STAT_COLORS.int,  value: 0, components: [], ...pct },
-			{ key: 'ehp_magic',     label: 'EHP (Magic)',     color: STAT_COLORS.int,  value: 0, components: [] },
+			{ key: 'ehp_magic',     label: 'EHP Magical',    color: STAT_COLORS.int,  value: 0, components: [] },
 		],
 		itemContributions: {},
 	};
