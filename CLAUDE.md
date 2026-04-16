@@ -18,6 +18,8 @@ npm run prod       # builds Vite bundle then starts Express
 
 Vite proxies `/api` and `/vpk` to `http://localhost:3000`.
 
+> **VPK asset URLs in templates:** Always use dynamic binding (`:src`, `:href`) for `/vpk/...` and `/dota-vpk/...` URLs in Vue templates — never static `src=` or `href=`. Static attributes cause Vite/Rollup to attempt bundling those paths, which fails at build time. Example: `:src="'/vpk/path/to/image.png'"` not `src="/vpk/path/to/image.png"`.
+
 ## Pages
 
 Pages are defined in [`src/pages/index.js`](src/pages/index.js) as a `PAGES` array — this is the single place to add, rename, or reorder pages. Each entry has:

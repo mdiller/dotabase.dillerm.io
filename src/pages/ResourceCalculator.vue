@@ -82,6 +82,10 @@
 								</tbody>
 							</table>
 						</div>
+						<div class="inventory-cost">
+							<img :src="'/vpk/panorama/images/hud/icon_gold_psd.png'" class="gold-icon" alt="gold" />
+							<span class="gold-amount">{{ inventoryCost }}</span>
+						</div>
 					</div>
 				</div>
 
@@ -169,6 +173,12 @@ export default {
 	},
 
 	computed: {
+		inventoryCost() {
+			return this.inventory
+				.filter(Boolean)
+				.reduce((sum, item) => sum + (this.itemOptions.find(o => o.value === item.value)?.cost || 0), 0);
+		},
+
 		hpRegen() { return getStat(this.stats, 'hp_regen'); },
 		mpRegen() { return getStat(this.stats, 'mana_regen'); },
 
@@ -424,7 +434,7 @@ export default {
 				"SELECT localized_name as label, id as value, '/vpk' || icon as icon, 'width: 32px; height: 32px; margin: 4px' as icon_style FROM heroes ORDER BY localized_name"
 			)}`),
 			fetch(`/api/sql?q=${encodeURI(
-				"SELECT localized_name as label, id as value, '/vpk' || icon as icon FROM items WHERE localized_name != '' ORDER BY localized_name"
+				"SELECT localized_name as label, id as value, '/vpk' || icon as icon, cost FROM items WHERE localized_name != '' ORDER BY localized_name"
 			)}`),
 		]);
 
@@ -620,6 +630,23 @@ export default {
 	}
 }
 
+
+/* Inventory cost indicator */
+.inventory-cost {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	margin-top: 6px;
+
+	.gold-icon   { height: 16px; width: auto; }
+	.gold-amount {
+		font-size: 12px;
+		font-weight: 600;
+		font-variant-numeric: tabular-nums;
+		color: #e8c840;
+	}
+}
 
 /* Inventory */
 .inventory-section {

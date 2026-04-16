@@ -5,13 +5,16 @@ const path = require("path");
 const fs = require("fs");
 const shell = require("shelljs");
 const cors = require("cors");
+const { Worker } = require("worker_threads");
 
 shell.config.silent = true;
 
 var VPK_DIR = process.env.VPK_DIR || path.join(__dirname, "components");
 var LISTEN_PORT = process.env.PORT || 3000;
+var FORCE_UPDATE = process.env.FORCE_UPDATE === "true";
 
-console.log("Serving to: ", LISTEN_PORT);
+console.log("] serving on port:", LISTEN_PORT);
+if (FORCE_UPDATE) console.log("] FORCE_UPDATE is enabled — will always rebuild database");
 
 var BASE_PATH = path.join(__dirname, "..");
 var DOTABASE_DIRNAME = "_dotabase";
@@ -23,9 +26,14 @@ const options = {
 	timeout: 2000
 };
 
-var DOTABASE_VERSION = null;
 var DOTABASE_DB = null;
-var DOTA_VERSION = null;
+
+const dbState = {
+	status: "initializing", // "initializing" | "updating" | "ready" | "error"
+	dotaVersion: null,
+	dotabaseVersion: null,
+	error: null
+};
 
 const icon_redirects = [
 	{
@@ -54,121 +62,81 @@ const icon_redirects = [
 	}
 ];
 
-// syncs the dotabase repository and sets up the sql database connection
-function syncDotabase() {
-	console.log("] syncing dotabase");
-	if (!fs.existsSync(DOTABASE_PATH)) {
-		shell.cd(BASE_PATH);
-		shell.exec(`git clone https://github.com/mdiller/dotabase.git ${DOTABASE_DIRNAME}`);
-	}
-	shell.cd(DOTABASE_PATH);
-
-	// get git hash
-	var version_result = shell.exec("git rev-parse --short HEAD");
-	DOTABASE_VERSION = version_result.stdout.trim();
-
-	shell.exec(`git pull`);
-
-	// prep paths
-	var sql_path = path.join(DOTABASE_PATH, "dotabase", "dotabase.db.sql");
+function openAndCacheDb() {
 	var db_path = path.join(DOTABASE_PATH, "dotabase", "dotabase.db");
-
-	// get new git hash
-	version_result = shell.exec("git rev-parse --short HEAD");
-	var new_version = version_result.stdout.trim();
-	if (new_version != DOTABASE_VERSION || !fs.existsSync(db_path)) {
-		// rebuild
-		DOTABASE_VERSION = new_version;
-		if (fs.existsSync(db_path)) {
-			fs.unlinkSync(db_path);
-		}
-		console.log("] rebuilding dotabase");
-		var sql_create_text = fs.readFileSync(sql_path, "utf8");
-		var temp_db = better_sqlite(db_path, {
-			fileMustExist: false
-		});
-		temp_db.exec(sql_create_text);
-		temp_db.close();
+	if (DOTABASE_DB) {
+		DOTABASE_DB.close();
 	}
-
 	DOTABASE_DB = better_sqlite(db_path, options);
-	DOTA_VERSION = DOTABASE_DB.prepare("select number from patches order by timestamp desc limit 1").all()[0].number;
-	console.log("] database synced");
+	dbState.dotaVersion = DOTABASE_DB.prepare("select number from patches order by timestamp desc limit 1").all()[0].number;
 
-	// Fill Icon Routes
 	icon_redirects.forEach(redirect => {
 		if (redirect.query) {
 			let data = {};
-			let query_result = DOTABASE_DB.prepare(redirect.query).all();
-			query_result.forEach(kv => {
+			DOTABASE_DB.prepare(redirect.query).all().forEach(kv => {
 				data[kv.key.toString()] = kv.value;
 			});
 			redirect.data = data;
 		}
-	})
+	});
 	console.log("] icon redirects built");
+}
+
+function startSync() {
+	var isUpdate = DOTABASE_DB !== null;
+	dbState.status = isUpdate ? "updating" : "initializing";
+	dbState.error = null;
+	console.log(`] ${isUpdate ? "updating" : "initializing"} dotabase...`);
+
+	const worker = new Worker(path.join(__dirname, "dotabase-worker.js"), {
+		workerData: {
+			DOTABASE_PATH,
+			BASE_PATH,
+			DOTABASE_DIRNAME,
+			FORCE_UPDATE
+		}
+	});
+
+	worker.on("message", (msg) => {
+		if (msg.type === "log") {
+			console.log("]   " + msg.message);
+		}
+		else if (msg.type === "done") {
+			try {
+				dbState.dotabaseVersion = msg.version;
+				openAndCacheDb();
+				dbState.status = "ready";
+				console.log(`] database ready | dotabase: ${dbState.dotabaseVersion} | dota: ${dbState.dotaVersion}`);
+			}
+			catch (err) {
+				dbState.status = "error";
+				dbState.error = err.message;
+				console.error("] error opening database:", err.message);
+			}
+		}
+		else if (msg.type === "error") {
+			dbState.status = "error";
+			dbState.error = msg.error;
+			console.error("] sync error:", msg.error);
+		}
+	});
+
+	worker.on("error", (err) => {
+		dbState.status = "error";
+		dbState.error = err.message;
+		console.error("] worker error:", err.message);
+	});
 }
 
 const app = express();
 app.listen(LISTEN_PORT);
 console.log("] listening on port", LISTEN_PORT);
 
-let isReady = false;
-const INITIALIZING_HTML = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="3">
-<title>Initializing...</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #1a1a2e;
-    color: #c9d1d9;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .spinner {
-    width: 40px; height: 40px;
-    border: 3px solid #30363d;
-    border-top-color: #58a6ff;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  h1 { font-size: 1.2rem; color: #58a6ff; }
-  p { font-size: 0.9rem; color: #8b949e; }
-</style>
-</head>
-<body>
-  <div class="spinner"></div>
-  <h1>Database Initializing</h1>
-  <p>Syncing dotabase &mdash; this page will refresh automatically.</p>
-</body>
-</html>`;
-
-app.use((req, res, next) => {
-	if (!isReady) {
-		res.status(503).send(INITIALIZING_HTML);
-		return;
-	}
-	next();
-});
-
-setImmediate(() => {
-	syncDotabase();
-	isReady = true;
-	console.log("] done!");
-});
+setImmediate(startSync);
 
 // Favicon
 app.use("/favicon.ico", express.static(path.join(__dirname, "assets", "favicon.ico")));
- 
+
 // Serving vpk stuff
 fs.copyFileSync(path.join(__dirname, "vpk_browser.html"), path.join(VPK_DIR, "index.html"))
 app.use("/(:?dota-)?vpk/", express.static(path.join(VPK_DIR)));
@@ -186,29 +154,38 @@ app.use("/api/vpkfiles/:filename(*)", (req, res) => {
 	});
 });
 
-// The version of dotabase
-app.use("/api/version", cors(), (req, res) => {
-	res.status(200).send(DOTABASE_VERSION);
+// Database sync status
+app.use("/api/dbstatus", cors(), (req, res) => {
+	res.json(dbState);
 });
 
 // The version of dotabase
-app.use("/githook", (req, res) => {
-	try {
-		syncDotabase();
-	}
-	catch (error) {
-		res.status(400).send(`Error: ${error}`);
-	}
-	res.status(200).send(`Updated to ${DOTABASE_VERSION}: ${DOTA_VERSION}`);
+app.use("/api/version", cors(), (req, res) => {
+	res.status(200).send(dbState.dotabaseVersion);
 });
 
 // The version of dota
 app.use("/api/dotaversion", cors(), (req, res) => {
-	res.status(200).send(DOTA_VERSION);
+	res.status(200).send(dbState.dotaVersion);
+});
+
+// Trigger a dotabase sync
+app.use("/githook", (req, res) => {
+	if (dbState.status === "updating" || dbState.status === "initializing") {
+		res.status(409).send("Sync already in progress");
+		return;
+	}
+	startSync();
+	res.status(200).send("Sync started");
 });
 
 // SQL query interface
 app.use("/api/(:?sql(:?ite)?)", cors(), (req, res) => {
+	if (!DOTABASE_DB) {
+		res.status(503).json({ error: "Database is not ready", status: dbState.status });
+		return;
+	}
+
 	var query = req.query.q || req.query.query || req.body;
 
 	if (query) {
@@ -234,7 +211,7 @@ app.use("/api/icon/:icon_type/:icon_id", (req, res) => {
 	if (route == undefined) {
 		res.status(404).send(`Error: Don't recognize that icon type`);
 	}
-	else if (!(Object.keys(route.data).includes(icon_id))) {
+	else if (!route.data || !(Object.keys(route.data).includes(icon_id))) {
 		res.status(404).send(`Error: Couldn't find an icon by that ID`);
 	}
 	else {

@@ -12,7 +12,7 @@
 						@click="playSound"
 					/>
 					<span class="culling-title-text">Culling Blade</span>
-					<audio ref="sound" src="/vpk/sounds/vo/axe/axe_ability_berserk_09.mp3" />
+					<audio ref="sound" :src="'/vpk/sounds/vo/axe/axe_ability_berserk_09.mp3'" />
 				</div>
 
 				<!-- Nameplate entries -->

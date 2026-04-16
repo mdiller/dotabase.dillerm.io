@@ -20,22 +20,24 @@
 			</div>
 		</div>
 
-		<!-- Inventory cost + exclude checkbox -->
-		<div class="tank-meta-row">
-			<label class="tank-exclude-label">
-				<input type="checkbox" v-model="excludeInventory" class="tank-checkbox" />
-				<span>Exclude inventory items</span>
-			</label>
-			<div class="tank-cost">
-				<img src="/vpk/panorama/images/hud/icon_gold_psd.png" class="gold-icon" alt="gold" />
-				<span class="gold-amount">{{ inventoryCost }}</span>
-			</div>
-		</div>
+		<label class="tank-exclude-label">
+			<input type="checkbox" v-model="excludeInventory" class="tank-checkbox" />
+			<span>Exclude inventory items</span>
+		</label>
 
 		<label class="tank-exclude-label">
 			<input type="checkbox" v-model="perCost" class="tank-checkbox" />
 			<span>Per 100 gold</span>
 		</label>
+
+		<label class="tank-exclude-label">
+			<input type="checkbox" v-model="budget" class="tank-checkbox" />
+			<span>Budget</span>
+		</label>
+		<div v-if="budget" class="tank-budget-row">
+			<dillerm-slider v-model:value="budgetAmount" :min="0" :max="maxCost" style="--input-color: #e8c840" />
+			<span class="budget-gold-amount">{{ budgetAmount }}</span>
+		</div>
 
 		<!-- Items table -->
 		<div class="tank-table-wrap" v-if="rankedItems.length > 0">
@@ -157,7 +159,11 @@ function computeBonus(b, statKey, sm) {
 	}
 }
 
+import DillermSlider from "@dillerm/webutils/src/components/controls/DillermSlider.vue";
+
 export default {
+	components: { DillermSlider },
+
 	emits: ['add-item'],
 
 	props: {
@@ -172,6 +178,8 @@ export default {
 			statPickerOpen:   false,
 			excludeInventory: false,
 			perCost:          false,
+			budget:           false,
+			budgetAmount:     0,
 			displayCount:     PAGE_SIZE,
 			hoveredItemId:    null,
 			allItems:         [],
@@ -199,11 +207,8 @@ export default {
 			return new Set((this.inventory || []).filter(Boolean).map(i => i.value));
 		},
 
-		inventoryCost() {
-			const costMap = Object.fromEntries(this.allItems.map(i => [i.id, i.cost]));
-			return (this.inventory || [])
-				.filter(Boolean)
-				.reduce((sum, item) => sum + (costMap[item.value] || 0), 0);
+		maxCost() {
+			return this.allItems.reduce((m, i) => Math.max(m, i.cost), 0);
 		},
 
 		displayedItems() {
@@ -264,6 +269,7 @@ export default {
 
 			let items = this.allItems
 				.filter(item => !excludeIds.has(item.id))
+				.filter(item => !this.budget || item.cost <= this.budgetAmount)
 				.map(item => {
 					const bonus = computeBonus(item.bonusObj, this.selectedStat, sm);
 					const displayValue = (this.perCost && item.cost > 0) ? (bonus / item.cost) * 100 : bonus;
@@ -302,6 +308,8 @@ export default {
 		selectedStat()    { this.recalculate(); this.syncUrl(); },
 		excludeInventory(){ this.recalculate(); },
 		perCost()         { this.recalculate(); },
+		budget()          { this.recalculate(); },
+		budgetAmount()    { if (this.budget) this.recalculate(); },
 		inventory:        { deep: true, handler() { if (this.excludeInventory) this.recalculate(); } },
 	},
 
@@ -339,6 +347,7 @@ export default {
 
 		console.log(`[Tankiness] init: ${(performance.now() - t0).toFixed(2)}ms — ${this.allItems.length} items loaded`);
 
+		this.budgetAmount = this.maxCost;
 		this.urlReady = true;
 		this.recalculate();
 	},
@@ -416,11 +425,21 @@ export default {
 	&.selected { background: rgba(255,255,255,0.1); }
 }
 
-.tank-meta-row {
+.tank-budget-row {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	gap: 8px;
+
+	.dillerm-slider { flex: 1; }
+
+	.budget-gold-amount {
+		font-size: 12px;
+		font-weight: 600;
+		font-variant-numeric: tabular-nums;
+		color: #e8c840;
+		min-width: 36px;
+		text-align: right;
+	}
 }
 
 .tank-exclude-label {
@@ -435,19 +454,6 @@ export default {
 	.tank-checkbox { cursor: pointer; }
 }
 
-.tank-cost {
-	display: flex;
-	align-items: center;
-	gap: 4px;
-
-	.gold-icon    { height: 16px; width: auto; }
-	.gold-amount  {
-		font-size: 12px;
-		font-weight: 600;
-		font-variant-numeric: tabular-nums;
-		color: #e8c840;
-	}
-}
 
 .tank-table-wrap {
 	overflow: hidden;

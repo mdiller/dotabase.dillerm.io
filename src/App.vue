@@ -5,16 +5,21 @@
 			:options="PAGES"
 			:searchable="false" />
 	</div>
+	<div class="db-status-anchor">
+		<db-status-icon />
+	</div>
 	<component :is="current_page?.component" />
 </template>
 
 <script>
 import DillermSelect from "@dillerm/webutils/src/components/controls/DillermSelect.vue";
+import DbStatusIcon from "./components/DbStatusIcon.vue";
 import { PAGES } from "./pages/index.js";
 
 export default {
 	components: {
-		DillermSelect
+		DillermSelect,
+		DbStatusIcon
 	},
 	data() {
 		return {
@@ -63,6 +68,18 @@ export default {
 	.dillerm-select {
 		width: 100%;
 	}
+}
+
+.db-status-anchor {
+	position: fixed;
+	left: 50%;
+	top: 0;
+	height: var(--navbar-height);
+	transform: translateX(calc(-100% - 60px));
+	display: flex;
+	align-items: center;
+	z-index: 1002;
+	pointer-events: auto;
 }
 
 </style>
