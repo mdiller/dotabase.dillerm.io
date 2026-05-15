@@ -12,6 +12,14 @@ const ICON_STYLE = 'padding: 6px';
 
 export const PAGES = [
 	{
+		label: 'Resource Calculator',
+		value: 'resource-calculator',
+		path: 'calculator',
+		icon: mdiSvgUrl(mdiCalculatorVariant),
+		icon_style: ICON_STYLE,
+		component: ResourceCalculator
+	},
+	{
 		label: 'Database Query',
 		value: 'database-query',
 		path: 'query',
@@ -27,12 +35,4 @@ export const PAGES = [
 		icon_style: ICON_STYLE,
 		component: Axe
 	},
-	{
-		label: 'Resource Calculator',
-		value: 'resource-calculator',
-		path: 'calculator',
-		icon: mdiSvgUrl(mdiCalculatorVariant),
-		icon_style: ICON_STYLE,
-		component: ResourceCalculator
-	}
 ];

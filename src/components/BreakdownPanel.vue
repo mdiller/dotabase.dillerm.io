@@ -14,7 +14,7 @@
 
 		<div class="breakdown-body">
 			<div
-				v-for="group in stats"
+				v-for="group in stats.filter(g => !g.hidden)"
 				:key="group.key"
 				class="stat-group"
 			>
@@ -68,7 +68,7 @@ export default {
 		},
 
 		collapseAll() {
-			this.collapsed = new Set(this.stats.filter(g => g.components.length > 0).map(g => g.key));
+			this.collapsed = new Set(this.stats.filter(g => !g.hidden && g.components.length > 0).map(g => g.key));
 		},
 
 		expandAll() {

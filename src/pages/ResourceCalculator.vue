@@ -162,6 +162,7 @@ export default {
 			itemPickerReady:   false,
 			slotRefs:          [],
 			urlReady:          false,
+			_heartRegenTimer:  null,
 			config: {
 				hero_id:    null,
 				hp_current: 0,
@@ -319,7 +320,7 @@ export default {
 			const prev_hp_pct = this.config.hp_max > 0 ? this.config.hp_current / this.config.hp_max : 1;
 			const prev_mp_pct = this.config.mp_max > 0 ? this.config.mp_current / this.config.mp_max : 1;
 
-			const result = await calculateResources(this.selectedHeroId, this.level, this.inventory.filter(Boolean));
+			const result = await calculateResources(this.selectedHeroId, this.level, this.inventory.filter(Boolean), this.config.hp_current);
 			this.stats             = result.stats;
 			this.itemContributions = result.itemContributions;
 
@@ -412,7 +413,14 @@ export default {
 	},
 
 	watch: {
-		selectedHeroId(id) {
+		'config.hp_current'() {
+				const hasHeart = this.inventory.some(item => item?.label === 'Heart of Tarrasque');
+				if (!hasHeart) return;
+				clearTimeout(this._heartRegenTimer);
+				this._heartRegenTimer = setTimeout(() => this.runCalculation(), 80);
+			},
+
+			selectedHeroId(id) {
 			if (id == null) {
 				this.selectedHeroId = DEFAULT_HERO_ID;
 				return;

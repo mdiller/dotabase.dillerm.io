@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import { mdiBagPersonal, mdiShield } from '@mdi/js';
+import { mdiBagPersonal, mdiChartBar } from '@mdi/js';
 import DillermSelect    from "@dillerm/webutils/src/components/controls/DillermSelect.vue";
 import DillermNumerical from "@dillerm/webutils/src/components/controls/DillermNumerical.vue";
 import TankinessApplet  from "./TankinessApplet.vue";
@@ -264,7 +264,7 @@ export default {
 
 	data() {
 		return {
-			selectedApplet: 'backpack_efficiency',
+			selectedApplet: 'tankiness',
 			urlReady: false,
 			appletOptions: [
 				{
@@ -274,9 +274,9 @@ export default {
 					icon_style: 'padding: 4px',
 				},
 				{
-					label: 'Tankiness',
+					label: 'Item Recommender',
 					value: 'tankiness',
-					icon: mdiSvgUrl(mdiShield),
+					icon: mdiSvgUrl(mdiChartBar),
 					icon_style: 'padding: 4px',
 				},
 			],
@@ -388,7 +388,7 @@ export default {
 		syncUrl() {
 			if (!this.urlReady) return;
 			const params = new URLSearchParams(window.location.search);
-			if (this.selectedApplet && this.selectedApplet !== 'backpack_efficiency') {
+			if (this.selectedApplet && this.selectedApplet !== 'tankiness') {
 				params.set('applet', this.selectedApplet);
 			} else {
 				params.delete('applet');

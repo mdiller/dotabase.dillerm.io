@@ -94,72 +94,54 @@ const TANKINESS_STATS = [
 	{ key: 'magic_resist',  label: 'Magic Resist',  color: '#7dd8c8' },
 ];
 
-function parseAbilitySpecial(json) {
-	const b = { str: 0, agi: 0, int: 0, flatHp: 0, flatMana: 0, hpRegen: 0, manaRegen: 0, hpRegenAmp: 0, manaRegenAmp: 0, armor: 0, magicResist: 0 };
-	let specs;
-	try { specs = JSON.parse(json); } catch { return b; }
-	if (!Array.isArray(specs)) return b;
-	for (const s of specs) {
-		if (!s.header) continue;
-		const v = parseFloat(s.value);
-		if (!v) continue;
-		switch (s.key) {
-			case 'bonus_strength':        b.str           += v; break;
-			case 'bonus_agility':         b.agi           += v; break;
-			case 'bonus_intellect':       b.int           += v; break;
-			case 'bonus_all_stats':       b.str += v; b.agi += v; b.int += v; break;
-			case 'bonus_health':          b.flatHp        += v; break;
-			case 'bonus_mana':            b.flatMana      += v; break;
-			case 'bonus_health_regen':
-			case 'health_regen':          b.hpRegen       += v; break;
-			case 'bonus_mana_regen':      b.manaRegen     += v; break;
-			case 'hp_regen_amp':          b.hpRegenAmp    += v / 100; break;
-			case 'mana_regen_multiplier': b.manaRegenAmp  += v / 100; break;
-			case 'bonus_armor':           b.armor         += v; break;
-			case 'tooltip_resist':
-			case 'magic_resistance':
-			case 'bonus_magical_armor':   b.magicResist   += v / 100; break;
-		}
-	}
-	return b;
-}
-
 function computeBonus(b, statKey, sm) {
 	switch (statKey) {
-		case 'hp_max':        return b.str * 22 + b.flatHp;
-		case 'mp_max':        return b.int * 12 + b.flatMana;
-		case 'strength':      return b.str;
-		case 'agility':       return b.agi;
-		case 'intelligence':  return b.int;
-		case 'hp_regen':      return b.str * 0.1 + b.hpRegen;
-		case 'mana_regen':    return b.int * 0.05 + b.manaRegen;
-		case 'armor':         return b.agi / 6 + b.armor;
+		case 'hp_max':       return b.str * 22 + b.flatHp;
+		case 'mp_max':       return b.int * 12 + b.flatMana;
+		case 'strength':     return b.str;
+		case 'agility':      return b.agi;
+		case 'intelligence': return b.int;
+		case 'hp_regen': {
+			const flat = b.str * 0.1 + b.hpRegen + b.hpRegenAura
+			           + b.hpRegenPct * (sm.hp_max || 0)
+			           // hpMissingRegen is dynamic; rank at 50% HP as a neutral estimate
+			           + (b.hpMissingRegen / 100) * (sm.hp_max || 0) * 0.5;
+			return flat + b.hpRegenAmp * (sm.hp_regen || 0);
+		}
+		case 'mana_regen': {
+			const flat = b.int * 0.05 + b.manaRegen + b.manaRegenAura;
+			return flat + b.manaRegenAmp * (sm.mana_regen || 0);
+		}
+		case 'armor': return b.agi / 6 + b.armor + b.armorAura;
 		case 'phys_resist': {
-			const newA  = (sm.armor || 0) + b.agi / 6 + b.armor;
+			const newA  = (sm.armor || 0) + b.agi / 6 + b.armor + b.armorAura;
 			const newPR = (0.06 * newA) / (1 + 0.06 * Math.abs(newA));
 			return newPR - (sm.phys_resist || 0);
 		}
 		case 'magic_resist': {
 			const mdt = 1 - (sm.magic_resist || 0);
-			return (1 - mdt * (1 - b.magicResist)) - (sm.magic_resist || 0);
+			return (1 - mdt * (1 - b.magicResist) * (1 - b.magicResistAura)) - (sm.magic_resist || 0);
 		}
 		case 'ehp_phys': {
-			const hp    = (sm.hp_max || 0) + b.str * 22 + b.flatHp;
-			const newA  = (sm.armor || 0) + b.agi / 6 + b.armor;
-			const newPR = (0.06 * newA) / (1 + 0.06 * Math.abs(newA));
-			return hp / (1 - newPR) - (sm.ehp_phys || 0);
+			const hp     = (sm.hp_max || 0) + b.str * 22 + b.flatHp;
+			const newA   = (sm.armor || 0) + b.agi / 6 + b.armor + b.armorAura;
+			const newPR  = (0.06 * newA) / (1 + 0.06 * Math.abs(newA));
+			const shield = (sm.shield_phys || 0) + b.shieldPhys;
+			return (hp + shield) / (1 - newPR) - (sm.ehp_phys || 0);
 		}
 		case 'ehp_magic': {
-			const hp       = (sm.hp_max || 0) + b.str * 22 + b.flatHp;
-			const mdt      = 1 - (sm.magic_resist || 0);
-			const newMdt   = mdt * (1 - b.magicResist);
-			return newMdt > 0 ? hp / newMdt - (sm.ehp_magic || 0) : 0;
+			const hp     = (sm.hp_max || 0) + b.str * 22 + b.flatHp;
+			const mdt    = 1 - (sm.magic_resist || 0);
+			const newMdt = mdt * (1 - b.magicResist) * (1 - b.magicResistAura);
+			const shield = (sm.shield_magic || 0) + b.shieldMagic;
+			return newMdt > 0 ? (hp + shield) / newMdt - (sm.ehp_magic || 0) : 0;
 		}
 		default: return 0;
 	}
 }
 
 import DillermSlider from "@dillerm/webutils/src/components/controls/DillermSlider.vue";
+import { parseItemSpecial } from "../utils/calculationEngine.js";
 
 export default {
 	components: { DillermSlider },
@@ -341,7 +323,7 @@ export default {
 				name:     row.name,
 				icon:     row.icon,
 				cost:     row.cost || 0,
-				bonusObj: parseAbilitySpecial(row.ability_special),
+				bonusObj: parseItemSpecial(row.ability_special, row.name),
 			}));
 		}
 
