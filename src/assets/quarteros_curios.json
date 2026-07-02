@@ -1,0 +1,4624 @@
+{
+  "seasons": [
+    {
+      "id": "fall_2025",
+      "label": "Fall 2025",
+      "sets": [
+        {
+          "id": "set01",
+          "label": "Witch Doctor — Papa Wanga",
+          "set_image": "/panorama/images/econ/sets/v2/papa_wanga_small_png.png",
+          "hero_icon": "/panorama/images/heroes/npc_dota_hero_witch_doctor_png.png",
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Papa Wanga's Poppet"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, a hero! Welcome to Quartero's Curios!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Come come, step right in, don't just stand there at the side of the road!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Step into my emporium! Over on this other side of the road!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "My name is Quartero! I am the proprietor of this establishment."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Or at least the small patch of roadside I've appropriated for that purpose."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, let me roll out some blankets so you can get a better look at my priceless treasures."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Can I offer you anything? I have a tin of sardines I was eating, would you like one?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No? Alright. Let's get down to business!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I shouldn't even do this, but what the hell."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You see this little fellow? Yours. Free of charge. Just for being my first customer of the day."
+            },
+            {
+              "type": "ITEM",
+              "text": "Papa Wanga's Mask"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "May I be blunt? You look like a vagrant, dear."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "A heroic one, of course, in the wandering sense, but also, let's be clear, the homeless one."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Luckily, that's where yours truly comes in. Here, try this voodoo mask on."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Purely decorative. As long as you don't say any voodoo words over it. Then it WILL shrink your head."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "There. Now don't move. Let me look at you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh, yes. Yes yes yes. That... looks... stunning!"
+            },
+            {
+              "type": "ITEM",
+              "text": "Papa Wanga's Belt"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'm sure you've guessed by now: I don't sell pantaloons to farmers here."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, I provide the priceless to the truly exceptional."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Kings, conquerors, demigods... heroes like yourself."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, try this enormous bone phallus on."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hm, yes. Yes, yes — on you it works. On you it works."
+            },
+            {
+              "type": "ITEM",
+              "text": "Papa Wanga's Backplate"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Now, I suspect you're wondering: given my frankly devilish appearance..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The fact that these items are clearly priceless..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The fact that I haven't even MENTIONED a price yet..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And the fact that we're standing at a crossroads at midnight..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "What, in a nutshell, is the CATCH?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Let me snug up that belt for you. There."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes. Yes, that backplate was made for you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "That's a genuine person's skull wedged into it, by the way. I can't say whose, but someone VERY famous."
+            },
+            {
+              "type": "ITEM",
+              "text": "Papa Wanga's Basket"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "What's the catch, my dear hero? The catch is... that there IS no catch."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So: one catch total."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Everything I'm offering you here tonight — including this handsome voodoo coconut basket — is free."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Not a string attached. I couldn't tie a single thread to this transaction if I tried."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Even a modest ten percent gratuity would trigger a sharp pain deep inside my bones. What do you call it... the marrow, I think?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes, the marrow part would turn into boiling worms or something. It's happened several times, and let me assure you, it stings like you would not :hero_faceless_void::hero_undying::hero_crystal_maiden::hero_kunkka:ing believe."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And therein lies my tragic yet riveting backstory."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Don't worry, here it comes."
+            },
+            {
+              "type": "ITEM",
+              "text": "Papa Wanga's Staff"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, let's add the staff. I'm going to step back, and turn around, and then pretend I'm seeing you for the first time with everything on. Okay, here we go."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh, that looks fantastic on you! I insist you abscond with the entire set."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And as mentioned, put your money away. I will not —  CAN not — take a single solitary cent."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "As for that tale of woe I promised you, it's a doozy. A painful and frankly embarrassing memory for yours truly."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "In fact, I wouldn't burden you with it if I didn't technically HAVE—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, we'll get to that."
+            }
+          ]
+        },
+        {
+          "id": "set02",
+          "label": "Vengeful Spirit — Maledictions of Morrigan",
+          "set_image": "/panorama/images/econ/sets/v2/maledictions_of_morrigan_small_png.png",
+          "hero_icon": "/panorama/images/heroes/npc_dota_hero_vengefulspirit_png.png",
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Morrigan's Fury"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Could I trouble you to crouch a moment, darling? Let me get this Morrigan's Fury on you, and..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "There. Snug as a button."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Where was I? Ah, my tragic backstory, yes. Brace yourself for pathos, this one's going to pluck at the heart strings a bit."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Once upon a time, in a fantastical world, much unlike the grounded world of realism we live in now, I was a member of a famous adventuring party!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "We were fearless! Brazen! Reckless! Foolhardy! And if you sense these superlatives becoming less positive and beginning to nudge toward an inevitable and spectacular downfall..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Don't worry, we're getting there."
+            },
+            {
+              "type": "ITEM",
+              "text": "Vengeful Spirit  - Titania's Fury Legs"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, I wasn't the tank holding the front line, or the marksman providing ranged support from behind."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Could I get you to lift a leg, dear? Feel free to steady yourself on my back, I'm sturdy as an oak. There, that's the Misery on."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, I was something even MORE important! And even FURTHER back! The QUARTERMASTER."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The logistical mastermind maintaining the party's battle readiness with my invaluable skills in procurement, repairs, and strategic rationing. Leading the charge, from behind."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Castles, caves, dungeons! There was no quest that was too much for us! No obstacle that–"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, I can see your eyes starting to wander, so let's cut to the chase: obviously there WAS a quest that was too much for us, so let's spill the tea and get to it."
+            },
+            {
+              "type": "ITEM",
+              "text": "Vengeful Spirit - Titania's Fury Head"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Let's get this Morrigan's Measure on you. These are real Ostrivian swamp ostrich feathers, by the way. Or maybe it's Pellivian skybeaver. It's extinct, anyway."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Wandering back to my tragic tale. From the very start, nothing went right."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Behind every door, skeletons. Behind every secret passage, skeletons. Inside every treasure chest, skeletons."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "There should obviously be SOME skeletons, it was a dungeon, after all, but the skeleton-to-square-foot ratio here was absurd."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Then half of the party melted into the unknowable shadows."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And of course there were skeletons there too, so we heard a lot of screaming from the unknowable shadows."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "More skeletons arrived, obviously. Everything went absolutely :hero_faceless_void::hero_abyssal_underlord::hero_chaos_knight::hero_kez:ing pear-shaped."
+            },
+            {
+              "type": "ITEM",
+              "text": "Vengeful Spirit - Titania's Fury Weapon"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hold on, I know there's a weapon that comes with this, where did I — there it is. Morrigan's Malice!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Watch out, it's sharp. Also glowing. I wouldn't let the glowy parts touch your skin if I were you, pick it up by the hilt. There you go."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Now, here's the wrinkle: Could I have brought them all back to full health with my bag of priceless tonics? Or given them a first-rate weapon, like that glowy number you're swinging around right now?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Technically, yes. And more technically, they asked."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Can I be blunt? They weren't going to make it. There's a dungeon crawl, and then there's just crawling through a dungeon."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So, to spare you the saga, yours truly wisely decided..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "...to hoard the supplies."
+            }
+          ]
+        },
+        {
+          "id": "set03",
+          "label": "Legion Commander — Drakon's Deed",
+          "set_image": "/panorama/images/econ/sets/v2/drakons_deed_small_png.png",
+          "hero_icon": "/panorama/images/heroes/npc_dota_hero_legion_commander_png.png",
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Drakon's Deed Gauntlets"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The Drakon's Deed. You haven't taken your eyes off it since you got here."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes, it's free and yes, you can have it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But the Drakon's Deed is the jewel of my collection, so I hope you appreciate it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'd never part with something this valuable if I wasn't being forced to at curse-point."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'm spoiling my own tragic backstory. Let me hurry this along before I give away any more twists."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "By the end, it was just me. And the boss monster of the dungeon. One of those vast incomprehensible eldritch horror things, you know the type."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Mouths where eyes should be and vice versa. I certainly wasn't going to fight the :hero_faceless_void::hero_ursa::hero_clinkz::hero_kunkka:ing thing."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I was just heading for the door when... it stopped me."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And GLOWERED at me with a thousand glowering eyeballs."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Deed Helm"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "If you just lean forward slightly I can get this headpiece on you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Woof, this feels like it weighs eighty pounds, that can't be good for the spine."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway: boss monster, stopped me, glowering, eyeballs. I don't mind telling you, for an ancient eldritchian horror, he had some VERY strong words for yours truly about my approach to teamwork."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He seemed to think I was some kind of greedy coward."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He had me all wrong, of course, but he also had me wrapped up in his filthy tentacles at the bottom of his cave, so what was I supposed to do? At any rate, he CURSED me."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, he insisted it wasn't a curse. More of a moral rebuke."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Deed Tassets"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "To cut a tragic tale short: Because of what he deemed my appalling greed and cowardice, I would never be able to keep anything valuable again."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I am sentenced — doomed, really — to spend my life handing over all my best stuff — and I'm talking the really good shit here — to heroes like yourself."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Speaking of which, those knee plates are solid gold, so don't actually take a knee in them or you'll scuff the finish."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hm. Yes, I hear the squeaking too. I'd just walk around in them a bit, you'll need to work the leather in."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Deed Pauldrons"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "These pauldrons are solid bronze, by the way. If I had to guess, they couldn't weigh an ounce less than two hundred pounds."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Not a problem for a strapping hero like yourself, of course."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But if you DO start to feel a crippling pain in the shoulders, I think it's a safe guess it's the pauldrons. Bring them back in, we can hollow some of that bronze out."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Where was I? Right. Cursed forevermore by a protoplasmic horror to give away all my stuff."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And the worst part? Just so there's no mistaking any of this gift-giving for actual generosity..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I am ALSO condemned to explain the awkward origin of my predicament to anyone who asks."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Plus anyone who doesn't ask."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "WHICH I HAVE JUST DONE! In case any eldritch horrors are listening in like last time..."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Deed Banners"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So there you have it. Quartero the Former Quartermaster's tragic past."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Condemned to give away priceless treasures to anyone who looks remotely heroic."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And also doomed to share my frankly humiliating backstory, whether you ask for it or not."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Heartbreaking stuff. For me, obviously."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You're making out like a bandit here. If a watchman spotted any of this he'd accuse you of highway robbery."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Speaking of which, how does that backpiece fit? That's real bronze, like the shoulders. Five hundred pounds, I'd bet. But you'll barely even feel the weight once you get moving in it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Though I'd move around mostly in the shade if I were you, that bronze is going to get hot in the sun."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Deed Lance"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Now we come to the piece de resistance: the Drakon's Deed Lance. What war ensemble would be complete without it?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "WHSSH! FWSHH! PWSSH! Look at this thing cut the air!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "A terrifying blur of flesh-rending points! Capable of delivering the kind of elevated slaughter one would almost feel honored to be on the receiving end of."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, my dear. You've cleaned me out. The last of my gear, and... yes, there it is. My last sardine."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And so, with my tale told and treasures distributed, we've reached the natural end of this unburdening."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I leave you now to your fate... FAREWELL!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And the caravan of concealment is on the :hero_faceless_void::hero_ursa::hero_clinkz::hero_kunkka:ing fritz again, so I'll be packing up and leaving like a common visible idiot."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah! But might I return for another unburdening, before yon gibbous moon is full... two... no, three... in a few months? Might I be returning in a few months with more stuff?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And WELL I MIGHT! FAREWELL!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, :hero_faceless_void::hero_ursa::hero_clinkz::hero_kunkka:. Let yourself out."
+            }
+          ]
+        },
+        {
+          "id": "set04",
+          "label": "Legion Commander — Drakon's Ire",
+          "set_image": "/panorama/images/econ/sets/v2/drakons_ire_small_png.png",
+          "hero_icon": "/panorama/images/heroes/npc_dota_hero_legion_commander_png.png",
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Drakon's Ire Gauntlets"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh. You're back. I already rolled up all the store blankets, I wasn't expecting you... at this hour."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "What time IS it? Am I just imagining it's three in the..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, no it is. It's three in the morning."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well! Hello. What can I help you with?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'll be honest, I figured we were done here. I gave you all my priceless items. I told you my curse-mandated tragic backstory."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, I see. You want to see those gauntlets over there. The Drakon's Ire. Of course you do, they're flawless."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "They're also in a glass case at the bottom of this pile of trunks I just packed."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, let me just unpack EVERYTHING then. Unless you wanted to come back — no."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Of course not. Right."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Ire Helm"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So just the gauntlets then? Good. The Drakon's Ire helm is the best part of the set, I'd rather not—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Did I just say set? Damn."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Alright, yes, these are part of a set. The best set I own, in fact."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It's just that — well, it's very similar to the item set I already gave you. I'd actually been hoping to find a DIFFERENT hero to give—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, I see your point. How about you give me back the other one and—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Right. Why not give EVERYTHING to you... and NOTHING to anyone else? That makes sense too."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I suppose."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Fine, let me take down this box and... no, not there. Maybe this heavy chest... nff!  No."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Tell you what, why don't I just unpack everything."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Ire Tassets"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You know, I could just refuse. What's the worst that could happen?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "In fact, I WILL refuse. No."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I WON'T give you this AGGHHHHHH MY BONE MARROW"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Fine fine fine. Here, take the priceless tassets, they're yours."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I hope you appreciate this little loophole you've found, double-dipper."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Ire Pauldrons"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Let me tell you… you REMIND me of someone."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "A good person? No, hero. A real piece of shit. Someone impetuous."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Someone with no sense of decency. Someone willing to wake up a different someone at three in the gods-damn morning to shake him down for a stupid set of pauldrons."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I take that back. These pauldrons are exquisite. I found them, by the way. Here."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, you remind me of... of..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, if I'm being honest, you remind me of me."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Ire Banners"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You remind me of me — back before the curse, in my pre-curse days."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "My pre-quartermaster days, even. When I was a young cutpurse on the mean streets of Cladd. Oh, those were some mean streets, hero."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "For an upscale port town, I mean. Back then, the gelateria closed at 5pm and things could turn nasty."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I ran with the Lantern Alley Boys. And I don't mind telling you, we were fast."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Candlesticks, necklaces, snuffboxes — if it wasn't nailed down, we stole it. If it WAS nailed down, we brought Hammer Pete."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah! Here we go. The Drakon's Ire Banners. They were just under all those heavy trunks I'd packed. It's always in the last place you'd... ever want to look."
+            },
+            {
+              "type": "ITEM",
+              "text": "Drakon's Ire Lance"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I only ever got caught once. I was robbing a house so quickly I stepped on an over-varnished floor and cracked my head off a decorative bell."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Woke the whole house up. The Lord even put out a bounty on me. And do you know what I did?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I broke BACK into that manor at three in the morning, and stole the bounty too!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Kind of like what you're doing now, taking and taking and taking. It feels different on this side of the counter, but I've got to tell you, hero: I respect your moxie."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Take it. Take everything. Take the Drakon's Ire Lance. No, I insist."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Until we meet again... my dear hero."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "winter_2025",
+      "label": "Winter 2025",
+      "sets": [
+        {
+          "id": "set01",
+          "label": "Shadow Shaman — The Nether Beetle",
+          "set_image": "/panorama/images/econ/sets/v2/nether_beetle_small_png.png",
+          "hero_icon": "/panorama/images/heroes/npc_dota_hero_shadow_shaman_png.png",
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Nether Grubs"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hero! You're BACK! And you look TERRIBLE! (Laughing) Ah, perfect!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Look at those rags you're wearing! Come, come, get IN here!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'll bet you're looking for a fresh batch of old Quartero's one-of-a-kind item sets. Well, you're... in... luck!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Same terms as last time, you remember my tragic backstory, of course."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The... one I spent an entire day telling you about? Yes? ...No."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, I suppose it was a LOT to absorb."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "In short: I'm cursed to give away item sets, for free, or I'll die."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Painfully."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, I see you've got your eye on my lunch. Well, I don't have to eat it if you want it as a ward."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You're missing out, though. I mean, I'm a goat, I'll eat anything, but still."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "(Chewing) There's a... sweet shell, some crunchy bits, a... metallic note, I think? Definitely ham. There's a lot going on here."
+            },
+            {
+              "type": "ITEM",
+              "text": "Nether Horn"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, why don't we try this Nether Horn on."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes yes YES. Pretty slick, am I right?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I managed to snag this little showstopper in a small village up in the mountains. Ruled by a SPIDER, if you can believe it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Not a tiny spider, either... No, that would be ridiculous."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, a big spider, with a king's crown on its head."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And as I'm sure you can guess, there's an adventuresome tale in how I got it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I was sworn to secrecy, of course."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But, if I've learned anything about you, you're not even listening right now, so here we go."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Once upon a time..."
+            },
+            {
+              "type": "ITEM",
+              "text": "Nether Shell"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Once upon a time... I gave you this free cape: the Nether Shell! Once owned... by the Spider King!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Did this spider defy the odds and become a king? What an inspirational story THAT would be."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But no. This story is about a lazy king who BECAME a spider."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "How? Well, some of the villagers said the king had been BITTEN by a spider."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Other villagers said he'd been bitten by a witch, and THAT turned him into a spider, and I asked, so was it a SPIDER-witch, then?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And they said no, just a regular witch, and I said well that doesn't make much sense, and they said that's funny, we didn't know you were such a :hero_faceless_void::hero_undying::hero_crystal_maiden::hero_kunkka:ing witch expert, and I was like, oh shit, I'm going to have to fight all these people."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And then the leader said when a witch turns you into a frog does that make her a FROG-witch? And honestly, that helped me get there. You could see they'd put a... lot of thought into this."
+            },
+            {
+              "type": "ITEM",
+              "text": "Nether Bracers"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah. The Nether Bracers! Look at the craftsmanship on those spikes. That's real beetle jaw. You can tell by the way it catches the light. (Whistles) Look at that shimmer."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, while I was running from the villagers, guess who I bumped into? The king!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And I figured, why not just ask him how he'd become a spider, and get this: he hadn't been BITTEN by a witch, just CURSED."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So. Mystery solved, but also who cares, because the POINT is it turned out he had an ARMOR HOARD."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "This king loved armor. A LOT. He'd spent every coin in the realm on ruinously expensive item sets. And now, thanks to the witch's curse, he couldn't wear ANY of them."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And your old pal Quartero was thinking, how tragic."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But also, don't... mind... if I do."
+            },
+            {
+              "type": "ITEM",
+              "text": "Nether Wand 1"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, give this Nether Wand a swing. Yes. Feel that balance? That's real cross-grained carapace steel."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, he said I could have the whole set, and he'd even throw in the wands, and all I had to do was go on a quest to the Fountain of Babrasba and find him a magic elixir. Sounded easy enough..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "...and then he got out the map."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The fountain was in some tomb, in the middle of a cannibal jungle, on some godforsaken hellhole called Snake Island, and... no. Absolutely not."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Look at these hands, hero. Look at these soft, soft hands. I don't do jungle tombs."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No hero, I had a better plan. The witch who cursed him lived five minutes from the castle. Have you ever seen a witch?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "They're two hundred years old and they're made of balsa wood. I figured I'd just go find this witch..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And punch her so hard she'd die."
+            },
+            {
+              "type": "ITEM",
+              "text": "Nether Wand 2"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And there's the other Nether Wand. I'm glad you're taking both, I'd hate to break up the set."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Not easy to smuggle these out of the Burrowed Kingdoms anymore, either. Not since— Well, that's another story."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Speaking of stories, where was I? Ah. Find the witch, punch her, lift the curse."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "That was the plan, anyway. As it happened, she wouldn't let me in her cottage."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So. What I did was..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hmm. Let me be careful here. I... went... BACK to the village, and bought several rounds of ale at the tavern for the many witnesses present."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes. And WHILE I was there... you won't believe this... somebody burned her house down."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Lifted the curse instantly."
+            }
+          ]
+        },
+        {
+          "id": "set02",
+          "label": "Shadow Fiend — The Molten Monarch",
+          "set_image": "/panorama/images/econ/sets/v2/molten_monarch_small_png.png",
+          "hero_icon": "/panorama/images/heroes/npc_dota_hero_nevermore_png.png",
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Molten Maw"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, the Molten Maw. Here, lean forward, let's get this on you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Nffh! That is HEAVY!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "How's it feel? Can you see me out of the eyeholes?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You look REALLY evil, by the way. I can't tell what face you're making under there, but from here you look terrifying."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Also, legally, I feel like I should be very very clear about that last part I told you about the witch's house burning down while I was somewhere else with countless witnesses present."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I don't think the witch is DEAD. (Chuckling) Nooo, hero. Are you kidding? That would be... murder."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, I think she lifted the curse, moved to a different town and changed her name."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "In fact that's almost certainly what happened. In fact that's what I told the constables."
+            },
+            {
+              "type": "ITEM",
+              "text": "Molten Maulers"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, I went back to the king and he was a human again! Also dead."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I guess what happened was, he must've run straight to his armory and started trying on all his precious armor, and I guess the witch came BACK to life briefly before dying again, because he suddenly turned back into a spider, then back into a human."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And if you suddenly go from a PERSON-shaped body into a SPIDER body, and then back into a PERSON body, while you're still inside steel armor... Well, I'll spare you the details."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He died instantly."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But if you WANT the details, it exploded all the vertebrae in his spine while his organs got pushed up into his throat cavity and he choked to death while his back exploded."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And, honestly, it took a surprisingly long time. A few minutes at least."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh. Also, earlier... Did I say the witch came BACK from the DEAD? (Nervous chuckle) What I obviously meant... was... you look fantastic in those Molten Maulers."
+            },
+            {
+              "type": "ITEM",
+              "text": "Molten Mantle"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "At any rate, I can report that, unlike the witch, happily retired somewhere, I imagine, the king was dead."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I was able to pry most of him out of this Molten Mantle here, let's get it on you, hm?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Nffh! There! Snug as a button."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "There might still be a few chunks slopping around in there, you can keep those if you find any, the villagers and I found enough of him to bury."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The point is, technically the king was 100% curse-free by the end, and a deal's a deal."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So yours truly helped himself, as agreed, to any one item set of my choosing."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Naturally I chose the Nether Beetle set. But then I also liked the look of the Molten Monarch set, so I figured, why not take BOTH for now so you could try them on, and I'd return whichever one you didn't like?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And THAT gave me another idea, which is why not steal EVERYTHING, and I was just smashing a third set out of its glass case when some guards showed up."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Now, I'll bet you're wondering. I said at the beginning that this story had a HAPPY ending. Yet here we are at the end of the tale and the entire cast is dead or missing."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah! But YOU have two priceless item sets. And you lived handsomely ever after in them... the end."
+            }
+          ]
+        },
+        {
+          "id": "set03",
+          "label": "Axe — The Ember Enforcer",
+          "set_image": "/panorama/images/econ/sets/v2/ember_enforcer_small_png.png",
+          "hero_icon": "/panorama/images/heroes/npc_dota_hero_axe_png.png",
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Ember Mane"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, the Ember Enforcer! Go ahead, try it on!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I know it looks like it's on fire. That is because it is on fire."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But most of the heat radiates outward, so once you've got it on that should be the worst of the burns."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Funny story behind this item set. I actually obtained it while trying to get my hands on a different set at Ultimyr University."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'd tried sneaking my way into the university disguised as a professor. \\\"Welcome to class! You there! Read that book! Good!\\\" and so on."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I hadn't counted on a Gem of True Sight, which was judging every heart in the room for so much as a flicker of ill intent."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, my heart must have been flickering like the dickens with shitty intentions, because I found myself in the university dungeon before I could snatch a single sabaton."
+            },
+            {
+              "type": "ITEM",
+              "text": "Ember Armor"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Let's get this armor on you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Nffh! That is heavy."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You must be roasting like a duck in there.  Well, If it gets too hot just wave."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, prison. I didn't care for it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I didn't like the cell. I didn't like the rats, or the bed, or the toilet next to the bed."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But mostly I didn't like Dodrick. He was the jailer."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I mean, I get it, it's prison, Quartero's not made of marshmallow jam. But, I mean... a simple BLANKET to keep me warm at night."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I had one, yes, but two would have been even snugglier, and there was a whole pile of them in the linen closet."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Or the food, hero. A bowl of gruel is literally water and gristle. It would have cost the prison essentially nothing to adopt a bottomless bowl policy."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It was like Dodrick was going out of his way to make prison as unpleasant as possible."
+            },
+            {
+              "type": "ITEM",
+              "text": "Ember Sigil"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Look at the glowing sigil on this backpiece!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You know, it's odd, when I look directly at the sigil... It's like it fills my heart with..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh, what's the word I'm looking for?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah! Despair. That's it. Looking at it fills me with despair."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Tell you what, I'm going to stop."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, there I was, rotting away in the dungeon, lying on my filthy mattress next to my filthy toilet, when there, on the filthy wall, I spotted it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "A summoning spell! I could summon a GENIE!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I could wish that Dodrick would fall into his gruel cauldron and drown!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And that his death spasms knocked over the pile of spare blankets and they all rolled into my cell!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Also I could have just wished to not be in PRISON, obviously, but I was still VERY cross with Dodrick at the time and, well, not thinking straight."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I fudged some of the syllables here and there, but basically got the spell right, and presto!"
+            },
+            {
+              "type": "ITEM",
+              "text": "Ember Warkilt"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Let me cinch the belt for you. There! Give the warkilt a twirl."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes! Very nice twirling."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Next time wear something under the warkilt, that was... a LOT for your old pal Quartero."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Where was I in my gripping prison narrative? Right! The breakout! I'd summoned a wish-granting genie!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Genie! I commanded, \\\"Heed my first wish!\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, it turns out I didn't say every single little tiny syllable in the spell perfect."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Because I hadn't summoned a wish-granting genie after all, but a much rarer people-murdering genie."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I asked if he'd let me make a wish anyway as long as it didn't involve him not murdering someone, and he said no."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "In fact, ALL he wanted to know was which insolent fool had summoned him, because he said he was going to..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And I quote, \\\"pound out their skeleton and wear their skin like a jacket.\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So I said, \\\"It was him.\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And I pointed at Dodrick."
+            },
+            {
+              "type": "ITEM",
+              "text": "Magma Fang"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I saved the best for last: the Magma Fang!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So the best part about this weapon... other than it's a glowing axe the size of a horse, is... look closely."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It's not even forged! It's just a massive shard of lava rock!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And let me tell you, it cuts through prison bars like a hot knife through a surprised jailer."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The murder genie melted the bars, grabbed Dodrick by the ankles, and smashed him against a wall until his skeleton came out."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Now, technically my cell didn't have bars blocking the way out anymore. But it DID have a giant murder-genie in ember armor."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And he'd just run out of people to murder, so I was hoping... he wouldn't... notice..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "...He noticed me."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So. I had a murder-genie stomping towards me holding that Magma Fang, wearing poor stupid Dodrick as a jacket. My back was against the wall."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "What could I do? I said the summoning spell again."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Now I had TWO murder-genies in the room with me."
+            }
+          ]
+        },
+        {
+          "id": "set04",
+          "label": "Axe — The Gilded Tyrant",
+          "set_image": "/panorama/images/econ/sets/v2/gilded_tyrant_small_png.png",
+          "hero_icon": "/panorama/images/heroes/npc_dota_hero_axe_png.png",
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Golden Mane"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, the Gilded Tyrant! Volcanically gilded with mercury, I believe."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Unbelievably toxic, of course, but it's not like you're going to put it in your mouth or anything..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Or on your skin or near your face... So! There I was."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'd said the summoning spell AGAIN, and what must have been the first murder-genie's SUPERVISOR showed up, because he was wearing the same armor as the FIRST guy... except it looked a lot more expensive."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He was also just as angry as the first guy. \\\"What insolent fool summoned me, I will pound out their skeleton,\\\" all the same stuff."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And I figured, well, it worked once, so I point at the first genie and I say: \\\"HE summoned you. Kill him.\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Did it work?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "(Laughing)"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It did not."
+            },
+            {
+              "type": "ITEM",
+              "text": "Golden Armor"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Your eyes aren't deceiving you. Those glowing spikes on the shoulders? Oh yes. That's genuine Six-Hell crystallized brimstone."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Each spike lovingly hammered by hand."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "...each hand lovingly attached to someone thrown screaming into a volcano, after every single spike."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Put your ear close and listen. You hear that?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "That's right. Screams. Of pride, I imagine."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "At any rate, my clever plan was to use deception to pit the genies against each other."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "A real comedy of errors, like in those classic plays where a handsome rogue tricks two genies into killing each other, you know the ones."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Of course, in THOSE plays it only works because nobody ever stops to compare notes and clear up the misunderstanding, which unfortunately these genies did almost instantly."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Bazroth, the supervisor, and Griknok, his subordinate, hashed it all out before I was halfway to the door."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And if there's one thing genies hate more than humans summoning them, it's apparently LYING about it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Because they started telling me they were going to do things to my skeleton that didn't seem possible if done in sequence. They were simply going to have to pick one."
+            },
+            {
+              "type": "ITEM",
+              "text": "Golden Sigil"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah. Excellent eye, hero. I see you've zeroed in on the backpiece. That's the obsidian sigil of the Sixth Hell."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'm not sure which one, though. Hold on, I've got a sigil handbook around here somewhere."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Let's see... here... ah. \\\"Nal Vorrth Oog-MUR-toh.\\\" Roughly translated, \\\"Throw all concerns into the wind.\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well that's nice. Hold on, I didn't see the umlaut over the O. Roughly translated, \\\"Throw all humans into the volcano.\\\" Hm."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Let me wrap up that gripping prison tale. Where were we? Summoning spell, Griknok the murder-genie, dead jailer, SECOND summoning spell, Bazroth the supervisor, both of them about to kill me, me and my skin out of tricks."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "All set? Here we go!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So there I was: out of tricks. Griknok stomped over to me and grabbed me by the throat. \\\"I'm going to enjoy this,\\\" he said."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And hero? I believed him. He looked like he was about to have the time of his life."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But then Bazroth said, \\\"Oh no, you don't. You know the rules.\\\" And Griknok grumbled and stepped aside, and then BAZROTH puts his hands around my throat."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And I thought, \\\"the rules\\\"?  THIS might be useful."
+            },
+            {
+              "type": "ITEM",
+              "text": "Golden Warkilt"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ahh. I see your gaze has fallen on the Golden Warkilt of Ugmörto."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Your eyes have fine taste, hero. Smelted in magma drawn from the Six-Hell caldera, and cooled in the blood of the poor souls who made the shoulder spikes."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "See that belt sigil? That's not ornamentation, that's a containment rune."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Nothing evil, it just... well, you know. Keeps everything contained down there."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So. Why COULDN'T Griknok kill me?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "A very good question, and I needed a way to subtly insert it into the conversation, so I asked: \\\"Hey, why can't Griknok kill me?\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, according to Bazroth, every genie is allowed to kill whoever summoned them. That's the rule."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And because I'd told Griknok that stupid smelly Dodrick had summoned him, Griknok got to kill stupid smelly Dodrick."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'd summoned Bazroth, so Bazroth got to kill me. I guess that's why it was the first thing both of them asked."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So I said, actually: I lied."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I summoned Griknok. I'd done ALL the summoning so far. They'd killed stupid smelly Dodrick for nothing."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And the genies didn't say ANYTHING after that, for a long long time."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And then Griknok said \\\"Shit.\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And then Bazroth, after a while, he also said \\\"Shit.\\\""
+            },
+            {
+              "type": "ITEM",
+              "text": "Gilded Fang"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Presenting the Gilded Fang!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Forged in the black fires of the Six-Hell Caldera, where only the heaviest metals survive."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hauled from the very throat of the vent, its edge cast and hardened in a cataclysm of molten stone and threaded with vein-gold from the mantle of the Sixth Hell."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And that's a lot of technical mumbo-jumbo, but the gist is this axe is cool as hell and it's yours for free."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'll also throw in the thrilling conclusion to my prison tale. Both the genies seemed to think they were in a LOT of trouble, and they were begging me to sign some contract they'd written up on Dodrick's skin stating that Dodrick had summoned both of them."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I gave the contract a once-over. It didn't look like there were any clauses hidden away in the fine print, so I added some."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "After all, I'd come to Ultimyr looking for some gear to steal, and then these two idiots show up wearing Six-Hell caldera armor. The shoulder guards alone were worth more than the entire university."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So I told them I'd sign on one condition: that both of them immediately get nude."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Griknok looked confused and a little scared, and wanted to know if he could ask why before he said yes. And I said calm down, I just want your armor, now take your clothes off."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And hero? Take their clothes off they did. Stripped right down. Griknok was a little shyer about it than Bazroth. For good reason as it turned out."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "After which I signed the contract, sent them on their way back to Six-Hell, and here I am, giving the spoils... to you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I hope the harrowing story of their acquisition increases their value in your eyes, knowing as you now do the trials I undertook to get them t— No, I didn't think so. Weren't even listening, were you?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, it's fine, it's late. Take it. I will see you in a few months."
+            }
+          ]
+        },
+        {
+          "id": "setantique",
+          "label": "Antique Intro",
+          "set_image": null,
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Antique Intro"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Last time I came around I made sure to give everyone some chances to win free stuff, and the response was unanimous! Every single person was mad."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So! This time Quartero's going to make sure your first antique is an extra super-duper special one."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Then it's back to the usual stuff. But! You'll get more chances to win it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Last but not least! Now you'll get to pick your treasure from an assortment of options."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Happy? Everybody... finally happy with how I'm giving away all my stuff? Super."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anybody with further suggestions can mail them directly to Quartero at One Two Three Kiss My Purple Ass Lane."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spring_2026",
+      "label": "Spring 2026",
+      "sets": [
+        {
+          "id": "set01",
+          "label": "The Blue Lotus",
+          "set_image": "/panorama/images/econ/sets/v2/the_blue_lotus_small_png.png",
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Lotus Calyx"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh. Hello."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Are you a friend of my brother's? Or are you breaking into his safehouse?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Or are you a friend of my brother's AND you're breaking into his safehouse?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I suppose it doesn't matter. That armor you're stealing is called the Lotus Calyx, by the way."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "And I'll admit, it looks like it was made for you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Knowing my brother, there's a good chance you're stealing it BACK from him."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "In any case, keep it. Have you SEEN my brother, by the way?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "He told me to meet him here, and his letter made it sound urgent."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Which means someone's trying to kill him again."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "SISTER! Quintessa, you're not—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh, hello Hero. That armor looks really terrific on you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Quintessa, you're not going to believe this, but someone is trying to kill me!"
+            },
+            {
+              "type": "ITEM",
+              "text": "Lotus Binding"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hero, will you please take this Lotus Binding? Ceremonial waistpiece, made from a living silk spun by the oracle-worms of Pran. I insist you have it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "It does look nice."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "That's exactly why I'm insisting."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Brother, why do you keep giving this man free armor?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Have I not told you about my curse?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Is this the one where your tongue falls out if you lie?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "What? No, I got that absolved by a ghost pirate captain AGES ago."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh, that's right."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "QUITE an adventuresome tale as well, I don't mind telling you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "In fact, why DON'T I tell you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "There I was, in a sinking rowboat off Smuggler's Reach—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Brother. Focus."
+            },
+            {
+              "type": "ITEM",
+              "text": "Lotus Crown"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "You were telling me about your curse, brother."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Right. The curse I'm saddled with these days is giving this hero here priceless item sets or my bone marrow turns into bugs."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "You're joking."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Boiling worms, I think. I'll be honest, I try not to let the curse get so far along that I get a close look."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Speaking of... the Lotus Crown. Ceremonial headpiece."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Also alive, I believe. Whispers to you if you wear it long enough."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Eventually burrows itself into your head."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Step back a moment and let me get a look at you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hmmm. Yes."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh, very much yes. Hero, do not give that back."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Maybe don't wear it full time, though. The burrowing."
+            },
+            {
+              "type": "ITEM",
+              "text": "Lotus Veil"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Quartero, why is someone trying to kill you? Did you STEAL from him?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Wait, did you say \\\"steal\\\"? Oh. Yes. A LOT."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Every item set in this safehouse, really."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Speaking of, Hero, that piece you can't take your eyes off of is the Lotus Veil."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, let me help you get it on. NFF."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh, that looks marvellous."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Brother. WHO is trying to kill you?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You promise you won't get mad when I tell you?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I promise."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Blake Sextus."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Master thief Blake Sextus? Engine of revenge Blake Sextus? Last thing you see in a dark room Blake Sextus?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "(Nervous Laughter)"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Hero, does that item set come with a weapon? If so, you can save some time and kill us both with it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It doesn't, no. It does come with a swarm of bugs, though, I suppose they could kill us in a pinch."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Where did I put... that swarm... of... bugs... Ah!"
+            },
+            {
+              "type": "ITEM",
+              "text": "Lotus Swarm"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The Lotus Swarm!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "One swarm of killer bugs, as promised."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "So THAT'S where you've been these last few months. Finding a steady supply of priceless item sets to give away to this hero here."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "This ungrateful hero, yes. Not so much as a thank you, I hope you've noticed."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I did notice that. Just takes and takes without a word of gratitude, it seems like."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You're not alone in noticing."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, I put out feelers around White Spire that I was a master criminal."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "But you aren't a master criminal."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I am not, but I'm an EXCELLENT liar."
+            },
+            {
+              "type": "ITEM",
+              "text": "Lotus Spirits"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Sister, while I delve into my current predicament, would you mind handing Hero those Lotus Spirits over there? I can feel the curse coming on a touch."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Here you are, Hero."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Thank you. Where was I? Right. I'd put out feelers that I was a retired master criminal with a poor legless child."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Or possibly a kidneyless wife, I can't remember now who didn't have what, but one of them was VERY sick, and wouldn't you know it, I'd been pulled back into a life of super-crime for one last job."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Three days later, I came back to my room at the Black Barb Inn, and guess who was sitting in the dark, calmly smoking a cigarette?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I hope it was Blake Sextus, or this story is going to go on forever."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It WAS Blake Sextus, and this story is about to get riveting, I promise you."
+            }
+          ]
+        },
+        {
+          "id": "set02",
+          "label": "Stormfather",
+          "set_image": "/panorama/images/econ/sets/v2/stormfather_small_png.png",
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "The Boltspire"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, the Boltspire."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Hold on. You're giving them a crown that's already theirs?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No no, it wasn't Hero's until just now."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Really. Because it looks like it was MADE for them."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It does, doesn't it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "So: Blake Sextus had broken into your room and was smoking a calm cigarette."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He was. And the REASON he was —"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The reason he was in my room, I mean, not the reason he was smoking a cigarette calmly in the dark, I assume that was to look cool..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Did he?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I mean—Hero, sister, don't take up smoking! But yes."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, the reason he was in my room was to offer me a job."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "One last job?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Of course. And then he was out for good."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The mausoleum score. A mausoleum FULL of priceless armor sets, guarded by riddles."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He said he needed a riddlemaster. And I said he had his man."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "But you're not a riddlemaster."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He did not know that."
+            },
+            {
+              "type": "ITEM",
+              "text": "The Thunderhand"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Let's give you the Thunderhand Bracers to go with that Crown. I'd hate to break up the set."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Amazing. And you're sure you didn't STEAL this from Hero here? You're not just giving it BACK to him?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I swear to you, it just LOOKS like it was made for them. Where was I?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "The Mausoleum Score."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The Mausoleum Score! The next night, I met Blake Sextus at Grimwood Estate — the home of Galdron the dark sorcerer."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Galdron lived inside an enormous black obelisk in the center of the estate."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No doors or windows whatsoever — which was perfect, since he wouldn't be able to see us stealing all his shit out of his backyard."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Every dark sorcerer who’d ever owned Grimwood Estate had been buried out back, like a family dog. Interred with their best armor in the estate's mausoleum."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Barely guarded at all, according to Blake, because of the riddles."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Which he thought you could solve, for some reason."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Which I lied to him that I COULD solve. So for that reason."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, not only was the mausoleum unguarded, it was completely unlocked."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "The sorcerer forgot to lock it!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, sister, there WERE no locks."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh. Hm. That is OMINOUS."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, you should have been there. You could have warned us."
+            },
+            {
+              "type": "ITEM",
+              "text": "The Oathbinder"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Sister, could you hand Hero there the Oathbinder? I don't want to lose my place in the story."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "There you are."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So there we were, in the vestibule of the mausoleum. I was approaching the stairs down to the burial chamber when Blake stopped me and pointed at a portrait on the wall."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It was a painting of an evil old man. I assume he owned the place at some point."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And it was LOOKING AROUND."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Blake said to hand him my bottomless bag of holding. I said absolutely not, then I'd have no reason to be here, and he said, of course you would, you're the riddle master, and I said, oh right, my mastery of riddles."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And then he said, as long as you're going to prattle on like that, go do it in front of the painting, and he pushed me out in front of it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So the painting bellows \\\"WHO GOES THERE!\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And I said, \\\"Oh, hello,\\\" and tried not to look at Blake Sextus sidling up against the wall, which I failed at doing."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "\\\"What are you looking at?\\\" the painting asked. What I was looking at was a very annoyed Blake Sextus making a \\\"keep talking\\\" duck quack motion with his hand."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So I did! And while the portrait was waiting for its turn to talk, Blake crept up beside it and pushed it off its nail into my bottomless bag of holding."
+            },
+            {
+              "type": "ITEM",
+              "text": "The Skybearer"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Where was I? Oh! We'd gotten there! To the burial chamber with all the item sets I'm giving Hero here!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here's the Skybearer, by the way. Sister, can you grab an end? This thing is ENORMOUS."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Hero, don't move, we're going to have to drop it suddenly onto your shoulders..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "...THERE. Four hundred sudden pounds of weight on your shoulders."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Brace yourself."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes. That's exactly what we should have told him to do. Anyway, here's the story of how I stole it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Imagine, Sister -- and Hero, you can also imagine this -- a vast cathedral, with statues of creepy old wizards as far as the eye could see. And on every one, a priceless set of armor!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "My hand was already outstretched to pluck the first gauntlet off an arm, when Blake once again stopped me."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "We hid behind one of the statues. Blake reached out to the gauntlet I'd been about to grab, and NUDGED one of the fingers a single little inch."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Almost immediately, a shape emerged from a fountain in the middle of the chamber. It congealed into a body, and slopped toward us."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "A water golem?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Indeed. A real nasty-looking :hero_faceless_void::hero_undying::hero_crystal_maiden::hero_kunkka:er too. It walked right up to us... reached out..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "...And pushed the finger of the gauntlet back to its original position. With that, it returned to the fountain. I started breathing again."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Blake nodded, took a bag out of his backpack..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And filled the fountain with quick drying cement."
+            }
+          ]
+        },
+        {
+          "id": "set03",
+          "label": "The Red Berserker",
+          "set_image": "/panorama/images/econ/sets/v2/the_red_berserker_small_png.png",
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "The Berserker's Bloodplate"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The portrait, the water golem -- Blake must have been researching this place for months!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He'd only made one small mistake the entire night: His assumption of my baseline competence as a riddlemaster. As we are all about to find out."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Because, just as I made a grab for an item set, one of the statues came to life."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, he said \\\"Answer thee my riddles three, or here shalt thou forever be.\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And Blake said, \\\"Alright, riddlemaster, you're up.\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And I said, \\\"Fair enough... let's see here... 'thou shalt not'... or was it 'here shalt thou'?\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I asked the gatekeeper if he could repeat this tricky first riddle, and let me tell you, if a statue can look confused, this one did."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It clarified it hadn't actually gotten to the riddles yet. And I said, \\\"I see.\\\" And Blake looked worried."
+            },
+            {
+              "type": "ITEM",
+              "text": "The Berserker's Gore-Greaves"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Sister, could you be a lamb and hand Hero these Berserker's Gore-Greaves? I'm feeling a little crampy, I think it's the curse acting up again."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Here you go, Hero."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, that's better."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "What WAS the first riddle, anyway?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh, just some nonsense, I don't even think it had an answer. Let's see, what was it? Uhh..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "\\\"Far from land it haunts the sea, footless still, yet roaming free; wingless borne, yet it doth fly— Speak its name, and answer I.\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Ship. It's a ship."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ha! Funny that you say that, that's what Blake thought too. Kept screaming \\\"SHIP!\\\" at the top of his lungs."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Anyway, I went with \\\"footless ghost\\\"."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Then the gatekeeper said that was wrong, and that we were now both trapped in the mausoleum for eternity, and that's when all the dead ancestors started coming to life, and the doors started closing, and Blake REALLY started screaming at me."
+            },
+            {
+              "type": "ITEM",
+              "text": "Clot"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, Clot the shield. The last line of defense."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "What you'd absolutely want to hold in front of you if, to pick a random example, a mausoleum full of angry mummies was about to tear you apart like a wet head of lettuce."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "So how did you get away?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well. Have you ever heard the maxim, 'I don't need to outrun the bear, I just need to outrun you'?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Yes."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, I don't know if you've seen Blake Sextus's calf muscles, but the man is carved from oak, so there was no way I was outrunning him."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So. There was Blake, about to sprint quickly AWAY from the danger, and me, much slower, about to be killed by it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "So what did you do?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "What COULD I do? My hands were tied. I grabbed a heavy bronze ornamental scepter, I really wound up with it..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "...and I hit him in the leg."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "So what did HE do?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "I fell over with a broken leg."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero & Quintessa",
+              "text": "Oh shit, Blake Sextus!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "And then I watched you clop over to the closest item sets."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "And stuff them in your bottomless bag of holding."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Then you pointed at me and told the zombies \\\"Kill him!\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Then you whispered \\\"I'm so sorry.\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "And you rolled under the door just before it closed."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah good. So you remember my apology."
+            },
+            {
+              "type": "ITEM",
+              "text": "Cut"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Quartero Quickhoof..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Here I thought I'd have to torture you until you told me where the loot was."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "And I find you standing in a room with it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Giving it all to this idiot for some reason."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh, I don't think I'm doing that, exactly."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "You're doing it right now. You're giving that idiot a priceless weapon."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I think you're mistaken."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, take Blake Sextus's priceless weapon, don't tell him I gave this to you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Stop that!"
+            }
+          ]
+        },
+        {
+          "id": "set04",
+          "label": "Worldsend",
+          "set_image": null,
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Wyrmsbane"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Would you stop giving this idiot my treasure while I'm trying to kill you?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "You! Take my armor off!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, hero, take these bracers."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "You're still doing it!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I need to or I'll die!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "HELLO, what's this?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "What IS that?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I think it's a SCROLL."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It was folded up. It must have been tucked into the sleeve of those bracers."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "A scroll? That's mine too."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It's an OPENING SPELL to Galdron the sorcerer's vault."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "GIVE... THAT... TO ME."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Brother! Don't give it to him!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "What are you doing? Do not put that in your mouth!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "(Gobbling Sound)"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "I will strangle you and cut it out of you! Right in front of your sister and the hero!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "(Chewing Sounds)"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Are you chewing? DO NOT SWALLOW THAT, you son of a--"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "(Swallowing Sound)"
+            },
+            {
+              "type": "ITEM",
+              "text": "SurpentKoil"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "There. You can cut the pulpy wad out of me if you like."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "But if you want that spell of vault opening, I'm afraid you're going to have to ask."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "...can I... can I have the spell?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Look. You can keep all this crap from the mausoleum score."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Hand it to this idiot as much as you like."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I WILL hand this crap to this idiot. Here you go, idiot. And it's not crap by the way."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "No. It's NOT. In fact it's PRICELESS. That's SurpentKoil armor. It was worn by a GOD."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "And it's all yours. Everything in this room."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Plus I won't kill you for doublecrossing me. All I want is that open spell."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Sold. Do you have a pen? MASCUS... PARIAH..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Whoa whoa whoa."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Brother. Think for a moment."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "If he's willing to give us everything in this room for whatever's in Galdron's vault..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "...ah. Then what's in the VAULT must be even MORE priceless."
+            },
+            {
+              "type": "ITEM",
+              "text": "Wulfward"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Alright, new plan. We're going back to Galdron's palace."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "And we're breaking into his impenetrable Obelisk."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "\\\"Impenetrable\\\" means..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "I know what it means. We're breaking in anyway."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "And then we're breaking into his vault, with the spell that's in your head."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Alright, but I want sixty percent."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "You want seventy percent."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "We want eighty percent."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Look. You two. I want what's in the sorcerer's vault SLIGHTLY more than I want to kill you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "But don't push it."
+            },
+            {
+              "type": "ITEM",
+              "text": "Reckoner"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "We're gonna need a riddle master."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I'm a riddle master."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Nice try. Your brother already pulled that grift on me."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, she actually is! She went to riddle college! That's where I got the idea!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "It's true! Go on! Ask me any riddle!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "What is blue and purple and never shuts up."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Easy, that's us. My turn. What's pushy and insulting and should be a little nicer if it wants our help breaking into Galdron's vault?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Fine. You're my riddle master."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "You. Hero."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "This is the Reckoner. It's the most valuable piece we took from the mausoleum."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "It's what I came looking for. It's what I was gonna kill this idiot to take BACK."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "It's yours. You're gonna need it. You're the muscle on this score."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "And you. Idiot."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Unfortunately, you're my safe cracker. DONT. FORGET. THAT. SPELL."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Don't worry about me, I've got it memorized. MASCUS... PARIAH..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Brother."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Right."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "We'll meet south of Galdron's place in three turns of the broken moon."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "There's something I need to get first."
+            }
+          ]
+        },
+        {
+          "id": "setantique",
+          "label": "Antique Intro",
+          "set_image": null,
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Antique Intro"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Welcome back to Quartero's Curios! The quarterly... quarterly-ish?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Who am I kidding, this is Valve, the REGULAR feature where I give you all-new item sets and chances at classic antiques, all for free, and all for doing what you do best: Playing Dota."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh! Let me check with the team quick and see if there are any new announcements for this season."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah, here we are: \\\"Duplicate Protection!\\\""
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Sometimes when you get five antique options, two of them might be the same."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Apparently they fixed that. Nice work, everyone. Anything else?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Last thing: Evidently some of you have been playing long enough that you own... a LOT of shit."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "So sometimes when you do your antique pull you'll already own everything."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Not much we can do about that, unless you want us to start deleting your inventory so you get the thrill of the chase back."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, I didn't think you'd like that. Anyway, now you get shards."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "summer_2026",
+      "label": "Summer 2026",
+      "sets": [
+        {
+          "id": "set01",
+          "label": "Golden Orbweaver",
+          "set_image": null,
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Living Ingot"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hero! You found us! Oh, you're a sight for sore bone marrow."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I've been waiting for you to show up. Quintessa and Blake are up ahead looking for a way into the obelisk."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I tried giving THEM item sets while you were gone, but it's like the curse KNOWS they're not heroic enough."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "No, if anyone's getting magnificent item sets, absolutely free, just for breathing, I'm afraid it has to be you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Speaking of. Let's see what I've got in my bag of holding here... ah!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The Golden Orbweaver! Perfect."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, don't take the whole set at once. Just take the Living Ingot..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Slowly now... slower... I'm giving you the livinnnnng innnngot... for nooooo monnnney..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ahh. Curse lifted. For now, anyway."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "These are the LAST item sets from the mausoleum heist, by the way. We'll need to make these last until we get inside Galdron's vault."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Let's go find the others. I hope Blake found a way into this obelisk, or my bone marrow is in some real trouble here."
+            },
+            {
+              "type": "ITEM",
+              "text": "Mournless Mask"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Blake, Quintessa! Look who I found!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Shh! Quiet! What took you so long?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, we did stop for a minute so I could give them some armor."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Also, here you go, Hero. The Mournless Mask — segmented carapax plates, sleeved beneath a lacquered chitin carapace!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Wait. Brother, is your bone marrow turning into bugs ALREADY? You said you gave Hero an item when they got here."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Is your curse speeding up?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh, I wouldn't say THAT."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The intervals between the times where I need to give Hero free items to make the pain stop are... are SHRINKING, yes, but..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Shut up about your curse. I found us a way in."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Hide the horses. We'll go the rest of the way on foot."
+            },
+            {
+              "type": "ITEM",
+              "text": "Gilded Tarsi"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here you go, Hero. The Gilded Tarsi."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Hey! Shut up back there."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Shutting up back here."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It's fully segmented, reverse-hinged blackened alloy."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "I said shut up back there."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I was just about to! And now I am. There."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I think that's real moons-cured obsidian, too."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Chatty goat. If I have to come back there and shut you up, you are not gonna like how I do it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'm sure I won't."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "No. You won't. Because first I'll take those horns of yours, I'll snap 'em off, and I'll kick 'em both so far up—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You're painting an INCREDIBLY vivid word picture. I promise. Not... another... word."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Moons-cured obsidian. You look marvellous."
+            },
+            {
+              "type": "ITEM",
+              "text": "Captive's Crown"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Everyone, get over here. I want to show you something."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Coming!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "The Captive Crown. Here, take it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And before you can tell me to shut up, Blake, I'm shutting up."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Good."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Welcome to Grimwood Estate. Home of Galdron the Sorcerer."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Let's not forget Galdron the Sorcerer's vault full of treasure."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Let's not get ahead of ourselves. See that up there? That's a sentry."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Awwww! It's a little koi pond."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Don't look in it. It's a trap."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "It doesn't look like a trap. It looks... like a koi pond."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "You're still looking at it. Stop looking at it!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I've been looking at it the whole time you've been talking and nothing has happened."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I'm still looking at it too. I can see fish swimming in it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Hmph. Don't look INTO it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Those scrying ponds are his EYES. He can sit in that obelisk and monitor the whole estate from up there."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "That doesn't make sense. Wouldn't he just be looking up at the sky?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "The pond reflects at an angle."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He could just look out his windows. If he'd bothered to install any."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "It's a terrible design, isn't it. He must be breathing his own skin up there."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "You, don't look in the pond. You, shut up about breathing skin."
+            },
+            {
+              "type": "ITEM",
+              "text": "Skittering Plague"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "OK, hero, you heard Blake. Let's do this quietly. And NOT in front of a koi pond... apparently."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here. The Skittering Plague."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Disgusting, aren't they? Millions of the godsdamn things. All yours."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh, they're adorable. Look at their cute little eyeballs!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Everybody shut up. Stop giving each other item sets for five seconds and gather round."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "This obelisk was built ten thousand years ago by an insane chthonic architect named Balthazar Blackspire."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "He didn't just install a vault in an obelisk. He built an entire obelisk AROUND a vault."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "That's why there's no doors or windows. The whole structure's one big lock."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "That... doesn't sound promising."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Didn't to me either. So I took a trip to Ultimyr University's registrar's office. Found a records clerk with some outstanding debts in Whitespire."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "You paid off all his debts?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "No. I just told him I was there to COLLECT them. And that bought me this."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "A blueprint."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Balthazar Blackspire might have been crazy. But he wasn't stupid. He built a back door. Almost impossible to find."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "I'll go find it. You three knock on the front door. Create a distraction."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Right. Blake? There IS no front door."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Go knock on the wall where the porch light and the welcome mat are."
+            }
+          ]
+        },
+        {
+          "id": "set02",
+          "label": "Amber Apis",
+          "set_image": null,
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Forgeless Blade"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Brother, you're shaking. You should give Hero an item before you fall over."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes, right. Here, take this, Hero. The Forgeless Blade."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'm getting close to seeing the bottom of my bottomless bag of holding. We have to get to that vault."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Almost there, brother. Come on. Showtime."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Knock knock!"
+            },
+            {
+              "type": "POPUP",
+              "text": "CREAK!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "WHO GOES THERE!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "No, I'm kidding. Name's Griffin Galdron. I'm the sorcerer around here. You guys Klephari?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well, uh... myself and my... sister... is."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "How about that. I've never seen you guys around here. Usually the villagers chase you out of town."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Aheheh. They do chase us out of town."
+            },
+            {
+              "type": "ITEM",
+              "text": "Hivestalkers"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "So sorry to bother you at this hour, Sir... uh, Galdron, was it?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Please. Sir Galdron's my father's name, he's buried in my mausoleum."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh, I'm so sorry."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "No, don't be. I murdered him. Call me Griff, get in here, it's freezing out."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Is it just the three of you, by the way? Could've sworn I counted four from Koi Pond Seven."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh, no no no! No. It's just the three of us."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Also, we— it's late. We should leave."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "No, please stay. Stay FOREVER! I'm kidding. MAYBE forever, though, I haven't decided yet."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "I haven't had anyone visit the obelisk in — jeez, what's it been, five? Six years?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh my..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "No, I lie. What am I talking about, the city watch was here a few months ago."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh. My."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "That's right. I had to fill out a missing artifacts report."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh, you don't say.  How... terrible."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Oh, that's kind of you to say. A Klephari and a human broke into my mausoleum. Stole my portrait ward, killed my water golem, pried the artifacts off my ancestors..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well... I hope they... catch them."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here! Hero. Take these hivestalkers. We can talk about how GOOD they look on you later. This is a bad time."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Thank you, that means a lot. Also, this is funny, you're going to appreciate this... but I couldn't help but notice you just handed one of my stolen artifacts to your pet human there."
+            },
+            {
+              "type": "ITEM",
+              "text": "Queen's Carcanet"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "WHAT? Ah ha ha ha. You think I stole your items and I'M handing them to Hero here?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "You're right. I do think that. I AM thinking that."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And you're sure you're not just mistaking your PRICELESS artifacts for these WORTHLESS HUMDRUM artifacts I've owned for years... that I'm handing to Hero here?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Don't listen to me. They ARE priceless and he's NOT mistaken."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here, take this Queen's Carcanet, Hero. I stole it from a mausoleum."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "You know... hearing you explain it like that... now I'm actually MORE convinced that you stole those from me."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "DAMN your curse, brother, you're going to get us all killed."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "... You know, Galdron..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Please. Griff."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Griff. It's very dark in this windowless obelisk... Those really could be ANYONE'S Queen's Carcanets..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "That's fair, yes. They COULD be. How I'm certain they're mine is I watched him steal them through my koi pond."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I don't see how."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Yes, we were talking about this earlier. Wouldn't you only be able to look straight up at the sky?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "It reflects at an angle. Look, it's FINE. You're Klephari. You STEAL things."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Aheh. We do."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You've got us there, we love it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "You know what? You two are so adorable... I'm BARELY beside myself with rage."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Also, don't take this the wrong way, but I'm going to cast a spell that locks the door behind you."
+            },
+            {
+              "type": "ITEM",
+              "text": "Amber Unguis"
+            },
+            {
+              "type": "POPUP",
+              "text": "ZAP!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "There. Now nobody's going anywhere. Did you want to give your pet human something else you STOLE from me?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Honestly, yes. Thank you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Ah. No, it's fine. Curse, right?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It IS! How did you KNOW?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Well, you seem like a terrible person. You'd never give something away if you didn't have to."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Sister, isn't he perceptive? That's VERY impressive, Griff!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Wait a minute... Morkaal the Sleepless cursed you, right? Bottom of a dungeon? A thousand beaks and mouths?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "That's him exactly! You KNOW him?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Do I know him — I TAUGHT him that curse!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero & Quintessa",
+              "text": "Ha ha ha ha ha ha! Ahhhh..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "It's a small realm."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "It really is. Ah, that's an Amber Unguis, by the way, Hero. My great grandfather's."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Here, let me give you the tour. It's sort of a gauntlet-claw. That's real gold resin in the talon part there."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Anyway, why don't we get out of this hallway, I would LOVE a hot cocoa before I kill you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "And I'd love to kill you in a tiled area with running water and a grate — you understand. Let's go to the kitchen."
+            }
+          ]
+        },
+        {
+          "id": "set03",
+          "label": "Venomous Vestments",
+          "set_image": null,
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Venomous Vestments"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Is it alright if I give your hero an item?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I... suppose so."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Oh, thank you. I always like to ask first. Beautiful animal, by the way. Proud square stance, well-muscled haunches..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hero's not actually—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Who's a good girl? Who's a good girl? Here you go, little guy! Yeah!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "They're scaled gold-plated shoulder guards, yes they are! YES THEY ARE!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Hero's not actually my PET, Griff."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Really? Doesn't say anything and follows you around and you feed it treats though, huh?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Who's a good girl?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Well... yes."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "You know what, we're probably saying the same thing. Here's the kitchen, let me get the water on for the cocoa and find a sharp knife for stabbing and killing you."
+            },
+            {
+              "type": "ITEM",
+              "text": "Venomous Vizard"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Hero, please, take these. What's mine is yours. This is the Venomous Vizard. Sculpted face guards, inlaid jewels."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "And pried off the face of my great-uncle sorcerer Paladir the Cruel by your owner here."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Speaking of which: Who wants cocoa? I hope someone does or it's right to the killing, I'm afraid."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I'd... like some cocoa, Griff. Also, while we're on the subject, you don't actually HAVE to kill us."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Ha! Oh, that's kind of you to say. No, I'm not OBLIGATED to, obviously, I WANT to."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "I'm an ancient evil in human form. Causing suffering is literally what I do."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Using magic, usually, but I don't have my wand on me, so in this case, a lot of stabbing."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Also, we're splitting hairs here, but when I said earlier that I'd kill you, was it clear I meant through torture?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "It wasn't, no."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Well, good thing I circled back then, because I ABSOLUTELY meant through torture."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh! I'm glad we cleared that up."
+            },
+            {
+              "type": "ITEM",
+              "text": "Venomous Varn"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Oh, would you look at that, the fire went out. No cocoa then. Let me see what else I have. Hmmm. Water, it looks like. Anyone?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "No, I wouldn't blame you there. It's well water too, I.. I usually like to boil it first. I suppose that's not going to matter..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "You know what, though? I'd really like a hot stove for that torture later. I'm going to go get some wood."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Don't go anywhere! I'm kidding, you're trapped here forever. Until I kill you! Alright, I'll be right back."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "He's gone. Here, take this quick. It's the Venomous Varn. Inlaid jewels in a carapace of—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Brother, can this wait? We need to get out of here before he kills us!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "No one's leaving. Where's Galdron?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Oh, Blake. Thank the gods. He's just left the room for a moment for firewood so he can torture us to death with fire."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Good."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "I— IS that good?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Let me find a weapon. Stay here in the kitchen and keep distracting him."
+            },
+            {
+              "type": "ITEM",
+              "text": "Venomous Verdicts"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "OK, I've got the firewood."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Ohp! I've also got something in my back, it feels like... is that a wand of withering?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "I don't know what it is. I just grabbed it off your desk."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Which desk? The one in the foyer? That'd be the withering, I was varnishing it yesterday. Is there a little woody knot near the handle?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Hold on, let me, ah..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Uh, yeah."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Great. Don't put your thumb on that, that'll shoot a withering spell into my spine."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Take me to your vault and I won't have to."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "That's a good idea, I was just going to suggest it. Can I put this firewood down first?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Go ahead."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Thank you. Oh. Could I also grab my staff— my walking staff? Walking STICK, I mean to say. These... ohhh, these old bones..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "No weapons."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "I completely understand. Out of curiosity, if I'd just called it my walking stick would you have let me have it?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Move!"
+            }
+          ]
+        },
+        {
+          "id": "set04",
+          "label": "Poisonous Prelate",
+          "set_image": null,
+          "hero_icon": null,
+          "messages": [
+            {
+              "type": "ITEM",
+              "text": "Virulent Vestments"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Here you go, Hero. The Virulent Vestments."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ugh, I still feel TERRIBLE. Why isn't it WORKING?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Oh, I can help you there. The obelisk is a curse amplifier. It's pretty fascinating, actually. Every curse has a natural entropic bleed — what we call the Balefire Dissipation Constant, or BDC, you know what a BDC is. That's why I introduced a four-plane taper, it gives you that vertical shear you want in the hex-field, I'm not boring you, am I?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "You are. Shut up."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "We're here. Quartero, say the spell."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Blake, I'm... I'm actually not feeling great here..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "So say the spell! We're at the VAULT, Quartero. There's enough priceless item sets in there to give away from now till the end of time, just say the gods-damn WORDS."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "MASCUS... PARIAH... BARATO... FATUM!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Nothing happened. Blake? Why did nothing happen?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Yeah, that's an old password. Why don't I just give you the new one? It's vault one two three four."
+            },
+            {
+              "type": "POPUP",
+              "text": "CREAK!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Mountains. There's MOUNTAINS of gold in here!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "From every epoch! I'm a bit of a coin collector."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "This is... a thousand times more than I was expecting..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Quartero, give me your bag of holding!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Blake?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Shut up. Wait. What."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "If you're shovelling gold into Quartero's bag of holding..."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Who's holding Galdron at wandpoint?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "No one, I'm afraid."
+            },
+            {
+              "type": "ITEM",
+              "text": "Virulent Vizard"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You need... to... give Hero... an item... or I'll die."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Why? Oh right, your curse. So if I just give Hero here this headpiece, you'll feel better?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Ah! INSTANTLY."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "How about that. Did you want me to just get rid of that curse, by the way?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "You can DO that?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "I mean... I invented the curse, I don't see why not. Here."
+            },
+            {
+              "type": "POPUP",
+              "text": "ZAP!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh...gods! FINALLY! My bone marrow! My bone marrow feels GREAT!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "And my GREED! Oh oh, I feel GREEDY again! I — oh no!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "[sobbing]"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Why the hell is he crying? You lifted the curse."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "I'm... I'm also confused."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'm just thinking of all the priceless item sets I've GIVEN this idiot for FREE! It's KILLING ME just thinking about it!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "I see. Look, um... I'm going to need you to stop crying."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "[sobbing]"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Everybody is embarrassed. It would mean a lot to all of us if you stopped."
+            },
+            {
+              "type": "ITEM",
+              "text": "Virulent Varn"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "I can't help but notice you're still sobbing like a child, and it's not getting less embarrassing over time."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "I'm sorry. I'm just... so happy I don't have to give this idiot free item sets anymore."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Hero, take this tailpiece. It's yours. You earned it. Heh. Not really. Take it anyway."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Wait, Galdron, stop! Sell it to them instead! At a five hundred percent mark—"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Oh, alright. It does look good on them."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "You never know, brother! Maybe you'll start giving Hero item sets WITHOUT the curse!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quartero",
+              "text": "Heh. Oh, that is... the stupidest thing you've ever said, sister."
+            },
+            {
+              "type": "ITEM",
+              "text": "Toxic Tribunal"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Now. Both of you get in the vault."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Us? You mean me and Blake Sextus?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Why do you want us in there?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Because I'm locking you in it. Just till I get back with Hero and Quartero here. There's something I need them to do for me."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Could we have food? So we don't... you know, starve to death?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Of course. Let me just lock you in there and I'll be RIGHT back with a BIG feast for you both. Heh heh heh."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "Hm. You were chuckling evilly when you said that."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Was I?"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "You were. It makes it difficult to trust what you're saying."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Sextus",
+              "text": "Yeah, I don't believe you."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "That's fair. No, I assure you the offer was entirely genuine. Let me just lock you in this vault and I'll be back before you know it."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Heh heh heh."
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Quintessa",
+              "text": "You're doing it a—"
+            },
+            {
+              "type": "POPUP",
+              "text": "SLAM!"
+            },
+            {
+              "type": "DIALOGUE",
+              "speaker": "Galdron",
+              "text": "Right. You two ready? Why am I asking? You don't have a choice. Come on, I'll explain on the way."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

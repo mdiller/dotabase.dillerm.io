@@ -5,3 +5,4 @@ build/
 .env
 push.sh
 .claude/settings.local.json
+_temp/
