@@ -12,7 +12,7 @@
 						@click="playSound"
 					/>
 					<span class="culling-title-text">Culling Blade</span>
-					<audio ref="sound" :src="'/vpk/sounds/vo/axe/axe_ability_berserk_09.mp3'" />
+					<audio ref="sound" :src="'/vpk/sounds/weapons/hero/axe/culling_blade_success.wav'" />
 				</div>
 
 				<!-- Nameplate entries -->
@@ -105,7 +105,7 @@ export default {
 		}));
 
 		for (const entry of this.entries) {
-			const stats = await calculateResources(TECHIES_ID, entry.level);
+			const { stats } = await calculateResources(TECHIES_ID, entry.level);
 			entry.config.hp_max     = getStat(stats, 'hp_max');
 			entry.config.mp_max     = getStat(stats, 'mp_max');
 			entry.config.hp_current = entry.threshold;

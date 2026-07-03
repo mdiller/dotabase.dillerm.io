@@ -13,14 +13,6 @@ const ICON_STYLE = 'padding: 6px';
 
 export const PAGES = [
 	{
-		label: "Quartero's Curios",
-		value: 'quarteros-curios',
-		path: 'quarteros-curios',
-		icon: mdiSvgUrl(mdiStore),
-		icon_style: ICON_STYLE,
-		component: QuarterosCurios
-	},
-	{
 		label: 'Resource Calculator',
 		value: 'resource-calculator',
 		path: 'calculator',
@@ -43,5 +35,13 @@ export const PAGES = [
 		icon: mdiSvgUrl(mdiAxeBattle),
 		icon_style: ICON_STYLE,
 		component: Axe
+	},
+	{
+		label: "Quartero's Curios",
+		value: 'quarteros-curios',
+		path: 'quarteros-curios',
+		icon: mdiSvgUrl(mdiStore),
+		icon_style: ICON_STYLE,
+		component: QuarterosCurios
 	},
 ];

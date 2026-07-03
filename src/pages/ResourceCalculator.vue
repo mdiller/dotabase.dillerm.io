@@ -118,6 +118,9 @@
 				<DotaNameplate :config="config" :level="level" :scaled="false" :health-mode="healthMode" />
 			</div>
 		</div>
+		<div class="rc-footer">
+			<span class="rc-disclaimer">This is a work in progress. Some stuff calculates correctly, some doesn't</span>
+		</div>
 	</div>
 </template>
 
@@ -710,6 +713,20 @@ export default {
 	position: fixed;
 	inset: 0;
 	z-index: 999;
+}
+
+.rc-footer {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 6px 12px;
+	pointer-events: none;
+}
+
+.rc-disclaimer {
+	font-size: 22px;
+	color: var(--text-color-secondary, #666);
+	font-style: italic;
 }
 
 .item-picker-popup {
