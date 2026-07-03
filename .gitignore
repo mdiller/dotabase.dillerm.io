@@ -3,6 +3,6 @@ node_modules/
 _dotabase/
 build/
 .env
-push.sh
+ship.sh
 .claude/settings.local.json
 _temp/
