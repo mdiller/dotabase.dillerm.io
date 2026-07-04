@@ -3300,9 +3300,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "I fell over with a broken leg.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_12_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_12_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3312,33 +3312,33 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "And then I watched you clop over to the closest item sets.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_14_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_14_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "And stuff them in your bottomless bag of holding.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_15_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_15_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Then you pointed at me and told the zombies \\\"Kill him!\\\"",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_16_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_16_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Then you whispered \\\"I'm so sorry.\\\"",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_17_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_17_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "And you rolled under the door just before it closed.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_18_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm03_18_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3352,27 +3352,27 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Quartero Quickhoof...",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_01_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_01_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Here I thought I'd have to torture you until you told me where the loot was.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_02_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_02_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "And I find you standing in a room with it.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_03_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_03_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Giving it all to this idiot for some reason.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_04_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_04_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3382,9 +3382,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "You're doing it right now. You're giving that idiot a priceless weapon.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_06_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_06_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3400,9 +3400,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Stop that!",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_09_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set03_itm04_09_blsx.wav"
             }
           ]
         },
@@ -3418,15 +3418,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Would you stop giving this idiot my treasure while I'm trying to kill you?",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_01_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_01_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "You! Take my armor off!",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_02_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_02_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3436,9 +3436,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "You're still doing it!",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_04_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_04_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3454,9 +3454,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "What IS that?",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_07_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_07_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3472,9 +3472,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "A scroll? That's mine too.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_10_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3484,9 +3484,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "GIVE... THAT... TO ME.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_12_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_12_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3496,9 +3496,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "What are you doing? Do not put that in your mouth!",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_14_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_14_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3508,9 +3508,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "I will strangle you and cut it out of you! Right in front of your sister and the hero!",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_16_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_16_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3520,9 +3520,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Are you chewing? DO NOT SWALLOW THAT, you son of a--",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_18_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm01_18_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3548,9 +3548,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "...can I... can I have the spell?",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_03_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_03_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3560,15 +3560,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Look. You can keep all this crap from the mausoleum score.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_05_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_05_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Hand it to this idiot as much as you like.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_06_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_06_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3578,21 +3578,21 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "No. It's NOT. In fact it's PRICELESS. That's SurpentKoil armor. It was worn by a GOD.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_08_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_08_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "And it's all yours. Everything in this room.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_09_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_09_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Plus I won't kill you for doublecrossing me. All I want is that open spell.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm02_10_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3630,15 +3630,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Alright, new plan. We're going back to Galdron's palace.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_01_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_01_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "And we're breaking into his impenetrable Obelisk.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_02_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_02_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3648,15 +3648,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "I know what it means. We're breaking in anyway.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_04_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_04_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "And then we're breaking into his vault, with the spell that's in your head.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_05_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_05_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3678,15 +3678,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Look. You two. I want what's in the sorcerer's vault SLIGHTLY more than I want to kill you.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_09_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_09_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "But don't push it.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm03_10_blsx.wav"
             },
             {
               "type": "ITEM",
@@ -3694,9 +3694,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "We're gonna need a riddle master.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_01_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_01_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3706,9 +3706,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Nice try. Your brother already pulled that grift on me.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_03_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_03_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3724,9 +3724,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "What is blue and purple and never shuts up.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_06_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_06_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3736,39 +3736,39 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Fine. You're my riddle master.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_08_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_08_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "You. Hero.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_09_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_09_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "This is the Reckoner. It's the most valuable piece we took from the mausoleum.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_10_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "It's what I came looking for. It's what I was gonna kill this idiot to take BACK.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_11_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_11_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "It's yours. You're gonna need it. You're the muscle on this score.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_12_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_12_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "And you. Idiot.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_13_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_13_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3778,9 +3778,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Unfortunately, you're my safe cracker. DONT. FORGET. THAT. SPELL.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_15_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_15_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -3802,15 +3802,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "We'll meet south of Galdron's place in three turns of the broken moon.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_19_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_19_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "There's something I need to get first.",
-              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_20_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_03/q03_set04_itm04_20_blsx.wav"
             }
           ]
         },
@@ -3980,9 +3980,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Shh! Quiet! What took you so long?",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm02_02_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm02_02_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4022,15 +4022,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Shut up about your curse. I found us a way in.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm02_09_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm02_09_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Hide the horses. We'll go the rest of the way on foot.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm02_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm02_10_blsx.wav"
             },
             {
               "type": "ITEM",
@@ -4044,9 +4044,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Hey! Shut up back there.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm03_02_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm03_02_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4062,9 +4062,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "I said shut up back there.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm03_05_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm03_05_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4080,9 +4080,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Chatty goat. If I have to come back there and shut you up, you are not gonna like how I do it.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm03_08_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm03_08_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4092,9 +4092,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "No. You won't. Because first I'll take those horns of yours, I'll snap 'em off, and I'll kick 'em both so far up—",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm03_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm03_10_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4114,9 +4114,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Everyone, get over here. I want to show you something.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_01_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_01_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4138,15 +4138,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Good.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_05_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_05_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Welcome to Grimwood Estate. Home of Galdron the Sorcerer.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_06_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_06_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4156,9 +4156,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Let's not get ahead of ourselves. See that up there? That's a sentry.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_08_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_08_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4168,9 +4168,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Don't look in it. It's a trap.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_10_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4180,9 +4180,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "You're still looking at it. Stop looking at it!",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_12_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_12_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4198,15 +4198,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Hmph. Don't look INTO it.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_15_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_15_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Those scrying ponds are his EYES. He can sit in that obelisk and monitor the whole estate from up there.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_16_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_16_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4216,9 +4216,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "The pond reflects at an angle.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_18_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_18_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4234,9 +4234,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "You, don't look in the pond. You, shut up about breathing skin.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_21_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm04_21_blsx.wav"
             },
             {
               "type": "ITEM",
@@ -4268,27 +4268,27 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Everybody shut up. Stop giving each other item sets for five seconds and gather round.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_05_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_05_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "This obelisk was built ten thousand years ago by an insane chthonic architect named Balthazar Blackspire.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_06_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_06_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "He didn't just install a vault in an obelisk. He built an entire obelisk AROUND a vault.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_07_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_07_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "That's why there's no doors or windows. The whole structure's one big lock.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_08_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_08_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4298,9 +4298,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Didn't to me either. So I took a trip to Ultimyr University's registrar's office. Found a records clerk with some outstanding debts in Whitespire.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_10_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4310,9 +4310,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "No. I just told him I was there to COLLECT them. And that bought me this.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_12_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_12_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4322,15 +4322,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Balthazar Blackspire might have been crazy. But he wasn't stupid. He built a back door. Almost impossible to find.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_14_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_14_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "I'll go find it. You three knock on the front door. Create a distraction.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_15_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_15_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4340,9 +4340,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Go knock on the wall where the porch light and the welcome mat are.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_17_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set01_itm05_17_blsx.wav"
             }
           ]
         },
@@ -4932,9 +4932,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "No one's leaving. Where's Galdron?",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm03_07_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm03_07_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4944,9 +4944,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Good.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm03_09_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm03_09_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4956,9 +4956,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Let me find a weapon. Stay here in the kitchen and keep distracting him.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm03_11_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm03_11_blsx.wav"
             },
             {
               "type": "ITEM",
@@ -4978,9 +4978,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "I don't know what it is. I just grabbed it off your desk.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_03_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_03_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -4990,15 +4990,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Hold on, let me, ah...",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_05_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_05_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Uh, yeah.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_06_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_06_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5008,9 +5008,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Take me to your vault and I won't have to.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_08_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_08_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5020,9 +5020,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Go ahead.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_10_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5032,9 +5032,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "No weapons.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_12_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_12_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5044,9 +5044,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Move!",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_14_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set03_itm04_14_blsx.wav"
             }
           ]
         },
@@ -5080,15 +5080,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "You are. Shut up.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_04_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_04_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "We're here. Quartero, say the spell.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_05_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_05_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5098,9 +5098,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "So say the spell! We're at the VAULT, Quartero. There's enough priceless item sets in there to give away from now till the end of time, just say the gods-damn WORDS.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_07_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_07_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5126,9 +5126,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Mountains. There's MOUNTAINS of gold in here!",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_11_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_11_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5138,15 +5138,15 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "This is... a thousand times more than I was expecting...",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_13_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_13_blsx.wav"
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Quartero, give me your bag of holding!",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_14_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_14_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5156,9 +5156,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Shut up. Wait. What.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_16_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm01_16_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5242,9 +5242,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Why the hell is he crying? You lifted the curse.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm02_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm02_10_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5340,9 +5340,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Why do you want us in there?",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm04_03_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm04_03_blsx.wav"
             },
             {
               "type": "DIALOGUE",
@@ -5382,9 +5382,9 @@
             },
             {
               "type": "DIALOGUE",
-              "speaker": "Sextus",
+              "speaker": "Blake Sextus",
               "text": "Yeah, I don't believe you.",
-              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm04_10_qart.wav"
+              "audio": "/sounds/vo/quartero/quartero_04/q04_set04_itm04_10_blsx.wav"
             },
             {
               "type": "DIALOGUE",
