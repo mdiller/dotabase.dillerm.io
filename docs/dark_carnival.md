@@ -1,6 +1,8 @@
 # Dark Carnival — Data Sources
 
-Documentation for the `DarkCarnival.vue` page and its data pipeline.
+> **Status: Not yet implemented.** This doc covers the data available in the VPK; no `DarkCarnival.vue` page or generator script exists yet.
+
+Documentation for a future `DarkCarnival.vue` page and its data pipeline.
 
 ---
 
