@@ -23,7 +23,10 @@
 					:class="{ collapsed: collapsed.has(group.key), clickable: group.components.length > 0 }"
 					@click="toggle(group.key, group.components.length)"
 				>
-					<span class="stat-label" :style="{ color: group.color }">{{ group.label }}</span>
+					<span class="stat-label" :style="{ color: group.color }">
+						<img v-if="STAT_ICONS[group.key]" :src="STAT_ICONS[group.key]" class="stat-icon" alt="" />
+						{{ group.label }}
+					</span>
 					<span class="stat-value" :style="{ color: group.color }">{{ fmtVal(group.value, group.format) }}</span>
 				</div>
 				<template v-if="!collapsed.has(group.key)">
@@ -44,6 +47,7 @@
 
 <script>
 import { mdiPlusThick, mdiMinusThick } from '@mdi/js';
+import { STAT_ICONS } from '../utils/calculationEngine.js';
 
 export default {
 	props: {
@@ -55,6 +59,7 @@ export default {
 			collapsed: new Set(),
 			mdiPlusThick,
 			mdiMinusThick,
+			STAT_ICONS,
 		};
 	},
 
@@ -181,6 +186,18 @@ export default {
 	.stat-label {
 		font-weight: 600;
 		font-size: 14px;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.stat-icon {
+		width: 16px;
+		height: 16px;
+		object-fit: contain;
+		flex-shrink: 0;
+		opacity: 0.85;
+		filter: grayscale(1);
 	}
 
 	.stat-value {

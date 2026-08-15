@@ -14,6 +14,21 @@ export const STAT_COLORS = {
 	int:  '#5694f2',
 };
 
+export const STAT_ICONS = {
+	strength:     '/vpk/panorama/images/hud/reborn/mini_strength_icon_psd.png',
+	agility:      '/vpk/panorama/images/hud/reborn/mini_agi_icon_psd.png',
+	intelligence: '/vpk/panorama/images/hud/reborn/mini_int_icon_psd.png',
+	hp_max:       '/vpk/panorama/images/hud/reborn/health_regen_png.png',
+	mp_max:       '/vpk/panorama/images/hud/reborn/mana_regen_png.png',
+	hp_regen:     '/vpk/panorama/images/hud/reborn/health_regen_png.png',
+	mana_regen:   '/vpk/panorama/images/hud/reborn/mana_regen_png.png',
+	armor:        '/vpk/panorama/images/hud/reborn/icon_armor_psd.png',
+	phys_resist:  '/vpk/panorama/images/hud/reborn/icon_armor_psd.png',
+	ehp_phys:     '/vpk/panorama/images/hud/reborn/icon_armor_psd.png',
+	magic_resist: '/vpk/panorama/images/hud/reborn/icon_magic_resist_psd.png',
+	ehp_magic:    '/vpk/panorama/images/hud/reborn/icon_magic_resist_psd.png',
+};
+
 async function doSqlQuery(query) {
 	const response = await fetch(`/api/sql?q=${encodeURI(query)}`);
 	if (response.ok) return response.json();

@@ -4,7 +4,10 @@
 		<!-- Stat selector -->
 		<div class="stat-picker" :class="{ open: statPickerOpen }" ref="statPicker">
 			<button class="stat-picker-btn" @click="statPickerOpen = !statPickerOpen">
-				<span class="stat-picker-label" :style="{ color: selectedStatColor }">{{ selectedStatLabel }}</span>
+				<span class="stat-picker-label" :style="{ color: selectedStatColor }">
+					<img v-if="STAT_ICONS[selectedStat]" :src="STAT_ICONS[selectedStat]" class="stat-icon" alt="" />
+					{{ selectedStatLabel }}
+				</span>
 				<span class="stat-picker-chevron"></span>
 			</button>
 			<div class="stat-picker-list">
@@ -15,6 +18,7 @@
 					:class="{ selected: selectedStat === s.key }"
 					:style="{ color: s.color }"
 					@click="pickStat(s.key)">
+					<img v-if="STAT_ICONS[s.key]" :src="STAT_ICONS[s.key]" class="stat-icon" alt="" />
 					{{ s.label }}
 				</div>
 			</div>
@@ -141,7 +145,7 @@ function computeBonus(b, statKey, sm) {
 }
 
 import DillermSlider from "@dillerm/webutils/src/components/controls/DillermSlider.vue";
-import { parseItemSpecial } from "../utils/calculationEngine.js";
+import { parseItemSpecial, STAT_ICONS } from "../utils/calculationEngine.js";
 
 export default {
 	components: { DillermSlider },
@@ -156,6 +160,7 @@ export default {
 	data() {
 		return {
 			TANKINESS_STATS_DEF: TANKINESS_STATS,
+			STAT_ICONS,
 			selectedStat:     DEFAULT_STAT,
 			statPickerOpen:   false,
 			excludeInventory: false,
@@ -367,6 +372,9 @@ export default {
 .stat-picker-label {
 	font-weight: 700;
 	font-size: 13px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
 }
 
 .stat-picker-chevron {
@@ -402,9 +410,21 @@ export default {
 	font-weight: 700;
 	font-size: 13px;
 	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 5px;
 
 	&:hover    { background: rgba(255,255,255,0.07); }
 	&.selected { background: rgba(255,255,255,0.1); }
+}
+
+.stat-icon {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+	flex-shrink: 0;
+	opacity: 0.85;
+	filter: grayscale(1);
 }
 
 .tank-budget-row {
