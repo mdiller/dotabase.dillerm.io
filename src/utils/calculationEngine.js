@@ -12,6 +12,7 @@ export const STAT_COLORS = {
 	str:  '#d9413c',
 	agi:  '#40c77d',
 	int:  '#5694f2',
+	move: '#e0b04f',
 };
 
 export const STAT_ICONS = {
@@ -82,6 +83,9 @@ export function parseItemBonuses(itemRows) {
 			hpRegenAura: 0,
 			manaRegenAura: 0,
 			armorAura: 0,
+			moveSpeed: 0,
+			moveSpeedPct: 0,
+			moveSpeedAura: 0,
 		};
 		let specs;
 		try { specs = JSON.parse(row.ability_special); } catch { return bonus; }
@@ -102,6 +106,7 @@ export function parseItemBonuses(itemRows) {
 					case 'missing_health_regen':                 bonus.hpMissingRegen  += v;       break;
 					case 'barrier_block':                        bonus.shieldMagic     += v;       break;
 					case 'absorb_amount':                        bonus.shieldPhys      += v;       break;
+					case 'aura_movement_speed':                  bonus.moveSpeedAura   += v;       break;
 				}
 				continue;
 			}
@@ -135,6 +140,23 @@ export function parseItemBonuses(itemRows) {
 						bonus.hpRegenPct += v / 100;
 					} else {
 						bonus.hpRegen += v;
+					}
+					break;
+				case 'movement_speed_percent_bonus':
+					bonus.moveSpeedPct += v / 100;
+					break;
+				// Most items report flat move speed, but a few (Manta Style, Quicksilver
+				// Amulet's base_movement) report it as a "%" string instead.
+				case 'bonus_movement_speed':
+				case 'movement_speed':
+				case 'move_speed':
+				case 'bonus_move_speed':
+				case 'bonus_movement':
+				case 'base_movement':
+					if (typeof spec.value === 'string' && spec.value.includes('%')) {
+						bonus.moveSpeedPct += v / 100;
+					} else {
+						bonus.moveSpeed += v;
 					}
 					break;
 			}
@@ -188,7 +210,7 @@ export async function calculateResources(heroId, level = 1, items = [], hpCurren
 				        attr_agility_base, attr_agility_gain,
 				        attr_intelligence_base, attr_intelligence_gain,
 				        base_health_regen, base_mana_regen,
-				        base_armor, magic_resistance
+				        base_armor, magic_resistance, base_movement
 				 FROM heroes WHERE id = ${heroId}`
 			),
 			itemIds.length
@@ -212,6 +234,7 @@ export async function calculateResources(heroId, level = 1, items = [], hpCurren
 		const baseMpR    = h.base_mana_regen         || 0;
 		const baseArmor  = h.base_armor              || 0;
 		const heroBaseMR = (h.magic_resistance || 25) / 100;
+		const baseMoveSpeed = h.base_movement         || 0;
 
 		const lvls      = level - 1;
 		const attrBonus = getForcedAttrBonusCount(level) * 2;
@@ -380,6 +403,21 @@ export async function calculateResources(heroId, level = 1, items = [], hpCurren
 			})(),
 
 			(() => {
+				const flatComponents = [
+					{ label: 'Base Movement Speed', value: baseMoveSpeed },
+					...itemComponents(itemBonuses, i => i.moveSpeed),
+					...itemBonuses.filter(i => i.moveSpeedAura > 0).map(i => ({
+						label: `${i.name} (aura)`, value: i.moveSpeedAura,
+					})),
+				];
+				const flatTotal     = flatComponents.reduce((s, c) => s + c.value, 0);
+				const pctComponents = itemBonuses
+					.filter(i => i.moveSpeedPct)
+					.map(i => ({ label: `${i.name} (+${Math.round(i.moveSpeedPct * 100)}%)`, value: flatTotal * i.moveSpeedPct }));
+				return statGroup('move_speed', 'Movement Speed', STAT_COLORS.move, [...flatComponents, ...pctComponents]);
+			})(),
+
+			(() => {
 				const heroAgiArmor     = heroAgi * (1/6);
 				const itemAgiArmor     = itemBonuses.filter(i => i.agi).map(i => ({
 					label: `${i.name} (${i.agi} Agi × 0.167)`, value: i.agi * (1/6),
@@ -456,6 +494,7 @@ function buildFallbackStats() {
 			{ key: 'mp_max',       label: 'Max Mana',      color: STAT_COLORS.mana, value: 0, components: [] },
 			{ key: 'hp_regen',     label: 'HP Regen',      color: STAT_COLORS.hp,   value: 0, components: [] },
 			{ key: 'mana_regen',   label: 'Mana Regen',    color: STAT_COLORS.mana, value: 0, components: [] },
+			{ key: 'move_speed',   label: 'Movement Speed',color: STAT_COLORS.move, value: 0, components: [] },
 			{ key: 'armor',        label: 'Armor',         color: STAT_COLORS.str,  value: 0, components: [] },
 			{ key: 'phys_resist',  label: 'Phys Resist',   color: STAT_COLORS.str,  value: 0, components: [], ...pct },
 			{ key: 'ehp_phys',     label: 'EHP Physical',  color: STAT_COLORS.str,  value: 0, components: [] },
