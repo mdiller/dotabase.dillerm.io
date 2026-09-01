@@ -1,5 +1,10 @@
 FROM node:22
 
+# dotabase.db.sql is stored via Git LFS in the dotabase repo, which server.js
+# clones at runtime (see src/dotabase-worker.js) — without git-lfs installed,
+# that clone only fetches the LFS pointer stub instead of the real file.
+RUN apt-get update && apt-get install -y git-lfs && git lfs install --skip-repo
+
 # Create app directory
 WORKDIR /usr/src/app
 
