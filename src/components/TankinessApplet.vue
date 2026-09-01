@@ -96,6 +96,7 @@ const TANKINESS_STATS = [
 	{ key: 'armor',         label: 'Armor',         color: '#b0a070' },
 	{ key: 'phys_resist',   label: 'Phys Resist',   color: '#d47a6a' },
 	{ key: 'magic_resist',  label: 'Magic Resist',  color: '#7dd8c8' },
+	{ key: 'move_speed',    label: 'Movement Speed', color: '#e0b04f' },
 ];
 
 function computeBonus(b, statKey, sm) {
@@ -117,6 +118,8 @@ function computeBonus(b, statKey, sm) {
 			return flat + b.manaRegenAmp * (sm.mana_regen || 0);
 		}
 		case 'armor': return b.agi / 6 + b.armor + b.armorAura;
+		case 'move_speed':
+			return b.moveSpeed + b.moveSpeedAura + b.moveSpeedPct * (sm.move_speed || 0);
 		case 'phys_resist': {
 			const newA  = (sm.armor || 0) + b.agi / 6 + b.armor + b.armorAura;
 			const newPR = (0.06 * newA) / (1 + 0.06 * Math.abs(newA));
