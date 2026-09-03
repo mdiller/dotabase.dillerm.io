@@ -28,6 +28,7 @@ export const STAT_ICONS = {
 	ehp_phys:     '/vpk/panorama/images/hud/reborn/icon_armor_psd.png',
 	magic_resist: '/vpk/panorama/images/hud/reborn/icon_magic_resist_psd.png',
 	ehp_magic:    '/vpk/panorama/images/hud/reborn/icon_magic_resist_psd.png',
+	move_speed:   '/vpk/panorama/images/hud/reborn/icon_speed_psd.png',
 };
 
 async function doSqlQuery(query) {
